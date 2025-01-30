@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    <style>
+        /* CSS para la tabla y el popup */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .conteiner, .conteiner1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Estilos del popup */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #popupContent {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        #popupContent input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        #popupContent button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #popupContent button:hover {
+            background-color: #45a049;
+        }
+
+        #popupContent button.close {
+            background-color: #f44336;
+        }
+
+        .addPista {
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .addPista:hover {
+            background-color: #007bb5;
+        }
+
+        button.add {
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button.add:hover {
+            background-color: #007bb5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Titulo de la pagina -->
+    <div class="conteiner">
+        <nav>
+            <button class="button-title">CIRCUITO
+              <path
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Contenedor para la tabla y el botón -->
+    <div class="conteiner1">
+        <button class="addPista" onclick="openPopup()">+</button>
+
+        <table id="infoTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se agregarán las filas -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup">
+        <div id="popupContent">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingresa un nombre">
+            <button onclick="addInfo()">Agregar</button>
+            <button class="close" onclick="closePopup()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar el popup
+        function openPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        // Cerrar el popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Agregar la información a la tabla
+        function addInfo() {
+            const nombre = document.getElementById('nombre').value;
+            if (nombre) {
+                const table = document.getElementById('infoTable').getElementsByTagName('tbody')[0];
+                const row = table.insertRow();
+                const cell = row.insertCell(0);
+                cell.textContent = nombre;
+                closePopup(); // Cierra el popup después de agregar
+                document.getElementById('nombre').value = ''; // Limpia el campo
+            } else {
+                alert("Por favor ingresa un nombre.");
+            }
+        }
+    </script>
+</body>
+</html>
