@@ -56,3 +56,5 @@ async function getPilotsByTeam(teamId) {
 
 // Exportar todas las funciones
 export { getTeams, getTeamById, addTeam, updateTeam, deleteTeam, getPilotsByTeam };
+
+//Falta definir excepciones(errores)

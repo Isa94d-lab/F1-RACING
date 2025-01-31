@@ -46,3 +46,5 @@ async function deletePilot(id) {
 
 // Exportar las funciones para usarlas en otros módulos
 export { getPilots, getPilotById, addPilot, updatePilot, deletePilot };
+
+//Falta definir excepciones(errores)
