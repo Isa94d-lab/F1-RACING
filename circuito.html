@@ -5,99 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
-    <style>
-        /* CSS para la tabla y el popup */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        .conteiner, .conteiner1 {
-            margin-bottom: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        /* Estilos del popup */
-        #popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        #popupContent {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            width: 300px;
-        }
-
-        #popupContent input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-        }
-
-        #popupContent button {
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        #popupContent button:hover {
-            background-color: #45a049;
-        }
-
-        #popupContent button.close {
-            background-color: #f44336;
-        }
-
-        .addPista {
-            padding: 10px 15px;
-            background-color: #008CBA;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .addPista:hover {
-            background-color: #007bb5;
-        }
-
-        button.add {
-            padding: 10px 15px;
-            background-color: #008CBA;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button.add:hover {
-            background-color: #007bb5;
-        }
-    </style>
 </head>
 <body>
 
@@ -133,39 +40,290 @@
 
     <!-- Popup -->
     <div id="popup">
-        <div id="popupContent">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" placeholder="Ingresa un nombre">
+        <div class="popupBox">
+            <h3>Agregar Nueva Pista</h3>
+
+            <label for="new_namePista">Nombre:</label>
+            <input type="text" id="new_namePista" placeholder="Ingresa nombre de nueva pista">
+
+            <label for="new_descriptionPista">Descripción:</label>
+            <input type="text" id="new_descriptionPista" placeholder="Ingresa una pequeña descripción">
+
+            <label for="new_imgPista">Imagen (URL):</label>
+            <input type="text" id="new_imgPista" placeholder="URL de la imagen de la pista">
+
+            <label for="new_countryImgPista">Pais:</label>
+            <input type="text" id="new_countryImgPista" placeholder="URL de la imagen del pais">
+
+            <label for="new_firstGrandPrixPista">Primer Gran Premio:</label>
+            <input type="number" id="new_firstGrandPrixPista" placeholder="Año del primer Gran Premio">
+
+            <label for="new_numberPista">Numero de vueltas:</label>
+            <input type="number" id="new_numberPista" placeholder="Numero de vueltas de la carrera">
+
+            <label for="new_CircuitLengthPista">Longitud del circuito (km):</label>
+            <input type="number" id="new_CircuitLengthPista" placeholder="Longitud de la pista en km">
+
+            <label for="new_RaceDistancePista">Distancia de carrera (km):</label>
+            <input type="number" id="new_RaceDistancePista" placeholder="Distancia total de la carrera">
+
             <button onclick="addInfo()">Agregar</button>
-            <button class="close" onclick="closePopup()">Cerrar</button>
+            <button onclick="closePopup()">Cerrar</button>
         </div>
     </div>
+
+    <!--     WEB COMPONENT      -->
+
+    <div class="bigCuadrado">
+        <table>
+            <tr>
+                <td><p id="tituloPista">titulo</p></td>
+
+                <td><p id="descripcionPista">loojiougyteddyfyiuuihygbtgtftyyuytyttytytuttyyttyfutytffftytytfy</p></td>
+
+            </tr>
+            <tr>
+                <img src="https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_771/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit">
+
+                <td>
+                    <table>
+                        <tr>
+                            <td id=""></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+
 
     <script>
         // Mostrar el popup
         function openPopup() {
             document.getElementById('popup').style.display = 'flex';
         }
-
+    
         // Cerrar el popup
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
         }
-
+    
         // Agregar la información a la tabla
+        // Solo agrega el nombre a la tabla
         function addInfo() {
-            const nombre = document.getElementById('nombre').value;
+            const nombre = document.getElementById('new_namePista').value;
+    
             if (nombre) {
                 const table = document.getElementById('infoTable').getElementsByTagName('tbody')[0];
                 const row = table.insertRow();
-                const cell = row.insertCell(0);
-                cell.textContent = nombre;
+    
+                row.insertCell(0).textContent = nombre; // Solo agrega el nombre
+    
                 closePopup(); // Cierra el popup después de agregar
-                document.getElementById('nombre').value = ''; // Limpia el campo
-            } else {
-                alert("Por favor ingresa un nombre.");
+    
+                // Limpiar el campo de entrada
+                document.getElementById('new_namePista').value = '';
             }
         }
+    
+        // URL de tu JSON Server (ajusta según tu configuración)
+        const API_URL = "http://localhost:3000/pistas";
+    
+        // Agregar la información a la tabla y enviar todos los datos a JSON Server
+        async function addInfoToJsonServer() {
+            const nombre = document.getElementById('new_namePista').value.trim();
+            const descripcion = document.getElementById('new_descriptionPista').value.trim();
+            const img = document.getElementById('new_imgPista').value.trim();
+            const pais = document.getElementById('new_countryImgPista').value.trim();
+            const primerGP = document.getElementById('new_firstGrandPrixPista').value.trim();
+            const longitud = document.getElementById('new_CircuitLengthPista').value.trim();
+            const distancia = document.getElementById('new_RaceDistancePista').value.trim();
+    
+            if (!nombre) {
+                alert("Por favor, ingresa un nombre.");
+                return;
+            }
+    
+            // Objeto con todos los datos
+            const pista = { nombre, descripcion, img, pais, primerGP, longitud, distancia };
+    
+            try {
+                // Enviar datos a JSON Server
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(pista)
+                });
+    
+                if (!response.ok) throw new Error("Error al guardar la pista");
+    
+                // Agregar solo el nombre a la tabla
+                const table = document.getElementById('infoTable').getElementsByTagName('tbody')[0];
+                const row = table.insertRow();
+                row.insertCell(0).textContent = nombre;
+    
+                closePopup(); // Cierra el popup
+    
+                // Limpiar los campos
+                document.getElementById('new_namePista').value = "";
+                document.getElementById('new_descriptionPista').value = "";
+                document.getElementById('new_imgPista').value = "";
+                document.getElementById('new_countryImgPista').value = "";
+                document.getElementById('new_firstGrandPrixPista').value = "";
+                document.getElementById('new_CircuitLengthPista').value = "";
+                document.getElementById('new_RaceDistancePista').value = "";
+    
+            } catch (error) {
+                console.error("Error:", error);
+                alert("No se pudo guardar la pista. Intenta de nuevo.");
+            }
+        }
+    
+        // Cargar los datos al abrir la página
+        async function loadTable() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error("Error al cargar datos");
+    
+                const pistas = await response.json();
+                const table = document.getElementById('infoTable').getElementsByTagName('tbody')[0];
+                table.innerHTML = ""; // Limpiar la tabla antes de cargar
+    
+                pistas.forEach(pista => {
+                    const row = table.insertRow();
+                    row.insertCell(0).textContent = pista.nombre;
+                });
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+    
+        // Cargar la tabla al abrir la página
+        window.onload = loadTable;
     </script>
+    
+
+
+
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .conteiner, .conteiner1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Estilos del popup */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popupBox {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 500px;
+            text-align: center;
+            line-height: 1.5; /* 1.5 veces el tamaño de la fuente */
+        }
+
+        .popupBox input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .popupBox button {
+            padding: 10px 15px;
+            background-color: #a10b0b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .popupBox button:hover {
+            background-color: #990a0a;
+        }
+
+        .popupBox button.close {
+            background-color: #f44336;
+        }
+
+        .popupBox button.close:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Botón para abrir el popup */
+        .addPista {
+            padding: 10px 15px;
+            background-color: #d80202;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .addPista:hover {
+            background-color: #910808;
+        }
+
+        /* ------------------------ tabla ------------------------ */
+
+        th {
+            background-color: white;
+            text-align: center;
+            width: 100vw;
+        }
+
+        td {
+            background-color: #d31818;
+            text-align: center;
+            width: 100vw;
+        }
+
+        table {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+        }
+
+        td:hover {
+            background-color: rgb(196, 18, 18);
+        }
+    </style>
 </body>
 </html>

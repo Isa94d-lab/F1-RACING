@@ -17,6 +17,8 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
   
    /* Esta zona representa la barra de interfaz */ 
