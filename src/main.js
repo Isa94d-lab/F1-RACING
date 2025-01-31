@@ -1,12 +1,5 @@
-document.getElementById("background-div").addEventListener("mouseover", function () {
-    const video = document.getElementById("background-video");
-    video.style.display = "block";
-    video.play();
-  });
+import { Application } from '@splinetool/runtime';
 
-document.getElementById("background-div").addEventListener("mouseout", function () {
-    const video = document.getElementById("background-video");
-    video.pause();
-    video.currentTime = 0;
-    video.style.display = "none";
-  });
+const canvas = document.getElementById('canvas3d');
+const app = new Application(canvas);
+app.load('https://prod.spline.design/22LNfwl-e5uAGIB1/scene.splinecode');
