@@ -5,7 +5,7 @@ html {
   }
 
   body {
-    background-color: #000000;
+    background-color: rgb(20, 20, 20);
     font-family: "Inter", serif;
     font-optical-sizing: auto;
   }
@@ -27,7 +27,7 @@ html {
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background-color: black;
+    background-color: rgb(37, 37, 37);
     color: rgb(255, 255, 255);
     position: relative;
     list-style: none;
