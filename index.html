@@ -2,12 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="stylesheet" href="src/style.css">
+    <title>main page</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div class="navbar">
+      <div class="logo">
+        <img src="src/img/f1logo.png" alt="logof1">
+      </div>
+      <div class="links">
+        <a href="" class="opciones">Circuitos</a>
+        <a href="" class="opciones">Galeria</a>
+        </div>
+    </div>
+      <div id="background-div">
+    </div>
+    <video id="background-video" loop muted>
+            <source src="./src/img/animacion.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    <script src="/src/main.js"></script>
   </body>
 </html>
