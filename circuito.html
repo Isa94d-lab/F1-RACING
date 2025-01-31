@@ -24,80 +24,92 @@
 
     <!-- Contenedor para la tabla y el botón -->
     <div class="conteiner1">
-        <button class="addPista" onclick="openPopup()">+</button>
+        <div class="left-panel">
+            <button class="addPista" onclick="openPopup()">+</button>
 
-        <table id="infoTable">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se agregarán las filas -->
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Popup -->
-    <div id="popup">
-        <div class="popupBox">
-            <h3>Agregar Nueva Pista</h3>
-
-            <label for="new_namePista">Nombre:</label>
-            <input type="text" id="new_namePista" placeholder="Ingresa nombre de nueva pista">
-
-            <label for="new_descriptionPista">Descripción:</label>
-            <input type="text" id="new_descriptionPista" placeholder="Ingresa una pequeña descripción">
-
-            <label for="new_imgPista">Imagen (URL):</label>
-            <input type="text" id="new_imgPista" placeholder="URL de la imagen de la pista">
-
-            <label for="new_countryImgPista">Pais:</label>
-            <input type="text" id="new_countryImgPista" placeholder="URL de la imagen del pais">
-
-            <label for="new_firstGrandPrixPista">Primer Gran Premio:</label>
-            <input type="number" id="new_firstGrandPrixPista" placeholder="Año del primer Gran Premio">
-
-            <label for="new_numberPista">Numero de vueltas:</label>
-            <input type="number" id="new_numberPista" placeholder="Numero de vueltas de la carrera">
-
-            <label for="new_CircuitLengthPista">Longitud del circuito (km):</label>
-            <input type="number" id="new_CircuitLengthPista" placeholder="Longitud de la pista en km">
-
-            <label for="new_RaceDistancePista">Distancia de carrera (km):</label>
-            <input type="number" id="new_RaceDistancePista" placeholder="Distancia total de la carrera">
-
-            <button onclick="addInfo()">Agregar</button>
-            <button onclick="closePopup()">Cerrar</button>
+            <table id="infoTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se agregarán las filas -->
+                </tbody>
+            </table>
         </div>
+    
+
+        <!-- Popup -->
+        <div id="popup">
+            <div class="popupBox">
+                <h3>Agregar Nueva Pista</h3>
+
+                <label for="new_namePista">Nombre:</label>
+                <input type="text" id="new_namePista" placeholder="Ingresa nombre de nueva pista">
+
+                <label for="new_descriptionPista">Descripción:</label>
+                <input type="text" id="new_descriptionPista" placeholder="Ingresa una pequeña descripción">
+
+                <label for="new_imgPista">Imagen (URL):</label>
+                <input type="text" id="new_imgPista" placeholder="URL de la imagen de la pista">
+
+                <label for="new_countryImgPista">Pais:</label>
+                <input type="text" id="new_countryImgPista" placeholder="URL de la imagen del pais">
+
+                <label for="new_firstGrandPrixPista">Primer Gran Premio:</label>
+                <input type="number" id="new_firstGrandPrixPista" placeholder="Año del primer Gran Premio">
+
+                <label for="new_numberPista">Numero de vueltas:</label>
+                <input type="number" id="new_numberPista" placeholder="Numero de vueltas de la carrera">
+
+                <label for="new_circuitLengthPista">Longitud del circuito (km):</label>
+                <input type="number" id="new_circuitLengthPista" placeholder="Longitud de la pista en km">
+
+                <label for="new_raceDistancePista">Distancia de carrera (km):</label>
+                <input type="number" id="new_raceDistancePista" placeholder="Distancia total de la carrera">
+
+                <button onclick="addInfo()">Agregar</button>
+                <button onclick="closePopup()">Cerrar</button>
+            </div>
+        </div>
+
+        <!--   --------------------  WEB COMPONENT  ---------------------------------------    -->
+
+            <div class="right-panel">
+                <table>
+                    <tr>
+                        <td><p id="show_countryImgPista"></p> IMG <p id="show_new_namePista"> NAME</p></td>
+
+                        <td><p id="show_descriptionPista"></p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+
+                    </tr>
+                    <tr>
+                        <td><img src="https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_771/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit"></td>
+
+                        <td>
+                            <table>
+                                <tr>
+                                    <td id="show_firstGrandPrixPista"></td>
+                                    <td id="show_numberPista"></td>
+                                </tr>
+                                <tr>
+                                    <td id="show_circuitLengthPista"></td>
+                                    <td id="show_raceDistancePista"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        
     </div>
 
-    <!--     WEB COMPONENT      -->
-
-    <div class="bigCuadrado">
-        <table>
-            <tr>
-                <td><p id="tituloPista">titulo</p></td>
-
-                <td><p id="descripcionPista">loojiougyteddyfyiuuihygbtgtftyyuytyttytytuttyyttyfutytffftytytfy</p></td>
-
-            </tr>
-            <tr>
-                <img src="https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_771/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit">
-
-                <td>
-                    <table>
-                        <tr>
-                            <td id=""></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </div>
 
 
 
+
+    <!-- JAVA --------------------------------------------------------------------------------     -->
 
     <script>
         // Mostrar el popup
@@ -228,11 +240,7 @@
             padding: 10px;
             text-align: center;
         }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
+        
         /* Estilos del popup */
         #popup {
             display: none;
@@ -296,21 +304,21 @@
         }
 
         .addPista:hover {
-            background-color: #910808;
+            background-color: #b41a1a;
         }
 
         /* ------------------------ tabla ------------------------ */
 
         th {
-            background-color: white;
+            background-color: rgb(212, 25, 25);
             text-align: center;
-            width: 100vw;
+
         }
 
         td {
             background-color: #d31818;
             text-align: center;
-            width: 100vw;
+           
         }
 
         table {
@@ -318,12 +326,42 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 30%;
         }
+
+        tbody {
+            width: auto;
+        }
+
 
         td:hover {
             background-color: rgb(196, 18, 18);
         }
+
+        /* ------------------------ conteiner ------------------------ */
+
+        .conteiner1 {
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh; /* Usamos min-height para ocupar al menos el 100% de la pantalla */
+            padding-bottom: 20px; /* Agregar algo de espacio en la parte inferior */
+            justify-content: space-between; /* Asegura que ambos paneles tengan el mismo espacio entre ellos */
+        }
+
+        /* El panel izquierdo y el panel derecho deben tener la misma altura */
+        .left-panel, .right-panel {
+            flex: 1; /* Ambos ocupan la misma proporción del espacio disponible */
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f4f4f4; /* Para que tengan un color de fondo consistente */
+            margin-right: 20px; /* Un poco de separación entre los paneles */
+            height: 600px;
+        }
+
+        /* El último panel no necesita margen a la derecha */
+        .right-panel {
+            margin-right: 0;
+        }
+
     </style>
 </body>
 </html>
