@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
   margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Exo 2", sans-serif;
   background-image: url(./img/fotoauto.jpg);
   background-size: cover;
   font-weight: 400;
@@ -50,16 +50,35 @@ div.links{
   display: flex;
   align-items: center;
   margin-right: 150px;
-  width: 400px;
+  width: 600px;
   justify-content: space-between;
 }
 
 .opciones{
-  font-size: 20px;
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
   text-decoration: none;
   color: white;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 0px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #c7080c;
 }
-
+.opciones:hover
+{
+  color: white;
+  box-shadow: inset 0 0 150px 0 #c7080c;
+}
+.opciones:active{
+  transform: scale(0.9);
+}
 
 /*animacion*/
 
@@ -75,9 +94,10 @@ div.links{
 
 .cta {
   display: flex;
-  padding: 11px 33px;
+  padding: 11px 20px;
   text-decoration: none;
-  font-size: 60px;
+  font-size: 40px;
+  align-items: center;
   color: white;
   background: #c7080c;
   transition: 1s;
@@ -88,7 +108,7 @@ div.links{
   position: absolute;
   z-index: 1000;
   top: 65%;
-  right: 5%;
+  right: 3%;
   width: 300px;
   height: 100px;
 }
