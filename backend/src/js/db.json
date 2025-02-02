@@ -1,0 +1,255 @@
+
+{
+    "pilots": [
+      { "id": 1, "name": "Max Verstappen", "team": "Red Bull Racing", "rol": "Líder" },
+      { "id": 2, "name": "Sergio Pérez", "team": "Red Bull Racing", "rol": "Escudero" },
+      { "id": 3, "name": "Lewis Hamilton", "team": "Mercedes-AMG Petronas", "rol": "Líder" },
+      { "id": 4, "name": "George Russell", "team": "Mercedes-AMG Petronas", "rol": "Escudero" },
+      { "id": 5, "name": "Charles Leclerc", "team": "Ferrari", "rol": "Líder" },
+      { "id": 6, "name": "Carlos Sainz", "team": "Ferrari", "rol": "Escudero" },
+      { "id": 7, "name": "Lando Norris", "team": "McLaren", "rol": "Líder" },
+      { "id": 8, "name": "Oscar Piastri", "team": "McLaren", "rol": "Escudero" },
+      { "id": 9, "name": "Fernando Alonso", "team": "Aston Martin", "rol": "Líder" },
+      { "id": 10, "name": "Lance Stroll", "team": "Aston Martin", "rol": "Escudero" },
+      { "id": 11, "name": "Pierre Gasly", "team": "Alpine", "rol": "Líder" },
+      { "id": 12, "name": "Esteban Ocon", "team": "Alpine", "rol": "Escudero" },
+      { "id": 13, "name": "Alexander Albon", "team": "Williams", "rol": "Líder" },
+      { "id": 14, "name": "Logan Sargeant", "team": "Williams", "rol": "Escudero" },
+      { "id": 15, "name": "Valtteri Bottas", "team": "Kick Sauber", "rol": "Líder" },
+      { "id": 16, "name": "Guanyu Zhou", "team": "Kick Sauber", "rol": "Escudero" },
+      { "id": 17, "name": "Kevin Magnussen", "team": "Haas", "rol": "Líder" },
+      { "id": 18, "name": "Nico Hülkenberg", "team": "Haas", "rol": "Escudero" },
+      { "id": 19, "name": "Yuki Tsunoda", "team": "RB", "rol": "Líder" },
+      { "id": 20, "name": "Daniel Ricciardo", "team": "RB", "rol": "Escudero" }
+    ],
+    "teams": [
+      {
+        "name": "Red Bull Racing",
+        "country": "Austria",
+        "motor": "Honda",
+        "pilots": [1, 2],
+        "image": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Red_Bull_Racing_Logo.svg"
+      },
+      {
+        "name": "Mercedes-AMG Petronas",
+        "country": "Alemania",
+        "motor": "Mercedes",
+        "pilots": [3, 4],
+        "image": "https://upload.wikimedia.org/wikipedia/commons/3/32/Mercedes_AMG_Petronas_F1_Team_logo.svg"
+      },
+      {
+        "name": "Ferrari",
+        "country": "Italia",
+        "motor": "Ferrari",
+        "pilots": [5, 6],
+        "image": "https://upload.wikimedia.org/wikipedia/en/d/d4/Scuderia_Ferrari_Logo.svg"
+      },
+      {
+        "name": "McLaren",
+        "country": "Reino Unido",
+        "motor": "Mercedes",
+        "pilots": [7, 8],
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/McLaren_Racing_logo.svg/2560px-McLaren_Racing_logo.svg.png"
+      },
+      {
+        "name": "Aston Martin",
+        "country": "Reino Unido",
+        "motor": "Mercedes",
+        "pilots": [9, 10],
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/5f/Aston_Martin_Formula_One_team_logo.svg"
+      },
+      {
+        "name": "Alpine",
+        "country": "Francia",
+        "motor": "Renault",
+        "pilots": [11, 12],
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/7b/Alpine_F1_Team_Logo.svg"
+      },
+      {
+        "name": "Williams",
+        "country": "Reino Unido",
+        "motor": "Mercedes",
+        "pilots": [13, 14],
+        "image": "https://upload.wikimedia.org/wikipedia/en/1/15/Williams_Grand_Prix_Engineering_logo.svg"
+      },
+      {
+        "name": "Kick Sauber",
+        "country": "Suiza",
+        "motor": "Ferrari",
+        "pilots": [15, 16],
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Stake_F1_Team_Kick_Sauber_Logo.svg/2560px-Stake_F1_Team_Kick_Sauber_Logo.svg.png"
+      },
+      {
+        "name": "Haas",
+        "country": "Estados Unidos",
+        "motor": "Ferrari",
+        "pilots": [17, 18],
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/91/Haas_F1_Team_Logo.svg"
+      },
+      {
+        "name": "RB",
+        "country": "Italia",
+        "motor": "Honda",
+        "pilots": [19, 20],
+        "image": "https://upload.wikimedia.org/wikipedia/en/e/eb/Scuderia_AlphaTauri_logo.svg"
+      }
+    ],
+    "tracks":[
+        {
+          "name": "Circuito de Mónaco",
+          "country": "Mónaco",
+          "length_km": 3.34,
+          "laps": 78,
+          "description": "Uno de los circuitos más prestigiosos y difíciles del calendario, conocido por sus calles angostas y la falta de zonas de adelantamiento.",
+          "record": { "tiempo": "1:10.166", "pilot": "Lewis Hamilton", "year": 2019 },
+          "winners": [
+            { "season": 2021, "pilot": 1 },
+            { "season": 2022, "pilot": 2 },
+            { "season": 2023, "pilot": 1 }
+          ],
+          "image": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Monte_Carlo_Formula_1_track_map.svg"
+        },
+        {
+          "name": "Silverstone",
+          "country": "Reino Unido",
+          "length_km": 5.89,
+          "laps": 52,
+          "description": "Uno de los circuitos más rápidos del calendario, con curvas de alta velocidad como Maggotts y Becketts.",
+          "record": { "tiempo": "1:27.097", "pilot": "Max Verstappen", "year": 2020 },
+          "winners": [
+            { "season": 2021, "pilot": 3 },
+            { "season": 2022, "pilot": 5 },
+            { "season": 2023, "pilot": 1 }
+          ],
+          "image": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Silverstone_Circuit_2020_layout.png"
+        },
+        {
+          "name": "Circuito de Spa-Francorchamps",
+          "country": "Bélgica",
+          "length_km": 7.00,
+          "laps": 44,
+          "description": "Famoso por la curva Eau Rouge y la larga recta de Kemmel, un circuito donde la potencia del motor es clave.",
+          "record": { "tiempo": "1:46.286", "pilot": "Valtteri Bottas", "year": 2018 },
+          "winners": [
+            { "season": 2021, "pilot": 1 },
+            { "season": 2022, "pilot": 1 },
+            { "season": 2023, "pilot": 1 }
+          ],
+          "image": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Circuit_Spa_2018.png"
+        },
+        {
+          "name": "Circuito de Monza",
+          "country": "Italia",
+          "length_km": 5.79,
+          "laps": 53,
+          "description": "Conocido como 'El Templo de la Velocidad', Monza es el circuito más rápido del calendario con largas rectas y chicanes icónicas.",
+          "record": { "tiempo": "1:21.046", "pilot": "Rubens Barrichello", "year": 2004 },
+          "winners": [
+            { "season": 2021, "pilot": 2 },
+            { "season": 2022, "pilot": 1 },
+            { "season": 2023, "pilot": 1 }
+          ],
+          "image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Monza_track_map.svg"
+        },
+        {
+          "name": "Interlagos",
+          "country": "Brasil",
+          "length_km": 4.31,
+          "laps": 71,
+          "description": "Interlagos es un circuito legendario con cambios de elevación y un trazado técnico que ha sido sede de algunas de las carreras más emocionantes de la historia.",
+          "record": { "tiempo": "1:10.540", "pilot": "Valtteri Bottas", "year": 2018 },
+          "winners": [
+            { "season": 2021, "pilot": 3 },
+            { "season": 2022, "pilot": 1 },
+            { "season": 2023, "pilot": 1 }
+          ],
+          "image": "https://upload.wikimedia.org/wikipedia/commons/2/23/Aut%C3%B3dromo_Jos%C3%A9_Carlos_Pace_%28Interlagos%29.svg"
+        },
+        {
+          "name": "Circuito de Yas Marina",
+          "country": "Emiratos Árabes Unidos",
+          "length_km": 5.28,
+          "laps": 58,
+          "description": "Ubicado en Abu Dhabi, es famoso por ser el circuito donde se definen muchos campeonatos, con un diseño moderno y una espectacular carrera nocturna.",
+          "record": { "tiempo": "1:39.283", "pilot": "Lewis Hamilton", "year": 2019 },
+          "winners": [
+            { "season": 2021, "pilot": 1 },
+            { "season": 2022, "pilot": 1 },
+            { "season": 2023, "pilot": 3 }
+          ],
+          "image": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yas_Marina_Circuit_2021_layout.svg"
+        },
+        {
+          "name": "Circuito de Suzuka",
+          "country": "Japón",
+          "length_km": 5.81,
+          "laps": 53,
+          "description": "Un circuito desafiante con un diseño en forma de ocho, famoso por sus curvas de alta velocidad como 130R y la 'S' de Senna.",
+          "record": { "tiempo": "1:30.983", "pilot": "Lewis Hamilton", "year": 2019 },
+          "winners": [
+            { "season": 2021, "pilot": 1 },
+            { "season": 2022, "pilot": 1 },
+            { "season": 2023, "pilot": 1 }
+          ],
+          "image": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Suzuka_circuit_map--2005.svg"
+        }
+    ],
+
+    "vehicles":[
+        {
+          "team": "Red Bull Racing",
+          "model": "RB20",
+          "motor": "Honda",
+          "top_speed_kmh": 360,
+          "acceleration_0_100": 2.5,
+          "pilots": [1, 2],
+          "performance": {
+            "normal_driving": {
+              "avg_speed_kmh": 320,
+              "fuel_consumption": { "dry": 1.9, "rainy": 2.1, "extreme": 2.4 },
+              "tire_wear": { "dry": 1.5, "rainy": 0.8, "extreme": 2.5 }
+            },
+            "conduccion_agresiva": {
+              "avg_speed_kmh": 340,
+              "fuel_consumption": { "dry": 2.4, "rainy": 2.6, "extreme": 3.0 },
+              "tire_wear": { "dry": 2.2, "rainy": 1.2, "extreme": 3.5 }
+            },
+            "ahorro_combustible": {
+              "avg_speed_kmh": 300,
+              "fuel_consumption": { "dry": 1.6, "rainy": 1.8, "extreme": 2.1 },
+              "tire_wear": { "dry": 1.0, "rainy": 0.5, "extreme": 1.8 }
+            }
+          },
+          "image": "https://upload.wikimedia.org/wikipedia/commons/8/89/Max_Verstappen_2023_Austria_FP2_%28cropped%29.jpg"
+        },
+        {
+          "team": "Mercedes-AMG Petronas",
+          "model": "W15",
+          "motor": "Mercedes",
+          "top_speed_kmh": 355,
+          "acceleration_0_100": 2.6,
+          "pilots": [3, 4],
+          "performance": {
+            "normal_driving": {
+              "avg_speed_kmh": 315,
+              "fuel_consumption": { "dry": 2.0, "rainy": 2.2, "extreme": 2.5 },
+              "tire_wear": { "dry": 1.6, "rainy": 0.9, "extreme": 2.6 }
+            },
+            "conduccion_agresiva": {
+              "avg_speed_kmh": 335,
+              "fuel_consumption": { "dry": 2.6, "rainy": 2.8, "extreme": 3.2 },
+              "tire_wear": { "dry": 2.3, "rainy": 1.4, "extreme": 3.8 }
+            },
+            "ahorro_combustible": {
+              "avg_speed_kmh": 295,
+              "fuel_consumption": { "dry": 1.7, "rainy": 1.9, "extreme": 2.2 },
+              "tire_wear": { "dry": 1.1, "rainy": 0.6, "extreme": 1.9 }
+            }
+          },
+          "image": "https://upload.wikimedia.org/wikipedia/commons/8/87/Lewis_Hamilton_2022_Imola.jpg"
+        }
+      ]
+      
+      
+  }
+  
