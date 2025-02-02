@@ -134,11 +134,6 @@
             const longitud = document.getElementById('new_circuitLengthPista').value;
             const distancia = document.getElementById('new_raceDistancePista').value;
     
-            if (!nombre) {
-                alert("El nombre es obligatorio");
-                return;
-            }
-    
             const pista = { nombre, descripcion, img, pais, primerGP, numeroVueltas, longitud, distancia };
     
             try {
@@ -199,6 +194,8 @@
                         </table>
                     </td>
                 </tr>
+                <button onclick="deletePista('${pista.id}')" class="removePista">Eliminar</button>
+
             `;
         }
     
@@ -206,6 +203,25 @@
         window.onload = function () {
             loadLeftTable();
         };
+
+
+        async function deletePista(id) {
+            console.log("ID a eliminar:", id); // Verifica que el ID se imprime correctamente
+            if (confirm("Estas seguro de que deseas eliminar esta pista?")) {
+                try {
+                    await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+                    loadLeftTable(); // Recargar la tabla izquierda
+                    document.querySelector('.right-table').innerHTML = ''; // Limpiar detalles
+                } catch (error) {
+                    console.error("Error al eliminar la pista:", error);
+                    alert("No se pudo eliminar la pista");
+                }
+            }
+        }
+
+
+
+
     </script>
     
     
@@ -427,6 +443,18 @@
 
             .info4 table tr td {
                 height: 50%;
+            }
+
+            .removePista {
+                padding: 10px 15px;
+                background-color: #d80202;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            .removePista:hover {
+                background-color: #910808;
             }
 
             /* ------------------------ conteiner ------------------------ */
