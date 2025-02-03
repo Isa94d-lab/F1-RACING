@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/a.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Titulo de la pagina -->
+    <div class="conteiner1">
+        <nav>
+            <button class="button-title">CIRCUITO
+              <path
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Contenedor para la tabla y el botón -->
+    <div class="conteiner1">
+        <div class="left-panel">
+            <button class="addPista" id="openPopupBtn">ADD</button>
+
+            <button class="editPista" id="editTrackBtn">EDIT</button>
+            
+
+            <table id="infoTable" class="table1 left-table">
+                <thead class="thead1">
+                    <tr class="tr1">
+                        <th class="th1">Nombre</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody1">
+                    <!-- Aquí se agregarán las filas -->
+                </tbody>
+            </table>
+        </div>
+        <div class="right-panel">
+            <!-- Tabla en el panel derecho (con la clase específica right-table) -->
+            <table class="right-table">
+                <tr>
+                    <td><p id="show_countryImgPista"></p><p id="show_new_namePista"></p></td>
+                    <td><p id="show_descriptionPista"></p></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td id="show_firstGrandPrixPista"></td>
+                                <td id="show_numberPista"></td>
+                            </tr>
+                            <tr>
+                                <td id="show_circuitLengthPista"></td>
+                                <td id="show_raceDistancePista"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+</div>
+<script>// Cargar la tabla izquierda con solo los nombres
+this.API_URL = "http://localhost:3000/pistas";
+    async function loadLeftTable() {
+        try {
+            const response = await fetch(API_URL);
+            if (!response.ok) throw new Error("Error al cargar datos");
+
+            const pistas = await response.json();
+            const tableBody = document.querySelector('.left-table tbody');
+            tableBody.innerHTML = ""; // Limpiar la tabla antes de agregar las filas
+
+
+            pistas.forEach(pista => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${pista.nombre}</td>`;
+                row.onclick = () => showDetails(pista);
+                tableBody.appendChild(row);
+            });
+        } catch (error) {
+            console.error("Error:", error);
+            alert("No se pudieron cargar las pistas");
+        }
+    }
+    function showDetails(pista) {
+            const table = document.querySelector('.right-table');
+            table.innerHTML = `
+                <tr>
+                    <td class="info1"><img src="${pista.pais}" width="80px" hight="40px"><p>${pista.nombre}</p></td>
+                    <td class="info2"><p>${pista.descripcion}</p></td>
+                </tr>
+                <tr>
+                    <td class="info3"><img src="${pista.img}"width="800px" hight="800px"</td>
+                    <td class="info4">
+                        <table>
+                            <tr>
+                                <td>Primer GP: ${pista.primerGP}</td>
+                                <td>Vueltas: ${pista.numeroVueltas}</td>
+                            </tr>
+                            <tr>
+                                <td>Longitud: ${pista.longitud} km</td>
+                                <td>Distancia: ${pista.distancia} km</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <button onclick="deletePista('${pista.id}')" class="removePista">Eliminar</button>
+
+            `;
+        }
+        window.onload = function () {
+            loadLeftTable();
+        };
+
+
+        async function deletePista(id) {
+            console.log("ID a eliminar:", id); // Verifica que el ID se imprime correctamente
+            if (confirm("Estas seguro de que deseas eliminar esta pista?")) {
+                try {
+                    await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+                    loadLeftTable(); // Recargar la tabla izquierda
+                    document.querySelector('.right-table').innerHTML = ''; // Limpiar detalles
+                } catch (error) {
+                    console.error("Error al eliminar la pista:", error);
+                    alert("No se pudo eliminar la pista");
+                }
+            }
+        }
+    </script>
+    
+    <track-form-popup></track-form-popup>
+    <track-edit-popup></track-edit-popup>
+ 
+
+                        
+    <script type="module" src="/frontend/models/admin_view/añadirpop.js"></script>
+    <script type="module" src="/frontend/models/admin_view/editarpop.js"></script>
+</body>
+</html>

@@ -1,183 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
 }
 
 body {
-  font-family: "Exo 2", sans-serif;
-  background-image: url(./img/fotoauto.jpg);
-  background-size: cover;
-  font-weight: 400;
-  font-style: normal;
-  background-color: rgb(0, 0, 0);
+  margin: 0;
   display: flex;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-repeat: no-repeat;
-}
-  
-/*navbar*/
-
-  .navbar{
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-  }
-
-  div.logo{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    width: 300px;
-  }
-
-  div.logo img{
-    width: 200px;
-    height: 150px;
-    margin-right: 10px;
-  }
-
-div.links{
-  display: flex;
-  align-items: center;
-  margin-right: 150px;
-  width: 600px;
-  justify-content: space-between;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
-.opciones{
-  position: relative;
-  display: inline-block;
-  margin: 15px;
-  padding: 15px 30px;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
-  font-size: 18px;
-  letter-spacing: 1px;
-  text-decoration: none;
-  color: white;
-  background: transparent;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #f7df1eaa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
   cursor: pointer;
-  transition: ease-out 0.5s;
-  border: 0px;
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 0 #c7080c;
+  transition: border-color 0.25s;
 }
-.opciones:hover
-{
-  color: white;
-  box-shadow: inset 0 0 150px 0 #c7080c;
+button:hover {
+  border-color: #646cff;
 }
-.opciones:active{
-  transform: scale(0.9);
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
-/*animacion*/
-
-#canvas3d {
-  width: 100%;
-  height: 100%;
-  display: block;
-  z-index: 10;
-}
-
-
-/*boton*/
-
-.cta {
-  display: flex;
-  padding: 11px 20px;
-  text-decoration: none;
-  font-size: 40px;
-  align-items: center;
-  color: white;
-  background: #c7080c;
-  transition: 1s;
-  box-shadow: 6px 6px 0 black;
-  transform: skewX(-15deg);
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  z-index: 1000;
-  top: 65%;
-  right: 3%;
-  width: 300px;
-  height: 100px;
-}
-
-.cta:focus {
-  outline: none;
-}
-
-.cta:hover {
-  transition: 0.5s;
-  box-shadow: 10px 10px 0 #fada4c;
-}
-
-.cta .second {
-  transition: 0.5s;
-  margin-right: 0px;
-}
-
-.cta:hover .second {
-  transition: 0.5s;
-  margin-right: 45px;
-}
-
-.span {
-  transform: skewX(15deg);
-}
-
-.second {
-  width: 100px;
-  margin-left: 30px;
-  position: relative;
-  top: 12%;
-}
-
-.one {
-  transition: 0.4s;
-  transform: translateX(-60%);
-}
-
-.two {
-  transition: 0.5s;
-  transform: translateX(-30%);
-}
-
-.cta:hover .three {
-  animation: color_anim 1s infinite 0.2s;
-}
-
-.cta:hover .one {
-  transform: translateX(0%);
-  animation: color_anim 1s infinite 0.6s;
-}
-
-.cta:hover .two {
-  transform: translateX(0%);
-  animation: color_anim 1s infinite 0.4s;
-}
-
-@keyframes color_anim {
-  0% {
-    fill: white;
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
   }
-
-  50% {
-    fill: #fada4c;
+  a:hover {
+    color: #747bff;
   }
-
-  100% {
-    fill: white;
+  button {
+    background-color: #f9f9f9;
   }
 }
-
