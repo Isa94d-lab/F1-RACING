@@ -1,3 +1,12 @@
 {
-  "pistas": []
+  "pistas": [],
+  "pilots": [
+    {
+      "id": "2e3a",
+      "nombre": "SAntiaog",
+      "equipo": "REd bull",
+      "experiencia": "ninguna",
+      "habilidades": "front"
+    }
+  ]
 }
