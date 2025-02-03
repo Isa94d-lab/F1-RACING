@@ -1,0 +1,190 @@
+* Estilos generales */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: rgb(37, 37, 37);
+            }
+
+            .conteiner{
+                margin-bottom: 20px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .th1 {
+                color: white;
+            }
+
+            .editPista {
+                padding: 10px 15px;
+                background-color: #d80202;
+                color: white;
+                border: none;
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+            .editPista:hover {
+                background-color: #910808;
+            }
+            .addPista {
+                padding: 10px 15px;
+                background-color: #d80202;
+                color: white;
+                border: none;
+                cursor: pointer;
+                margin-bottom: 0px;
+                font-weight: 600;
+            }
+    
+            .addPista:hover {
+                background-color: #910808;
+            }
+            .left-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            .left-table th, .left-table td {
+                padding: 10px;
+                text-align: center;
+                background-color: rgb(196, 18, 18);
+                max-width: 300px;
+                min-width: 200px;
+                word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+                vertical-align: middle; /* Alinea el contenido verticalmente */
+                color: white ;
+            }
+
+            .left-table td:hover {
+                background-color: rgb(161, 15, 15);
+            }
+
+            /* ------------------------ tabla derecha (right-table) ------------------------ */
+            .right-table {
+                width: 100%;
+                height: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                word-wrap: break-word;
+            }
+
+
+            .info1{
+                height: 20%;
+            }
+
+            .right-table td {
+                padding: 10px;
+                text-align: center;
+                background-color: #5f5f5f;;
+                word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+                vertical-align: middle; /* Alinea el contenido verticalmente */
+                
+            }
+
+            .right-table td:hover {
+                background-color: rgb(90, 90, 90);
+            }
+
+            .info1{
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+                align-items: center;
+                height: 100%;
+                justify-content: center;
+                font-size: 50px;
+            }
+
+            .info1 img {
+                width: 100px;
+                height: 60px;
+                border-radius: 10px;
+                margin-right: 10px;
+            }
+
+            .info2 {
+                height: 30%
+            }
+
+            .info4 table tr td {
+                height: 50%;
+            }
+
+            .removePista {
+                padding: 10px 15px;
+                background-color: #d80202;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            .removePista:hover {
+                background-color: #910808;
+            }
+
+            /* ------------------------ conteiner ------------------------ */
+            .conteiner1 {
+                display: flex;
+                flex-direction: row;
+                padding-bottom: 20px;
+                justify-content: space-between;
+            }
+
+            .left-panel {
+                flex: 1;
+                box-sizing: border-box;
+                background-color: #525252;
+
+                height: 800px;
+                max-width: 300px;
+                min-width: 200px;
+                overflow: hidden; /* Asegura que el contenido no se desborde */
+                display: flex;
+                flex-direction: column;
+            }
+
+            .right-panel {
+                flex: 1;
+                padding: 20px;
+                box-sizing: border-box;
+                background-color: #525252;
+                height: 800px;
+                overflow: auto; /* Permite desplazamiento si el contenido es más grande */
+                display: flex;
+                flex-direction: column;
+            }
+
+            .right-table {
+                width: 100%;
+                max-width: 100%; /* Evita que se desborde */
+                table-layout: fixed; /* Mantiene las celdas dentro del ancho del contenedor */
+                word-wrap: break-word; /* Permite dividir palabras largas */
+            }
+
+            .info4 {
+                height: 100%;
+                display: flex;
+                align-items: center; /* Centra el contenido verticalmente */
+                justify-content: center;
+            }
+
+            .info4 table {
+                width: 100%;
+                height: 50%;
+                table-layout: fixed; /* Asegura que la tabla interna ocupe el espacio */
+            }
+
+            .info4 table td {
+                height: 50%;
+            }

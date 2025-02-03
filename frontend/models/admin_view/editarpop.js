@@ -3,9 +3,8 @@ class TrackEditPopup extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
-
         <style>
-            #popup,  #popup2 {
+            #popup2 {
                 display: none;
                 position: fixed;
                 top: 0;
@@ -23,7 +22,6 @@ class TrackEditPopup extends HTMLElement {
                 border-radius: 10px;
                 width: 500px;
                 text-align: center;
-                line-height: 1.5; /* 1.5 veces el tamaño de la fuente */
             }
     
             .popupBox input {
@@ -55,21 +53,6 @@ class TrackEditPopup extends HTMLElement {
             .popupBox button.close:hover {
                 background-color: #d32f2f;
             }
-    
-            /* Botón para abrir el popup */
-            .addPista {
-                padding: 10px 15px;
-                background-color: #d80202;
-                color: white;
-                border: none;
-                cursor: pointer;
-                margin-bottom: 0px;
-                font-weight: 600;
-            }
-    
-            .addPista:hover {
-                background-color: #910808;
-            }
             </style>
 
             <div id="popup2">
@@ -85,7 +68,7 @@ class TrackEditPopup extends HTMLElement {
                     <input type="text" id="edit_descriptionPista" placeholder="Descripción de la pista">
                     <label for="edit_imgPista">Imagen (URL):</label>
                     <input type="text" id="edit_imgPista" placeholder="URL de la imagen de la pista">
-                    <label for="edit_countryImgPista">Pais:</label>
+                    <label for="edit_countryImgPista">País:</label>
                     <input type="text" id="edit_countryImgPista" placeholder="URL de la imagen del país">
                     <label for="edit_firstGrandPrixPista">Primer Gran Premio:</label>
                     <input type="number" id="edit_firstGrandPrixPista" placeholder="Año del primer Gran Premio">
@@ -96,103 +79,120 @@ class TrackEditPopup extends HTMLElement {
                     <label for="edit_raceDistancePista">Distancia de carrera (km):</label>
                     <input type="number" id="edit_raceDistancePista" placeholder="Distancia total de la carrera">
                     <button id="saveEdits">Guardar Cambios</button>
-                    <button id="closePopup2">Cerrar</button>
+                    <button id="closePopup2" class="close">Cerrar</button>
                 </div>
             </div>
         `;
-        function closePopup2() {
-            document.getElementById("popup2").style.display = "none";
+
+        // Definir API_URL (Asegúrate de cambiar esto por la URL correcta de tu backend)
+        this.API_URL = "http://localhost:3000/pistas"; 
+
+        // Asignar eventos correctamente usando shadowRoot
+        this.shadowRoot.querySelector("#closePopup2").addEventListener("click", () => this.closePopup2());
+        this.shadowRoot.querySelector("#select_pista").addEventListener("change", () => this.loadPistaDetails());
+        this.shadowRoot.querySelector("#saveEdits").addEventListener("click", () => this.saveEdits());
+    }
+
+    connectedCallback() {
+        const editBtn = document.getElementById("editTrackBtn");
+        if (editBtn) {
+            editBtn.addEventListener("click", () => this.openPopup2());
         }
+    
+        this.shadowRoot.getElementById("closePopup2").addEventListener("click", () => this.closePopup2());
+    }
+    
 
-        // Función para cargar las opciones en el select
-        async function loadPistas() {
+    // Función para abrir el popup
+    openPopup2() {
+        this.shadowRoot.querySelector("#popup2").style.display = "flex";
+        this.loadPistas();
+    }
+
+    // Función para cerrar el popup
+    closePopup2() {
+        this.shadowRoot.querySelector("#popup2").style.display = "none";
+    }
+
+    // Cargar las opciones en el select
+    async loadPistas() {
+        try {
+            const response = await fetch(this.API_URL);
+            if (!response.ok) throw new Error("Error al cargar las pistas");
+
+            const pistas = await response.json();
+            const select = this.shadowRoot.querySelector("#select_pista");
+            select.innerHTML = '<option value="">Seleccione una pista</option>'; 
+
+            pistas.forEach(pista => {
+                const option = document.createElement("option");
+                option.value = pista.id;
+                option.textContent = pista.nombre;
+                select.appendChild(option);
+            });
+        } catch (error) {
+            console.error("Error:", error);
+            alert("No se pudieron cargar las pistas");
+        }
+    }
+
+    // Cargar los detalles de la pista seleccionada
+    async loadPistaDetails() {
+        const select = this.shadowRoot.querySelector("#select_pista");
+        const pistaId = select.value;
+
+        if (pistaId) {
             try {
-                const response = await fetch(API_URL);
-                if (!response.ok) throw new Error("Error al cargar las pistas");
+                const response = await fetch(`${this.API_URL}/${pistaId}`);
+                if (!response.ok) throw new Error("No se pudo obtener la pista");
 
-                const pistas = await response.json();
-                const select = document.getElementById("select_pista");
-                select.innerHTML = '<option value="">Seleccione una pista</option>'; // Limpiar opciones previas
+                const pista = await response.json();
 
-                pistas.forEach(pista => {
-                    const option = document.createElement("option");
-                    option.value = pista.id;
-                    option.textContent = pista.nombre; // Asegúrate de usar el nombre correcto del campo
-                    select.appendChild(option);
+                this.shadowRoot.querySelector("#edit_namePista").value = pista.nombre;
+                this.shadowRoot.querySelector("#edit_descriptionPista").value = pista.descripcion;
+                this.shadowRoot.querySelector("#edit_imgPista").value = pista.img;
+                this.shadowRoot.querySelector("#edit_countryImgPista").value = pista.pais;
+                this.shadowRoot.querySelector("#edit_firstGrandPrixPista").value = pista.primerGP;
+                this.shadowRoot.querySelector("#edit_numberPista").value = pista.numeroVueltas;
+                this.shadowRoot.querySelector("#edit_circuitLengthPista").value = pista.longitud;
+                this.shadowRoot.querySelector("#edit_raceDistancePista").value = pista.distancia;
+            } catch (error) {
+                console.error("Error al cargar detalles de la pista:", error);
+                alert("No se pudieron cargar los detalles de la pista.");
+            }
+        }
+    }
+
+    // Guardar cambios
+    async saveEdits() {
+        const pistaId = this.shadowRoot.querySelector("#select_pista").value;
+
+        if (pistaId) {
+            const updatedPista = {
+                nombre: this.shadowRoot.querySelector("#edit_namePista").value,
+                descripcion: this.shadowRoot.querySelector("#edit_descriptionPista").value,
+                img: this.shadowRoot.querySelector("#edit_imgPista").value,
+                pais: this.shadowRoot.querySelector("#edit_countryImgPista").value,
+                primerGP: this.shadowRoot.querySelector("#edit_firstGrandPrixPista").value,
+                numeroVueltas: this.shadowRoot.querySelector("#edit_numberPista").value,
+                longitud: this.shadowRoot.querySelector("#edit_circuitLengthPista").value,
+                distancia: this.shadowRoot.querySelector("#edit_raceDistancePista").value
+            };
+
+            try {
+                const response = await fetch(`${this.API_URL}/${pistaId}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(updatedPista)
                 });
+
+                if (!response.ok) throw new Error("No se pudo actualizar la pista");
+
+                alert("Pista actualizada con éxito");
+                this.closePopup2();
             } catch (error) {
                 console.error("Error:", error);
-                alert("No se pudieron cargar las pistas");
-            }
-        }
-
-        // Función para abrir el Popup de Edición
-        function openPopup2() {
-            document.getElementById("popup2").style.display = "flex";
-            loadPistas(); // Cargar las pistas cuando se abre el popup
-        }
-
-
-        // Cargar los detalles de la pista seleccionada
-        async function loadPistaDetails() {
-            const select = document.getElementById("select_pista");
-            const pistaId = select.value;
-
-            if (pistaId) {
-                try {
-                    const response = await fetch(`${API_URL}/${pistaId}`);
-                    if (!response.ok) throw new Error("No se pudo obtener la pista");
-
-                    const pista = await response.json();
-
-                    document.getElementById("edit_namePista").value = pista.nombre;
-                    document.getElementById("edit_descriptionPista").value = pista.descripcion;
-                    document.getElementById("edit_imgPista").value = pista.img;
-                    document.getElementById("edit_countryImgPista").value = pista.pais;
-                    document.getElementById("edit_firstGrandPrixPista").value = pista.primerGP;
-                    document.getElementById("edit_numberPista").value = pista.numeroVueltas;
-                    document.getElementById("edit_circuitLengthPista").value = pista.longitud;
-                    document.getElementById("edit_raceDistancePista").value = pista.distancia;
-                } catch (error) {
-                    console.error("Error al cargar detalles de la pista:", error);
-                    alert("No se pudieron cargar los detalles de la pista.");
-                }
-            }
-        }
-
-
-        // Función para guardar los cambios
-        async function saveEdits() {
-            const pistaId = document.getElementById("select_pista").value;
-
-            if (pistaId) {
-                const updatedPista = {
-                    nombre: document.getElementById("edit_namePista").value,
-                    descripcion: document.getElementById("edit_descriptionPista").value,
-                    img: document.getElementById("edit_imgPista").value,
-                    pais: document.getElementById("edit_countryImgPista").value,
-                    primerGP: document.getElementById("edit_firstGrandPrixPista").value,
-                    numeroVueltas: document.getElementById("edit_numberPista").value,
-                    longitud: document.getElementById("edit_circuitLengthPista").value,
-                    distancia: document.getElementById("edit_raceDistancePista").value
-                };
-
-                try {
-                    const response = await fetch(`${API_URL}/${pistaId}`, {
-                        method: "PUT", // También podrías usar PATCH si solo actualizas algunos campos
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(updatedPista)
-                    });
-
-                    if (!response.ok) throw new Error("No se pudo actualizar la pista");
-
-                    alert("Pista actualizada con éxito");
-                    closePopup2();
-                    loadLeftTable(); // Recargar la tabla izquierda con los cambios
-                } catch (error) {
-                    console.error("Error al actualizar la pista:", error);
-                    alert("No se pudieron guardar los cambios.");
-                }
+                alert("No se pudieron guardar los cambios.");
             }
         }
     }
