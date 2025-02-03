@@ -1,12 +1,31 @@
 {
-  "pistas": [],
+  "pistas": [
+    {
+      "id": "4c00",
+      "nombre": "NArnia",
+      "descripcion": "aeadvadvavvadavdadvdavadv",
+      "img": "davvdavaddvadav",
+      "pais": "dvadvaadvvdadav",
+      "primerGP": "23234",
+      "numeroVueltas": "42424",
+      "longitud": "422442422442",
+      "distancia": "42424242424242424224"
+    }
+  ],
   "pilots": [
     {
-      "id": "2e3a",
       "nombre": "SAntiaog",
-      "equipo": "REd bull",
+      "equipo": "MONSTEEEEEEEEEEEEEEEEEEEEER",
       "experiencia": "ninguna",
-      "habilidades": "front"
+      "habilidades": "front",
+      "id": "2e3a"
+    },
+    {
+      "id": "8a7d",
+      "nombre": "Omar",
+      "equipo": "Mr Tea",
+      "experiencia": "canva",
+      "habilidades": "css"
     }
   ]
 }

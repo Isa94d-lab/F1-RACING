@@ -60,28 +60,31 @@
             <div class="cuadrado">
                 <h3>Editar Piloto</h3>
         
-                <!-- Selección del ID de la pista -->
+                <!-- Selección del ID del piloto -->
                 <label for="select_piloto">Seleccionar Piloto:</label>
                 <select id="select_piloto" onchange="loadPilotoDetails()">
                     <option value="">Seleccione un piloto</option>
                     <!-- Las opciones se generarán dinámicamente -->
                 </select><br>
-
+        
                 <label for="edit_namePiloto">Nombre:</label>
-                    <input type="text" id="edit_namePiloto" placeholder="Ingresa nombre de Piloto">
-
-                    <label for="edit_equipoPiloto">Equipo:</label>
-                    <input type="text" id="edit_equipoPiloto" placeholder="Ingresa nombre del Equipo">
-
-                    <label for="edit_experiencePiloto">Experiencia:</label>
-                    <input type="text" id="edit_experiencePiloto" placeholder="Ingresa experiencia">
-
-                    <label for="edit_skillsPiloto">Habilidades:</label>
-                    <input type="text" id="new_skillsPiloto" placeholder="Ingresa habilidades">
-                    <button id="btnGuardar2">Guardar</button>
-                    <button id="btnCerrar2">Cerrar</button>
+                <input type="text" id="edit_namePiloto" placeholder="Ingresa nombre de Piloto">
+        
+                <label for="edit_equipoPiloto">Equipo:</label>
+                <input type="text" id="edit_equipoPiloto" placeholder="Ingresa nombre del Equipo">
+        
+                <label for="edit_experiencePiloto">Experiencia:</label>
+                <input type="text" id="edit_experiencePiloto" placeholder="Ingresa experiencia">
+        
+                <label for="edit_skillsPiloto">Habilidades:</label>
+                <input type="text" id="edit_skillsPiloto" placeholder="Ingresa habilidades">
+        
+                <button id="btnGuardar2">Guardar</button>
+                <button id="btnCerrar2">Cerrar</button>
             </div>
         </div>
+        
+        
 
 
 
@@ -121,6 +124,14 @@
         }
 
         .cuadrado input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .cuadrado select {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;

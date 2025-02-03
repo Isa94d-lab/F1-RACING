@@ -7,43 +7,6 @@ async function getPilots() {
     return response.json();
 }
 
-// Función para obtener un piloto por ID
-async function getPilotById(id) {
-    const response = await fetch(`${BASE_URL}/${id}`);
-    return response.json();
-}
-
-// Función para agregar un nuevo piloto
-async function addPilot(pilot) {
-    const response = await fetch(BASE_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(pilot)
-    });
-    return response.json();
-}
-
-// Función para actualizar un piloto por ID
-async function updatePilot(id, updatedData) {
-    const response = await fetch(`${BASE_URL}/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(updatedData)
-    });
-    return response.json();
-}
-
-// Función para eliminar un piloto por ID
-async function deletePilot(id) {
-    await fetch(`${BASE_URL}/${id}`, {
-        method: "DELETE"
-    });
-}
-
 // Función para abrir el popup
 function openPopup() {
     document.getElementById("popup").style.display = "flex";
@@ -54,27 +17,29 @@ function closePopup() {
     document.getElementById("popup").style.display = "none";
 }
 
+// Función para abrir el popup de editar piloto
+function openPopup2() {
+    document.getElementById("popup2").style.display = "flex";
+}
+
+// Función para cerrar el popup de editar piloto
+function closePopup2() {
+    document.getElementById("popup2").style.display = "none";
+}
+
 // Para mostrar el popup cuando se le da click al botón "Agregar"
 document.getElementById("btnAgregar").addEventListener("click", openPopup);
 
-// Para guardar la info el popup cuando se le da click al botón "Guardar"
-document.getElementById("btnGuardar").addEventListener("click", addPilotInfo);
-
-// Para cerrar el popup cuando se le da click al botón "cerrar"
+// Para cerrar el popup de agregar cuando se le da click al botón "cerrar"
 document.getElementById("btnCerrar").addEventListener("click", closePopup);
-
-
 
 // Función para agregar un nuevo piloto al JSON Server
 async function addPilotInfo() {
-    // Obtener valores de los inputs
     const nombrePilot = document.getElementById("new_namePiloto").value.trim();
     const equipoPilot = document.getElementById("new_equipoPiloto").value.trim();
     const experiencePilot = document.getElementById("new_experiencePiloto").value.trim();
     const skillsPilot = document.getElementById("new_skillsPiloto").value.trim();
 
-
-    // Crear objeto piloto
     const pilot = {
         nombre: nombrePilot,
         equipo: equipoPilot,
@@ -83,7 +48,6 @@ async function addPilotInfo() {
     };
 
     try {
-        // Hacer la petición POST al JSON Server
         const response = await fetch(BASE_URL, {
             method: "POST",
             headers: {
@@ -104,20 +68,16 @@ async function addPilotInfo() {
         document.getElementById("new_experiencePiloto").value = "";
         document.getElementById("new_skillsPiloto").value = "";
 
-        // Cerrar el popup
-        closePopup();
-
-        // Recargar la lista de pilotos
-        loadPilots();
+        closePopup();  // Cerrar el popup
+        loadPilots();  // Recargar la lista de pilotos
     } catch (error) {
         console.error("Error al agregar el piloto:", error);
         alert("Hubo un problema al agregar el piloto");
     }
 }
 
-
-
-
+// Para guardar la info el popup cuando se le da click al botón "Guardar"
+document.getElementById("btnGuardar").addEventListener("click", addPilotInfo);
 
 // Función para cargar la lista de pilotos en la interfaz
 async function loadPilots() {
@@ -125,10 +85,8 @@ async function loadPilots() {
         const pilots = await getPilots();
         const pilotosCard = document.getElementById("pilotosCard");
 
-        // Limpiar la lista antes de actualizar
         pilotosCard.innerHTML = "";
 
-        // Crear tarjetas para cada piloto
         pilots.forEach((pilot) => {
             const pilotElement = document.createElement("div");
             pilotElement.classList.add("pilot-card");
@@ -148,45 +106,27 @@ async function loadPilots() {
 // Cargar la lista de pilotos cuando la página cargue
 document.addEventListener("DOMContentLoaded", loadPilots);
 
+// Para mostrar el popup cuando se le da click al botón "Editar"
+document.getElementById("btnEditar").addEventListener("click", () => {
+    openPopup2();
+    loadPilotsForSelect();  // Llenar el select con los pilotos al abrir el popup
+});
 
-// Función para abrir el popup
-function openPopup2() {
-    document.getElementById("popup2").style.display = "flex";
-}
-
-// Función para cerrar el popup
-function closePopup2() {
-    document.getElementById("popup2").style.display = "none";
-}
-
-// Para mostrar el popup cuando se le da click al botón "Agregar"
-document.getElementById("btnEditar").addEventListener("click", openPopup2);
-
-// Para guardar la info el popup cuando se le da click al botón "Guardar"
-document.getElementById("btnGuardar2").addEventListener("click", addPilotInfo);
-
-// Para cerrar el popup cuando se le da click al botón "cerrar"
+// Para cerrar el popup cuando se le da click al botón "Cerrar" (de editar)
 document.getElementById("btnCerrar2").addEventListener("click", closePopup2);
 
-
-
-
-
-
-// Cargar la lista de pilotos en el select del segundo popup
+// Función para cargar los pilotos en el select
 async function loadPilotsForSelect() {
     try {
-        const pilots = await getPilots();  // Obtiene la lista de pilotos desde la API
+        const pilots = await getPilots();
         const selectPiloto = document.getElementById("select_piloto");
 
-        // Limpiar el select antes de llenarlo
         selectPiloto.innerHTML = "<option value=''>Seleccione un piloto</option>";
 
-        // Añadir las opciones al select
         pilots.forEach((pilot) => {
             const option = document.createElement("option");
-            option.value = pilot.id;  // Asegúrate de que "id" es el campo correcto
-            option.textContent = pilot.nombre;  // Usamos el nombre del piloto para mostrarlo
+            option.value = pilot.id;
+            option.textContent = pilot.nombre;
             selectPiloto.appendChild(option);
         });
     } catch (error) {
@@ -194,29 +134,85 @@ async function loadPilotsForSelect() {
     }
 }
 
-// Cargar los detalles del piloto seleccionado
+// Función para cargar los detalles del piloto seleccionado
 async function loadPilotoDetails() {
     const select = document.getElementById("select_piloto");
     const pilotoId = select.value;
 
     if (pilotoId) {
         try {
-            const pilot = await getPilotById(pilotoId);  // Obtiene los detalles del piloto seleccionado
+            const pilots = await getPilots();
+            const selectedPilot = pilots.find(pilot => pilot.id === pilotoId);
 
-            // Rellenar los campos del formulario con los detalles del piloto
-            document.getElementById("new_namePiloto").value = pilot.nombre;
-            document.getElementById("new_equipoPiloto").value = pilot.equipo;
-            document.getElementById("new_experiencePiloto").value = pilot.experiencia;
-            document.getElementById("new_skillsPiloto").value = pilot.habilidades;
+            if (selectedPilot) {
+                document.getElementById("edit_namePiloto").value = selectedPilot.nombre;
+                document.getElementById("edit_equipoPiloto").value = selectedPilot.equipo;
+                document.getElementById("edit_experiencePiloto").value = selectedPilot.experiencia;
+                document.getElementById("edit_skillsPiloto").value = selectedPilot.habilidades;
+            } else {
+                console.error("Piloto no encontrado.");
+            }
         } catch (error) {
             console.error("Error al cargar detalles del piloto:", error);
             alert("No se pudieron cargar los detalles del piloto.");
         }
+    } else {
+        document.getElementById("edit_namePiloto").value = '';
+        document.getElementById("edit_equipoPiloto").value = '';
+        document.getElementById("edit_experiencePiloto").value = '';
+        document.getElementById("edit_skillsPiloto").value = '';
     }
 }
 
-// Cargar los pilotos en el select cuando se abre el popup
-document.getElementById("btnEditar").addEventListener("click", () => {
-    openPopup2();
-    loadPilotsForSelect();  // Llenar el select con los pilotos al abrir el popup
-});
+// Función para actualizar la información del piloto
+async function updatePilotInfo() {
+    const pilotoId = document.getElementById("select_piloto").value;
+    if (!pilotoId) {
+        alert("Por favor, selecciona un piloto para editar.");
+        return;
+    }
+
+    const nombrePilot = document.getElementById("edit_namePiloto").value.trim();
+    const equipoPilot = document.getElementById("edit_equipoPiloto").value.trim();
+    const experiencePilot = document.getElementById("edit_experiencePiloto").value.trim();
+    const skillsPilot = document.getElementById("edit_skillsPiloto").value.trim();
+
+    if (!nombrePilot || !equipoPilot || !experiencePilot || !skillsPilot) {
+        alert("Todos los campos son obligatorios.");
+        return;
+    }
+
+    const updatedPilot = {
+        nombre: nombrePilot,
+        equipo: equipoPilot,
+        experiencia: experiencePilot,
+        habilidades: skillsPilot
+    };
+
+    try {
+        const response = await fetch(`${BASE_URL}/${pilotoId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedPilot)
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al actualizar el piloto en JSON Server");
+        }
+
+        alert("Piloto actualizado exitosamente");
+        closePopup2();
+        loadPilots();  // Recargar la lista de pilotos
+    } catch (error) {
+        console.error("Error al actualizar el piloto:", error);
+        alert("Hubo un problema al actualizar el piloto");
+    }
+}
+
+// Para guardar la info del popup cuando se le da click al botón "Guardar" (de editar)
+document.getElementById("btnGuardar2").addEventListener("click", updatePilotInfo);
+
+// Para cargar los detalles del piloto seleccionado
+document.getElementById("select_piloto").addEventListener("change", loadPilotoDetails);
