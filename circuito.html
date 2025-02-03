@@ -8,15 +8,27 @@
 </head>
 <body>
 
+        <!-- navbar -->
+        <div class="navbar">
+            <div class="logo">
+            <img src="/backend/public/f1logo.png" alt="logof1">
+            </div>
+            <div class="links">
+            <a href="" class="opciones">Circuitos</a>
+            <a href="" class="opciones">Galeria</a>
+            <a href="" class="opciones">Galeria</a>
+            </div>
+        </div>
+    
     <!-- Titulo de la pagina -->
     <div class="conteiner">
         <nav>
             <button class="button-title">CIRCUITO
-              <path
+            <path
                 fill-rule="evenodd"
                 d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
                 clip-rule="evenodd"
-              ></path>
+            ></path>
             </svg>
             </button>
         </nav>
@@ -25,10 +37,6 @@
     <!-- Contenedor para la tabla y el botón -->
     <div class="conteiner1">
         <div class="left-panel">
-            <button class="addPista" onclick="openPopup()">-ADD-</button>
-
-            <button class="editPista" onclick="openPopup2()">-EDIT-</button>
-
             <table id="infoTable" class="table1 left-table">
                 <thead class="thead1">
                     <tr class="tr1">
@@ -123,33 +131,50 @@
      
 
         <!--   --------------------  WEB COMPONENT  ---------------------------------------    -->
-
-            <div class="right-panel">
-                <!-- Tabla en el panel derecho (con la clase específica right-table) -->
-                <table class="right-table">
-                    <tr>
-                        <td><p id="show_countryImgPista"></p><p id="show_new_namePista"></p></td>
-                        <td><p id="show_descriptionPista"></p></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <table>
-                                <tr>
-                                    <td id="show_firstGrandPrixPista"></td>
-                                    <td id="show_numberPista"></td>
-                                </tr>
-                                <tr>
-                                    <td id="show_circuitLengthPista"></td>
-                                    <td id="show_raceDistancePista"></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
+        <div class="right-panel">
+            <!-- Contenedores en el panel derecho (con la clase específica right-container) -->
+            <div class="right-container">
+                <div class="renglon1">
+                    <div class="info1">
+                        <p class="bandera" id="show_countryImgPista"></p>
+                        <p class="nombrepista" id="show_new_namePista"></p>
+                    </div>
+                    <div class="info2">
+                        <p id="show_descriptionPista"></p>
+                    </div>
+                </div>
+            <div class="renglon2">
+                <div class="info3"></div>
+                <div class="info4">
+                    <div class="info-item" id="show_firstGrandPrixPista"></div>
+                    <div class="info-item" id="show_numberPista"></div>
+                    <div class="info-item" id="show_circuitLengthPista"></div>
+                    <div class="info-item" id="show_raceDistancePista"></div>
+                </div>
             </div>
-        
-    </div>
+            </div>
+
+            <div class="wrapper">
+                <input type="checkbox" />
+                <div class="btn"></div>
+                <div class="tooltip">
+                    <button class="addPista" onclick="openPopup()" ><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 20 20" height="24" fill="none" ><g stroke-width="1.5" stroke-linecap="round" stroke="white"><circle r="7.5" cy="10" cx="10"></circle><path d="m9.99998 7.5v5"></path><path d="m7.5 9.99998h5"></path></g></svg></button>
+
+                    <button class="editPista" onclick="openPopup2()"><svg
+                        class="css-i6dzq1"
+                        stroke-linejoin="round"
+                        stroke-linecap="round"
+                        fill="none"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        height="24"
+                        width="24"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                      </svg></button>
+                </div>
+            </div>
 
 
 
@@ -224,29 +249,49 @@
     
         // Mostrar detalles en la tabla derecha cuando se selecciona una pista
         function showDetails(pista) {
-            const table = document.querySelector('.right-table');
-            table.innerHTML = `
-                <tr>
-                    <td class="info1"><img src="${pista.pais}" width="80px" hight="40px"><p>${pista.nombre}</p></td>
-                    <td class="info2"><p>${pista.descripcion}</p></td>
-                </tr>
-                <tr>
-                    <td class="info3"><img src="${pista.img}"width="800px" hight="800px"</td>
-                    <td class="info4">
-                        <table>
-                            <tr>
-                                <td>Primer GP: ${pista.primerGP}</td>
-                                <td>Vueltas: ${pista.numeroVueltas}</td>
-                            </tr>
-                            <tr>
-                                <td>Longitud: ${pista.longitud} km</td>
-                                <td>Distancia: ${pista.distancia} km</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <button onclick="deletePista('${pista.id}')" class="removePista">Eliminar</button>
+            const table = document.querySelector('.right-container');
+            table.innerHTML = 
+            `
+            <button onclick="deletePista('${pista.id}')" class="removePista"><svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg></button>
+            <div class="renglon1">
+                <div class="info1">
+                    <img class="bandera" src="${pista.pais}" >
+                    <p class= "nombrepista">${pista.nombre}</p>
+                </div>
+                <div class="info2">
+                    <p>${pista.descripcion}</p>
+                </div>
+            </div>
+            
+            <div class="renglon2">
+                <div class="info3">
+                    <img src="${pista.img}" width="400px" height="300px">
+                </div>
+                <div class="info4">
+                    <div class="info-item">
+                        <span class="grandprix">Primer GP
+                        </span>
+                        <h2 class="valor">${pista.primerGP}</h2>
+                        </div>
+                    <div class="info-item">
+                        <span class="vueltas">vueltas
+                        </span>
+                        <h2 class="valor">${pista.numeroVueltas}</h2>
+                        </div>
+                    <div class="info-item">
+                        <span class="longitud">longitud
+                        </span>
+                        <h2 class="valor">${pista.longitud}</h2>
+                        </div>
+                    <div class="info-item">
+                        <span class="distancia">distancia
+                        </span>
+                        <h2 class="valor">${pista.distancia}</h2>
+                        </div>
+                </div>
 
+            </div>
+                
             `;
         }
     
@@ -374,320 +419,7 @@
             }
         }
 
-
-
-
     </script>
     
-    
-
-
-
-    <style>
-        /* Estilos generales */
-            body {
-                font-family: Arial, sans-serif;
-                background-color: rgb(37, 37, 37);
-            }
-
-            .conteiner, .conteiner1 {
-                margin-bottom: 20px;
-            }
-
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
-            }
-
-            th, td {
-                padding: 10px;
-                text-align: center;
-            }
-
-            .th1 {
-                color: white;
-            }
-
-            .editPista {
-                padding: 10px 15px;
-                background-color: #d80202;
-                color: white;
-                border: none;
-                cursor: pointer;
-                font-weight: 600;
-            }
-
-            .editPista:hover {
-                background-color: #910808;
-            }
-
-            /* Estilos del popup */
-        #popup,  #popup2 {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popupBox {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 500px;
-            text-align: center;
-            line-height: 1.5; /* 1.5 veces el tamaño de la fuente */
-        }
-
-        .popupBox input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .popupBox button {
-            padding: 10px 15px;
-            background-color: #a10b0b;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .popupBox button:hover {
-            background-color: #990a0a;
-        }
-
-        .popupBox button.close {
-            background-color: #f44336;
-        }
-
-        .popupBox button.close:hover {
-            background-color: #d32f2f;
-        }
-
-        /* Botón para abrir el popup */
-        .addPista {
-            padding: 10px 15px;
-            background-color: #d80202;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 0px;
-            font-weight: 600;
-        }
-
-        .addPista:hover {
-            background-color: #910808;
-        }
-        /* Estilos del popup */
-        #popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popupBox {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 500px;
-            text-align: center;
-            line-height: 1.5; /* 1.5 veces el tamaño de la fuente */
-        }
-
-        .popupBox input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .popupBox button {
-            padding: 10px 15px;
-            background-color: #a10b0b;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .popupBox button:hover {
-            background-color: #990a0a;
-        }
-
-        .popupBox button.close {
-            background-color: #f44336;
-        }
-
-        .popupBox button.close:hover {
-            background-color: #d32f2f;
-        }
-
-
-            /* ------------------------ tabla izquierda (infoTable) ------------------------ */
-            .left-table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
-            }
-
-            .left-table th, .left-table td {
-                padding: 10px;
-                text-align: center;
-                background-color: rgb(196, 18, 18);
-                max-width: 300px;
-                min-width: 200px;
-                word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
-                vertical-align: middle; /* Alinea el contenido verticalmente */
-                color: white ;
-            }
-
-            .left-table td:hover {
-                background-color: rgb(161, 15, 15);
-            }
-
-            /* ------------------------ tabla derecha (right-table) ------------------------ */
-            .right-table {
-                width: 100%;
-                height: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
-                word-wrap: break-word;
-            }
-
-
-            .info1{
-                height: 20%;
-            }
-
-            .right-table td {
-                padding: 10px;
-                text-align: center;
-                background-color: #5f5f5f;;
-                word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
-                vertical-align: middle; /* Alinea el contenido verticalmente */
-                
-            }
-
-            .right-table td:hover {
-                background-color: rgb(90, 90, 90);
-            }
-
-            .info1{
-                display: flex;
-                flex-direction: row;
-                margin: 0;
-                align-items: center;
-                height: 100%;
-                justify-content: center;
-                font-size: 50px;
-            }
-
-            .info1 img {
-                width: 100px;
-                height: 60px;
-                border-radius: 10px;
-                margin-right: 10px;
-            }
-
-            .info2 {
-                height: 30%
-            }
-
-            .info4 table tr td {
-                height: 50%;
-            }
-
-            .removePista {
-                padding: 10px 15px;
-                background-color: #d80202;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
-
-            .removePista:hover {
-                background-color: #910808;
-            }
-
-            /* ------------------------ conteiner ------------------------ */
-            .conteiner1 {
-                display: flex;
-                flex-direction: row;
-                padding-bottom: 20px;
-                justify-content: space-between;
-            }
-
-            .left-panel {
-                flex: 1;
-                box-sizing: border-box;
-                background-color: #525252;
-
-                height: 800px;
-                max-width: 300px;
-                min-width: 200px;
-                overflow: hidden; /* Asegura que el contenido no se desborde */
-                display: flex;
-                flex-direction: column;
-            }
-
-            .right-panel {
-                flex: 1;
-                padding: 20px;
-                box-sizing: border-box;
-                background-color: #525252;
-                height: 800px;
-                overflow: auto; /* Permite desplazamiento si el contenido es más grande */
-                display: flex;
-                flex-direction: column;
-            }
-
-            .right-table {
-                width: 100%;
-                max-width: 100%; /* Evita que se desborde */
-                table-layout: fixed; /* Mantiene las celdas dentro del ancho del contenedor */
-                word-wrap: break-word; /* Permite dividir palabras largas */
-            }
-
-            .info4 {
-                height: 100%;
-                display: flex;
-                align-items: center; /* Centra el contenido verticalmente */
-                justify-content: center;
-            }
-
-            .info4 table {
-                width: 100%;
-                height: 50%;
-                table-layout: fixed; /* Asegura que la tabla interna ocupe el espacio */
-            }
-
-            .info4 table td {
-                height: 50%;
-            }
-
-
-                        
-
-
-
-    </style>
 </body>
 </html>
