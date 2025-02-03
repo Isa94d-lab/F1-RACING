@@ -49,6 +49,9 @@ class LoginForm extends HTMLElement {
                     width: 300px;
                     border-radius: 8px;
                     box-shadow: 0 5px 10px rgba(71, 3, 6, 0.7);
+                    left: 40%;
+                    top: 25%;
+                    position: absolute;
                 }
 
                 /* Título */
@@ -127,6 +130,7 @@ class LoginForm extends HTMLElement {
     <source src="./backend/public/videofondo.mp4" type="video/mp4">
     Your browser does not support the video tag.
     </video>
+    </div>
                 <h1 class="title">Login</h1>
                 <label>
                     <i class="fa-solid fa-user"></i>
