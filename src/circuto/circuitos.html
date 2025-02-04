@@ -10,7 +10,7 @@
         <!-- navbar -->
         <div class="navbar">
             <div class="logo">
-            <img src="/backend/public/f1logo.png" alt="logof1">
+            <img src="/public/f1logo.png" alt="logof1">
             </div>
             <div class="links">
             <a href="" class="opciones">Circuitos</a>
@@ -171,16 +171,10 @@ this.API_URL = "http://localhost:3000/pistas";
         async function deletePista(id) {
             console.log("ID a eliminar:", id); // Verifica que el ID se imprime correctamente
             if (confirm("Estas seguro de que deseas eliminar esta pista?")) {
-                try {
                     await fetch(`${API_URL}/${id}`, { method: "DELETE" });
                     loadLeftTable(); // Recargar la tabla izquierda
                     document.querySelector('.right-table').innerHTML = ''; // Limpiar detalles
-                } catch (error) {
-                    console.error("Error al eliminar la pista:", error);
-                    alert("No se pudo eliminar la pista");
-                }
-            }
-        }
+        }}
     </script>
     
     <track-form-popup></track-form-popup>
@@ -192,3 +186,4 @@ this.API_URL = "http://localhost:3000/pistas";
     <script type="module" src="editarpop.js"></script>
 </body>
 </html>
+        

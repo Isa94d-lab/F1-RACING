@@ -127,7 +127,7 @@ class LoginForm extends HTMLElement {
             <form>
             <div class="video-background">
     <video autoplay loop muted playsinline>
-    <source src="../backend/public/videofondo.mp4" type="video/mp4">
+    <source src="/public/videofondo.mp4" type="video/mp4">
     Your browser does not support the video tag.
     </video>
     </div>
