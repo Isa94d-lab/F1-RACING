@@ -7,14 +7,24 @@ async function getPilots() {
     return response.json();
 }
 
-// Función para abrir el popup
+// Función para abrir el popup (ahora con Web Component)
 function openPopup() {
-    document.getElementById("popup").style.display = "flex";
+    const popupElement = document.querySelector('agregar-piloto-popup');  // Seleccionamos el Web Component
+    if (popupElement) {
+        popupElement.open();  // Usamos el método open() del Web Component
+    } else {
+        console.error("El Web Component 'agregar-piloto-popup' no se encuentra en el DOM.");
+    }
 }
 
-// Función para cerrar el popup
+// Función para cerrar el popup (Web Component)
 function closePopup() {
-    document.getElementById("popup").style.display = "none";
+    const popupElement = document.querySelector('agregar-piloto-popup'); // Seleccionamos el Web Component
+    if (popupElement) {
+        popupElement.close(); // Usamos el método close() del Web Component
+    } else {
+        console.error("El Web Component 'agregar-piloto-popup' no está en el DOM.");
+    }
 }
 
 // Función para abrir el popup de editar piloto
@@ -27,18 +37,17 @@ function closePopup2() {
     document.getElementById("popup2").style.display = "none";
 }
 
-// Para mostrar el popup cuando se le da click al botón "Agregar"
-document.getElementById("btnAgregar").addEventListener("click", openPopup);
-
-// Para cerrar el popup de agregar cuando se le da click al botón "cerrar"
-document.getElementById("btnCerrar").addEventListener("click", closePopup);
-
 // Función para agregar un nuevo piloto al JSON Server
 async function addPilotInfo() {
     const nombrePilot = document.getElementById("new_namePiloto").value.trim();
     const equipoPilot = document.getElementById("new_equipoPiloto").value.trim();
     const experiencePilot = document.getElementById("new_experiencePiloto").value.trim();
     const skillsPilot = document.getElementById("new_skillsPiloto").value.trim();
+
+    if (!nombrePilot || !equipoPilot || !experiencePilot || !skillsPilot) {
+        alert("Todos los campos son obligatorios.");
+        return;  // Evitar continuar si hay campos vacíos
+    }
 
     const pilot = {
         nombre: nombrePilot,
@@ -76,7 +85,7 @@ async function addPilotInfo() {
     }
 }
 
-// Para guardar la info el popup cuando se le da click al botón "Guardar"
+// Para guardar la info del popup cuando se le da click al botón "Guardar"
 document.getElementById("btnGuardar").addEventListener("click", addPilotInfo);
 
 // Función para cargar la lista de pilotos en la interfaz
@@ -104,7 +113,11 @@ async function loadPilots() {
 }
 
 // Cargar la lista de pilotos cuando la página cargue
-document.addEventListener("DOMContentLoaded", loadPilots);
+document.addEventListener("DOMContentLoaded", () => {
+    // Mostrar el popup al hacer clic en "Agregar"
+    document.getElementById("btnAgregar").addEventListener("click", openPopup);
+    document.getElementById("btnCerrar").addEventListener("click", closePopup);
+});
 
 // Para mostrar el popup cuando se le da click al botón "Editar"
 document.getElementById("btnEditar").addEventListener("click", () => {
@@ -142,7 +155,7 @@ async function loadPilotoDetails() {
     if (pilotoId) {
         try {
             const pilots = await getPilots();
-            const selectedPilot = pilots.find(pilot => pilot.id === pilotoId);
+            const selectedPilot = pilots.find(pilot => pilot.id === Number(pilotoId));  // Asegurando que ambos tengan el mismo tipo
 
             if (selectedPilot) {
                 document.getElementById("edit_namePiloto").value = selectedPilot.nombre;
@@ -169,7 +182,7 @@ async function updatePilotInfo() {
     const pilotoId = document.getElementById("select_piloto").value;
     if (!pilotoId) {
         alert("Por favor, selecciona un piloto para editar.");
-        return;
+        return;  // Retornar si no se selecciona piloto
     }
 
     const nombrePilot = document.getElementById("edit_namePiloto").value.trim();
@@ -179,7 +192,7 @@ async function updatePilotInfo() {
 
     if (!nombrePilot || !equipoPilot || !experiencePilot || !skillsPilot) {
         alert("Todos los campos son obligatorios.");
-        return;
+        return;  // Retornar si algún campo está vacío
     }
 
     const updatedPilot = {
@@ -209,6 +222,17 @@ async function updatePilotInfo() {
         console.error("Error al actualizar el piloto:", error);
         alert("Hubo un problema al actualizar el piloto");
     }
+    
+
+    function openPopup() {
+        const popupElement = document.querySelector('agregar-piloto-popup'); // Seleccionamos el Web Component
+        if (popupElement) {
+            popupElement.open();  // Usamos el método open() del Web Component
+        } else {
+            console.error("El Web Component 'agregar-piloto-popup' no se encuentra en el DOM.");
+        }
+    }
+
 }
 
 // Para guardar la info del popup cuando se le da click al botón "Guardar" (de editar)
