@@ -2,13 +2,6 @@
   "pistas": [],
   "pilots": [
     {
-      "id": "1738671089943",
-      "nombre": "SAntiaog",
-      "equipo": "REd bull",
-      "experiencia": "ninguna",
-      "img": "dgdggd"
-    },
-    {
       "id": "1738672441888",
       "nombre": "SAntiaog",
       "equipo": "esgseg",
@@ -16,25 +9,11 @@
       "img": "gergdrgdrrdg"
     },
     {
-      "nombre": "Daniel",
-      "equipo": "Monster8",
-      "experiencia": "escudero",
-      "img": "gergdrgdrrdg",
-      "id": "1738672976633"
-    },
-    {
       "nombre": "Andres",
       "equipo": "REd bullaaaaooooooooooooo",
       "experiencia": "ninguna",
       "img": "gergdrgdrrdg",
       "id": "1738674744430"
-    },
-    {
-      "id": "1738675775261",
-      "nombre": "SAntiaoga",
-      "equipo": "dggdgd",
-      "experiencia": "segse",
-      "img": "gergdrgdrrdg"
     }
   ]
 }
