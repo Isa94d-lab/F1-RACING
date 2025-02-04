@@ -69,8 +69,8 @@ class AgregarPilotoPopup extends HTMLElement {
                     <label for="new_experiencePiloto">Experiencia:</label>
                     <input type="text" id="new_experiencePiloto" placeholder="Ingresa experiencia">
 
-                    <label for="new_skillsPiloto">Habilidades:</label>
-                    <input type="text" id="new_skillsPiloto" placeholder="Ingresa habilidades">
+                    <label for="new_imgPiloto">Habilidades:</label>
+                    <input type="text" id="new_imgPiloto" placeholder="Ingresa habilidades">
 
                     <button id="btnGuardar">Guardar</button>
                     <button id="btnCerrar">Cerrar</button>
@@ -101,16 +101,16 @@ class AgregarPilotoPopup extends HTMLElement {
         const name = this.shadowRoot.querySelector('#new_namePiloto').value;
         const equipo = this.shadowRoot.querySelector('#new_equipoPiloto').value;
         const experience = this.shadowRoot.querySelector('#new_experiencePiloto').value;
-        const skills = this.shadowRoot.querySelector('#new_skillsPiloto').value;
+        const img = this.shadowRoot.querySelector('#new_imgPiloto').value;
 
         // Lógica para guardar el piloto (aquí se puede integrar con un servidor o almacenamiento local)
-        console.log('Piloto guardado:', { name, equipo, experience, skills });
+        console.log('Piloto guardado:', { name, equipo, experience, img });
 
         // Limpiar los campos después de guardar
         this.shadowRoot.querySelector('#new_namePiloto').value = '';
         this.shadowRoot.querySelector('#new_equipoPiloto').value = '';
         this.shadowRoot.querySelector('#new_experiencePiloto').value = '';
-        this.shadowRoot.querySelector('#new_skillsPiloto').value = '';
+        this.shadowRoot.querySelector('#new_imgPiloto').value = '';
 
         this.close();
     }
