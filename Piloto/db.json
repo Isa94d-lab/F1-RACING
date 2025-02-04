@@ -21,11 +21,11 @@
       "id": "2e3a"
     },
     {
-      "id": "8a7d",
       "nombre": "Omar",
       "equipo": "Mr Tea",
       "experiencia": "canva",
-      "habilidades": "css"
+      "habilidades": "css",
+      "id": "8a7d"
     }
   ]
 }

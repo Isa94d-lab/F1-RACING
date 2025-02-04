@@ -42,7 +42,7 @@ async function addPilotInfo() {
     const nombrePilot = document.getElementById("new_namePiloto").value.trim();
     const equipoPilot = document.getElementById("new_equipoPiloto").value.trim();
     const experiencePilot = document.getElementById("new_experiencePiloto").value.trim();
-    const skillsPilot = document.getElementById("new_skillsPiloto").value.trim();
+    const imgPilot = document.getElementById("new_imgPiloto").value.trim();
 
     if (!nombrePilot || !equipoPilot || !experiencePilot || !skillsPilot) {
         alert("Todos los campos son obligatorios.");
@@ -53,7 +53,7 @@ async function addPilotInfo() {
         nombre: nombrePilot,
         equipo: equipoPilot,
         experiencia: experiencePilot,
-        habilidades: skillsPilot
+        img: imgPilot,
     };
 
     try {
@@ -75,7 +75,7 @@ async function addPilotInfo() {
         document.getElementById("new_namePiloto").value = "";
         document.getElementById("new_equipoPiloto").value = "";
         document.getElementById("new_experiencePiloto").value = "";
-        document.getElementById("new_skillsPiloto").value = "";
+        document.getElementById("new_imgPiloto").value = "";
 
         closePopup();  // Cerrar el popup
         loadPilots();  // Recargar la lista de pilotos
@@ -161,7 +161,7 @@ async function loadPilotoDetails() {
                 document.getElementById("edit_namePiloto").value = selectedPilot.nombre;
                 document.getElementById("edit_equipoPiloto").value = selectedPilot.equipo;
                 document.getElementById("edit_experiencePiloto").value = selectedPilot.experiencia;
-                document.getElementById("edit_skillsPiloto").value = selectedPilot.habilidades;
+                document.getElementById("edit_imgPiloto").value = selectedPilot.img;
             } else {
                 console.error("Piloto no encontrado.");
             }
@@ -173,7 +173,7 @@ async function loadPilotoDetails() {
         document.getElementById("edit_namePiloto").value = '';
         document.getElementById("edit_equipoPiloto").value = '';
         document.getElementById("edit_experiencePiloto").value = '';
-        document.getElementById("edit_skillsPiloto").value = '';
+        document.getElementById("edit_imgPiloto").value = '';
     }
 }
 
@@ -188,9 +188,9 @@ async function updatePilotInfo() {
     const nombrePilot = document.getElementById("edit_namePiloto").value.trim();
     const equipoPilot = document.getElementById("edit_equipoPiloto").value.trim();
     const experiencePilot = document.getElementById("edit_experiencePiloto").value.trim();
-    const skillsPilot = document.getElementById("edit_skillsPiloto").value.trim();
+    const imgPilot = document.getElementById("edit_imgPiloto").value.trim();
 
-    if (!nombrePilot || !equipoPilot || !experiencePilot || !skillsPilot) {
+    if (!nombrePilot || !equipoPilot || !experiencePilot || !imgPilot) {
         alert("Todos los campos son obligatorios.");
         return;  // Retornar si algún campo está vacío
     }
@@ -199,7 +199,7 @@ async function updatePilotInfo() {
         nombre: nombrePilot,
         equipo: equipoPilot,
         experiencia: experiencePilot,
-        habilidades: skillsPilot
+        img: imgPilot
     };
 
     try {
