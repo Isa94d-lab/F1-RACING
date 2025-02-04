@@ -1,0 +1,211 @@
+<!--  Inicializamos el proyecto -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilotos</title>
+    <!-- Importamos el archivp CSS -->
+    <link rel="stylesheet" href="../style.css">
+    <script type="module" src="agregar_pilotos.js" defer></script>
+    <script type="module" src="pilots_controller.js" defer></script>
+    <script type="module" src="editar_piloto.js" defer></script>
+
+</head>
+<body>
+    <!--  Conteiner que almacenara el titulo y la barra de busqueda -->
+    <div class="conteiner1" >
+        <!--  Titulo -->
+        <p class="title">Pilotos</p>
+            <!--  Barra de busqueda -->
+            <div class="search-box">
+                <!--  Lo que estara adentro de la barra -->
+                <div class="row">
+                    <input type="text" id="search-bar" class="search-bar" placeholder="Buscar piloto..." autocomplete="on" />
+                    <img src="https://static.vecteezy.com/system/resources/previews/016/895/136/non_2x/search-icon-line-isolated-on-white-background-black-flat-thin-icon-on-modern-outline-style-linear-symbol-and-editable-stroke-simple-and-pixel-perfect-stroke-illustration-vector.jpg" width="30px" height="30px" margin-left="9px">
+                </div>
+                <!--  Esto mostrara los pilotos disponibles -->
+                <div class="results"></div>
+            </div>
+
+        <button id="btnAgregar">Agregar</button>
+        <button id="btnEditar">Editar</button>
+    
+
+
+        <!-- --------------------------------------------- PRIMER POPUP --------------------------------------------- -->
+
+        <agregar-piloto-popup></agregar-piloto-popup>
+        
+        
+        
+
+        <!-- --------------------------------------------- SEGUNDO POPUP --------------------------------------------- -->
+
+
+        <editar-piloto-popup></editar-piloto-popup>
+
+
+
+
+
+
+
+
+        <style>
+            #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            }
+
+            #popup.show {
+                display: flex; /* Asegúrate de que el popup se vea cuando la clase 'show' esté aplicada */
+            }
+
+            .cuadrado {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                width: 500px;
+                text-align: center;
+            }
+            .cuadrado input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            .cuadrado button {
+                padding: 10px 15px;
+                background-color: #a10b0b;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-top: 10px;
+            }
+            .cuadrado button:hover {
+                background-color: #990a0a;
+            }
+        </style>
+        <div id="popup">
+            <div class="cuadrado">
+                <h3>Agregar Nuevo Piloto</h3>
+
+                <label for="new_namePiloto">Nombre:</label>
+                <input type="text" id="new_namePiloto" placeholder="Ingresa nombre de Piloto">
+
+                <label for="new_equipoPiloto">Equipo:</label>
+                <input type="text" id="new_equipoPiloto" placeholder="Ingresa nombre del Equipo">
+
+                <label for="new_experiencePiloto">Experiencia:</label>
+                <input type="text" id="new_experiencePiloto" placeholder="Ingresa experiencia">
+
+                <label for="new_imgPiloto">Imagen del piloto:</label>
+                <input type="text" id="new_imgPiloto" placeholder="Ingresa URL de imagen del piloto">
+
+                <button id="btnGuardar">Guardar</button>
+                <button id="btnCerrar">Cerrar</button>
+            </div>
+        </div>
+        
+        
+
+
+
+    <!--  Conteiner que almacenara los pilotos -->
+    <div class="conteiner3">
+        <!-- Esto nos permitira llamar lo creado en nuestro JS -->
+        <div id="pilotosCard"> 
+
+        </div>
+    </div>
+
+    <style>
+        /* Estilos del popup */
+        #popup, #popup2 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .cuadrado {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 500px;
+            text-align: center;
+            line-height: 1.5; /* 1.5 veces el tamaño de la fuente */
+        }
+
+        .cuadrado input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .cuadrado select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .cuadrado button {
+            padding: 10px 15px;
+            background-color: #a10b0b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .cuadrado button:hover {
+            background-color: #990a0a;
+        }
+
+        .cuadrado button.close {
+            background-color: #f44336;
+        }
+
+        .cuadrado button.close:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Botón para abrir el popup */
+        .addPiloto {
+            padding: 10px 15px;
+            background-color: #d80202;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 0px;
+            font-weight: 600;
+        }
+
+        .addPiloto:hover {
+            background-color: #910808;
+        }
+        
+    </style>
+</body>
+</html> 
