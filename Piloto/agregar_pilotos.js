@@ -51,27 +51,26 @@ class AgregarPilotoPopup extends HTMLElement {
                 }
             </style>
             <div id="popup">
-                <div class="cuadrado">
+            <div class="cuadrado">
                     <h3>Agregar Nuevo Piloto</h3>
-
-                    <generate-code></generate-code>
+            
+                    <generate-code id="generateCode"></generate-code>
                     <script src="generateCode.js"></script>
-
-                    <label for="id_Usuario" class="form-label">ID: </label>
-                    <input type="number" id="id_Usuario" class="form-control form-control1" placeholder="Ingresa el ID">
-                    
+            
+            
+            
                     <label for="new_namePiloto">Nombre:</label>
                     <input type="text" id="new_namePiloto" placeholder="Ingresa nombre de Piloto">
-
+            
                     <label for="new_equipoPiloto">Equipo:</label>
                     <input type="text" id="new_equipoPiloto" placeholder="Ingresa nombre del Equipo">
-
-                    <label for="new_experiencePiloto">Experiencia:</label>
-                    <input type="text" id="new_experiencePiloto" placeholder="Ingresa experiencia">
-
-                    <label for="new_imgPiloto">Habilidades:</label>
-                    <input type="text" id="new_imgPiloto" placeholder="Ingresa habilidades">
-
+            
+                    <label for="new_experiencePiloto">Rol:</label>
+                    <input type="text" id="new_experiencePiloto" placeholder="Ingresa el rol">
+            
+                    <label for="new_imgPiloto">Imagen:</label>
+                    <input type="text" id="new_imgPiloto" placeholder="Ingresa URL de imagen del piloto">
+            
                     <button id="btnGuardar">Guardar</button>
                     <button id="btnCerrar">Cerrar</button>
                 </div>
@@ -118,3 +117,5 @@ class AgregarPilotoPopup extends HTMLElement {
 
 // Definir el componente personalizado
 customElements.define('agregar-piloto-popup', AgregarPilotoPopup);
+
+//-------------------------------------------------------------------------------------------------------------

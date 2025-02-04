@@ -1,6 +1,8 @@
 import { generateCode } from './generateCode.js';  // Asegúrate de usar la ruta correcta
 
 
+
+
 // Definir la URL base del servidor JSON
 const BASE_URL = "http://localhost:3000/pilots";
 
@@ -64,20 +66,31 @@ function closePopup2() {
     document.getElementById("popup2").style.display = "none";
 }
 
-// Verificar que los botones existen antes de agregar eventos
+
+
 document.addEventListener("DOMContentLoaded", () => {
+    // Primero manejamos los eventos de los botones
     document.getElementById("btnAgregar")?.addEventListener("click", openPopup);
     document.getElementById("btnGuardar")?.addEventListener("click", addPilotInfo);
     document.getElementById("btnCerrar")?.addEventListener("click", closePopup);
     document.getElementById("btnEditar")?.addEventListener("click", () => {
-        openPopup2();
-        loadPilotsForSelect();
+        document.querySelector('editar-piloto-popup').open();
     });
     document.getElementById("btnGuardar2")?.addEventListener("click", updatePilotInfo);
     document.getElementById("select_piloto")?.addEventListener("change", loadPilotoDetails);
 
+    // Luego, llamamos a la función que carga los pilotos al inicio
     loadPilots();
+
+    // Finalmente, instanciamos y renderizamos el componente popup
+    const popup = new AgregarPilotoPopup(); // Crea la instancia de tu clase (si es necesario)
+    const popup2 = new EditarPilotoPopup();
+    popup.render(); // Llamamos al método render después de que el DOM esté listo
+    popup2.render();
 });
+
+
+
 
 // Función para agregar un nuevo piloto al JSON Server
 async function addPilotInfo() {
