@@ -79,16 +79,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnGuardar2")?.addEventListener("click", updatePilotInfo);
     document.getElementById("select_piloto")?.addEventListener("change", loadPilotoDetails);
 
-    // Luego, llamamos a la función que carga los pilotos al inicio
-    loadPilots();
+     // Evento para la búsqueda
+     document.getElementById("search-bar")?.addEventListener("input", handleSearch);
 
-    // Finalmente, instanciamos y renderizamos el componente popup
-    const popup = new AgregarPilotoPopup(); // Crea la instancia de tu clase (si es necesario)
-    const popup2 = new EditarPilotoPopup();
-    popup.render(); // Llamamos al método render después de que el DOM esté listo
-    popup2.render();
-});
-
+     // Luego, llamamos a la función que carga los pilotos al inicio
+     loadPilots();
+ 
+     // Finalmente, instanciamos y renderizamos el componente popup
+     const popup = new AgregarPilotoPopup(); // Crea la instancia de tu clase (si es necesario)
+     const popup2 = new EditarPilotoPopup();
+     popup.render(); // Llamamos al método render después de que el DOM esté listo
+     popup2.render();
+ });
 
 
 
@@ -244,6 +246,52 @@ async function loadPilotoDetails() {
         console.error("Error al cargar los detalles del piloto:", error);
     }
 }
+
+// Función para manejar la búsqueda en la barra de búsqueda
+async function handleSearch(event) {
+    const searchQuery = event.target.value.toLowerCase();
+    
+    // Filtrar los pilotos que coincidan con la búsqueda
+    const filteredPilots = await getPilots();
+    const filteredResults = filteredPilots.filter(pilot => 
+        pilot.nombre.toLowerCase().includes(searchQuery)
+    );
+
+    // Mostrar los pilotos filtrados
+    displaySearchResults(filteredResults);
+}
+
+
+
+
+
+// Función para mostrar los resultados de la búsqueda en el DOM
+function displaySearchResults(pilots) {
+    const pilotosCard = document.getElementById("pilotosCard");
+
+    // Limpiamos la lista antes de actualizar
+    pilotosCard.innerHTML = "";
+
+    // Si hay resultados, los mostramos
+    if (pilots.length > 0) {
+        pilots.forEach((pilot) => {
+            const pilotElement = document.createElement("div");
+            pilotElement.classList.add("pilot-card");
+            pilotElement.innerHTML = `
+                <h4>${pilot.nombre}</h4>
+                <p>Equipo: ${pilot.equipo}</p>
+                <p>Experiencia: ${pilot.experiencia}</p>
+                <p>Imagen de piloto: <img src="${pilot.img}" alt="${pilot.nombre}" width="100px" /></p>
+            `;
+            pilotosCard.appendChild(pilotElement);
+        });
+    } else {
+        pilotosCard.innerHTML = "<p>No se encontraron pilotos que coincidan con la búsqueda.</p>";
+    }
+}
+
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
