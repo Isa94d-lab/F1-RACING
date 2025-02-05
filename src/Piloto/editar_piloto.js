@@ -1,5 +1,7 @@
+// editar_piloto.js
+
 console.log('Antes de la importación');
-import { deletePiloto } from './eliminar_piloto.js';
+import { deletePiloto } from './eliminar_piloto.js';  // Asegúrate de importar la función
 console.log('Después de la importación');
 
 class EditarPilotoPopup extends HTMLElement {
@@ -12,52 +14,7 @@ class EditarPilotoPopup extends HTMLElement {
     render() {
         this.innerHTML = `
             <style>
-                #popup2 {
-                    display: none;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0.5);
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                #popup2.show {
-                    display: flex;
-                }
-
-                .cuadrado {
-                    background: white;
-                    padding: 20px;
-                    border-radius: 10px;
-                    width: 500px;
-                    text-align: center;
-                }
-
-                .cuadrado select,
-                .cuadrado input {
-                    width: 100%;
-                    padding: 8px;
-                    margin-bottom: 10px;
-                    border: 1px solid #ddd;
-                    border-radius: 5px;
-                }
-
-                .cuadrado button {
-                    padding: 10px 15px;
-                    background-color: #a10b0b;
-                    color: white;
-                    border: none;
-                    cursor: pointer;
-                    border-radius: 5px;
-                    margin-top: 10px;
-                }
-
-                .cuadrado button:hover {
-                    background-color: #990a0a;
-                }
+                /* Estilos */
             </style>
             <div id="popup2">
                 <div class="cuadrado">
@@ -94,22 +51,31 @@ class EditarPilotoPopup extends HTMLElement {
         this.querySelector('#select_piloto').addEventListener('change', () => this.loadPilotDetails());
         this.querySelector('#btnGuardar2').addEventListener('click', () => this.updatePilot());
         this.querySelector('#btnCerrar2').addEventListener('click', () => this.close());
+
+        // Event listener para el botón de "Eliminar"
+        this.querySelector('#btnEliminar').addEventListener('click', async () => {
+            const pilotId = Number(this.querySelector('#select_piloto').value); // Convertir a número
         
-        // Ahora el botón de "Eliminar" ejecutará la función importada
-        this.querySelector('#btnEliminar').addEventListener('click', () => {
-            const pilotId = this.querySelector('#select_piloto').value;  // Obtener el ID del piloto seleccionado
             if (!pilotId) {
                 alert('Por favor, seleccione un piloto para eliminar');
-                return;  // Si no hay piloto seleccionado, no hacer nada
+                return;
             }
-            
-            // Llamar a la función deletePiloto pasando el ID y la URL base
-            deletePiloto(pilotId, this.BASE_URL);  // Asegúrate de que 'this.BASE_URL' esté correctamente definido
+        
+            try {
+                console.log('ID del piloto a eliminar:', pilotId);
+                await deletePiloto(pilotId, this.BASE_URL);  // Llamar la función correcta
+                alert('Piloto eliminado exitosamente');
+                this.loadPilots();  // Recargar la lista de pilotos
+                this.close();  // Cerrar el popup
+            } catch (error) {
+                alert('Error al eliminar el piloto');
+                console.error('Error al eliminar el piloto:', error);
+            }
         });
         
-        const pilotId = this.querySelector('#select_piloto').value;
-        console.log('ID del piloto seleccionado:', pilotId);  // Verifica el ID
 
+        // Cargar la lista de pilotos
+        this.loadPilots();
     }
 
     async loadPilots() {
@@ -117,10 +83,10 @@ class EditarPilotoPopup extends HTMLElement {
             const response = await fetch(this.BASE_URL);
             const pilots = await response.json();
             const select = this.querySelector('#select_piloto');
-            
+
             // Limpiar opciones existentes
             select.innerHTML = '<option value="">Seleccione un piloto...</option>';
-            
+
             // Agregar nuevas opciones
             pilots.forEach(pilot => {
                 const option = document.createElement('option');
@@ -179,7 +145,6 @@ class EditarPilotoPopup extends HTMLElement {
 
             alert('Piloto actualizado exitosamente');
             this.close();
-            // Disparar un evento para notificar que se actualizó un piloto
             window.dispatchEvent(new CustomEvent('pilotUpdated'));
         } catch (error) {
             console.error('Error al actualizar el piloto:', error);
@@ -204,10 +169,6 @@ class EditarPilotoPopup extends HTMLElement {
     }
 
     
-
-    
-    
 }
-
 
 customElements.define('editar-piloto-popup', EditarPilotoPopup);
