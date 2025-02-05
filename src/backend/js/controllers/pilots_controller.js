@@ -1,4 +1,4 @@
-import { generateCode } from './generateCode.js';  // Asegúrate de usar la ruta correcta
+import { generateCode } from '../../../frontend/views/admin_view/Piloto/generateCode.js';  
 
 
 
@@ -78,19 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnGuardar2")?.addEventListener("click", updatePilotInfo);
     document.getElementById("select_piloto")?.addEventListener("change", loadPilotoDetails);
 
-// Evento para la búsqueda
-document.getElementById("search-bar")?.addEventListener("input", handleSearch);
+     // Evento para la búsqueda
+     document.getElementById("search-bar")?.addEventListener("input", handleSearch);
 
-// Luego, llamamos a la función que carga los pilotos al inicio
-loadPilots();
-
-// Finalmente, instanciamos y renderizamos el componente popup
-const popup = new AgregarPilotoPopup(); // Crea la instancia de tu clase (si es necesario)
-const popup2 = new EditarPilotoPopup();
-popup.render(); // Llamamos al método render después de que el DOM esté listo
-popup2.render();
- });
-
+     // Luego, llamamos a la función que carga los pilotos al inicio
+     loadPilots();
+ 
+     // Finalmente, instanciamos y renderizamos el componente popup
+     const popup = new AgregarPilotoPopup(); // Crea la instancia de tu clase (si es necesario)
+     const popup2 = new EditarPilotoPopup();
+     popup.render(); // Llamamos al método render después de que el DOM esté listo
+     popup2.render();
+ });
 
 
 
@@ -137,11 +136,11 @@ async function addPilotInfo() {
     }
 }
 
+
 // Función para cargar la lista de pilotos en la interfaz
 async function loadPilots() {
     try {
         const pilots = await getPilots();
-        console.log(pilots);  // Añadir para depuración
         const pilotosCard = document.getElementById("pilotosCard");
 
         if (!pilotosCard) {
@@ -152,19 +151,42 @@ async function loadPilots() {
         // Limpiar la lista antes de actualizar
         pilotosCard.innerHTML = "";
 
+        // Asegurarse de que solo haya un popup en el body
+        let popup = document.querySelector("piloto-popup");
+        if (!popup) {
+            popup = document.createElement("piloto-popup");
+            document.body.appendChild(popup);
+        }
+
+        // Recorrer los pilotos para crear los elementos visuales
         pilots.forEach((pilot) => {
             const pilotElement = document.createElement("div");
             pilotElement.classList.add("pilot-card");
             pilotElement.innerHTML = `
-                <h2>${pilot.nombre}</h2>
-                <img src="${pilot.img}">
+                <div class="conteiner_pilot">
+                    <div class="cuadrado">
+                        <h4>${pilot.nombre}</h4>
+                        <p>Equipo: ${pilot.equipo}</p>
+                        <p>Experiencia: ${pilot.experiencia}</p>
+                        <p><img src="${pilot.img}" alt="${pilot.nombre}" width="100px"></p>
+                    </div>
+                </div>
             `;
+
+            // Agregar evento de clic para abrir el popup con la información del piloto
+            pilotElement.addEventListener("click", () => {
+                popup.open(pilot); // Pasamos el piloto al popup
+            });
+
             pilotosCard.appendChild(pilotElement);
         });
     } catch (error) {
         console.error("Error al cargar los pilotos:", error);
     }
 }
+
+
+
 
 
 // Función para cargar los pilotos en el select de editar
@@ -254,29 +276,177 @@ async function handleSearch(event) {
     const filteredResults = filteredPilots.filter(pilot => 
         pilot.nombre.toLowerCase().includes(searchQuery)
     );
+
     // Mostrar los pilotos filtrados
     displaySearchResults(filteredResults);
 }
+
+// Supongamos que tienes un método donde gestionas la carga de pilotos
+function displayPilots(pilots) {
+    // Instancia única del popup
+    let popup = document.querySelector("piloto-popup");
+    if (!popup) {
+        popup = document.createElement("piloto-popup");
+        document.body.appendChild(popup);
+    }
+
+    // Obtener el contenedor donde se agregan las tarjetas de piloto
+    const pilotosCard = document.querySelector("#pilots-list"); // Ajusta este selector al contenedor correcto
+
+    // Dentro del bucle, usas esta instancia de popup
+    pilots.forEach((pilot) => {
+        const pilotElement = document.createElement("div");
+        pilotElement.classList.add("pilot-card");
+        pilotElement.innerHTML = `
+            <div class="conteiner_pilot">
+                <div class="cuadrado">
+                    <h4>${pilot.nombre}</h4>
+                    <p>Equipo: ${pilot.equipo}</p>
+                    <p>Experiencia: ${pilot.experiencia}</p>
+                    <p>Imagen de piloto: <img src="${pilot.img}" alt="${pilot.nombre}" width="100px" /></p>
+                </div>
+            </div>
+        `;
+
+        // Agregar evento de clic al "cuadrado" para abrir el popup con los datos del piloto
+        const pilotContainer = pilotElement.querySelector(".cuadrado");
+        pilotContainer.addEventListener("click", () => {
+            popup.open(pilot); // Ahora usas la instancia ya creada
+        });
+
+        // Añadir el piloto a la lista
+        pilotosCard.appendChild(pilotElement);
+    });
+}
+
+// Llamar a este método cuando se necesite mostrar los pilotos
+displayPilots(pilots); // 'pilots' es la lista de pilotos que ya tienes
+
+
+
+
 // Función para mostrar los resultados de la búsqueda en el DOM
 function displaySearchResults(pilots) {
     const pilotosCard = document.getElementById("pilotosCard");
+
     // Limpiamos la lista antes de actualizar
     pilotosCard.innerHTML = "";
+
     // Si hay resultados, los mostramos
     if (pilots.length > 0) {
         pilots.forEach((pilot) => {
             const pilotElement = document.createElement("div");
             pilotElement.classList.add("pilot-card");
             pilotElement.innerHTML = `
-                <h2>${pilot.nombre}</h2>
-                <img src="${pilot.img}">
+            <div class="conteiner_pilot" id="conteiner_pilot">
+                <div class="cuadrado"
+                    <h4>${pilot.nombre}</h4>
+                    <p>Equipo: ${pilot.equipo}</p>
+                    <p>Experiencia: ${pilot.experiencia}</p>
+                    <p>Imagen de piloto: <img src="${pilot.img}" alt="${pilot.nombre}" width="100px" /></p>
+
+                </dv>
+            </div>
             `;
             pilotosCard.appendChild(pilotElement);
         });
     } else {
         pilotosCard.innerHTML = "<p>No se encontraron pilotos que coincidan con la búsqueda.</p>";
-   }
+    }
+
+
+
+
+    async function loadPilots() {
+        try {
+            const pilots = await getPilots();
+            const pilotosCard = document.getElementById("pilotosCard");
+    
+            if (!pilotosCard) {
+                console.error("Error: No se encontró el elemento con id 'pilotosCard'.");
+                return;
+            }
+    
+            // Limpiar la lista antes de actualizar
+            pilotosCard.innerHTML = "";
+    
+            // Asegurar que solo haya un popup en el body
+            let pilotoPopup = document.querySelector("piloto-popup");
+            if (!pilotoPopup) {
+                pilotoPopup = document.createElement("piloto-popup");
+                document.body.appendChild(pilotoPopup);
+            }
+    
+            pilots.forEach((pilot) => {
+                const pilotElement = document.createElement("div");
+                pilotElement.classList.add("pilot-card");
+                pilotElement.innerHTML = `
+                    <div class="conteiner_pilot">
+                        <div class="cuadrado">
+                            <h4>${pilot.nombre}</h4>
+                            <p>Equipo: ${pilot.equipo}</p>
+                            <p>Experiencia: ${pilot.experiencia}</p>
+                            <p><img src="${pilot.img}" alt="${pilot.nombre}" width="100px"></p>
+      
+
+                        </div>
+                    </div>
+                `;
+    
+                // Agregar evento de clic para abrir el popup con la información del piloto
+                pilotElement.addEventListener("click", () => {
+                    pilotoPopup.open(pilot);
+                });
+    
+                pilotosCard.appendChild(pilotElement);
+            });
+        } catch (error) {
+            console.error("Error al cargar los pilotos:", error);
+        }
+    }
+    
 }
+
+pilotCard.addEventListener("click", () => {
+    const popup = document.querySelector("piloto-popup");
+    if (popup) {
+        popup.open(pilot); // Asegúrate de pasar el objeto piloto correctamente
+    }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", async function () {
+    const pilotsContainer = document.getElementById("pilotsContainer");
+    const response = await fetch("http://localhost:3000/pilots");
+    const pilots = await response.json();
+
+    // Crear un solo popup y agregarlo al body
+    let pilotoPopup = document.createElement("piloto-popup");
+    document.body.appendChild(pilotoPopup);
+
+    pilotsContainer.innerHTML = "";
+    pilots.forEach(pilot => {
+        const pilotCard = document.createElement("div");
+        pilotCard.classList.add("pilot-card");
+        pilotCard.innerHTML = `
+            <h3>${pilot.nombre}</h3>
+            <p>Equipo: ${pilot.equipo}</p>
+            <p>Experiencia: ${pilot.experiencia}</p>
+            <img src="${pilot.imagen}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
+        `;
+        pilotCard.addEventListener("click", () => {
+            pilotoPopup.open(pilot); // Llamar al método open del popup con la info del piloto
+        });
+        pilotsContainer.appendChild(pilotCard);
+    });
+    loadPilots();
+});
+
+
+
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -292,6 +462,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.error('El componente generateCode no se encuentra en el DOM.');
     }
+
+    loadPilots();
 });
+
 
 

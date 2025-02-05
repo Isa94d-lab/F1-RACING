@@ -1,6 +1,6 @@
 console.log('Antes de la importación');
 import { deletePiloto } from './eliminar_piloto.js';
-console.log('Después de la importación');
+console.log('Después de la importación');
 
 class EditarPilotoPopup extends HTMLElement {
     constructor() {
@@ -87,10 +87,12 @@ class EditarPilotoPopup extends HTMLElement {
             </div>
         `;
 
-        // Event listeners
+        // Asignar event listeners
         this.querySelector('#select_piloto').addEventListener('change', () => this.loadPilotDetails());
         this.querySelector('#btnGuardar2').addEventListener('click', () => this.updatePilot());
         this.querySelector('#btnCerrar2').addEventListener('click', () => this.close());
+        
+        // Ahora el botón de "Eliminar" ejecutará la función importada
         this.querySelector('#btnEliminar').addEventListener('click', () => {
             const pilotId = this.querySelector('#select_piloto').value;  // Obtener el ID del piloto seleccionado
             if (!pilotId) {
@@ -101,6 +103,7 @@ class EditarPilotoPopup extends HTMLElement {
             // Llamar a la función deletePiloto pasando el ID y la URL base
             deletePiloto(pilotId, this.BASE_URL);  // Asegúrate de que 'this.BASE_URL' esté correctamente definido
         });
+        
     }
 
     async loadPilots() {
@@ -190,6 +193,10 @@ class EditarPilotoPopup extends HTMLElement {
         this.querySelector('#edit_experiencePiloto').value = '';
         this.querySelector('#edit_imgPiloto').value = '';
     }
+
+    
+    
 }
+
 
 customElements.define('editar-piloto-popup', EditarPilotoPopup);
