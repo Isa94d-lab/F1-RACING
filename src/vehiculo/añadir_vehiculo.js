@@ -1,4 +1,4 @@
-import { getVehicles, addVehicle } from "../src/backend/js/controllers/vehicles_controller.js";
+import { getVehicles, addVehicle } from "../backend/js/controllers/vehicles_controller.js";
 
 class AñadirVehiculoC extends HTMLElement {
   constructor() {
@@ -10,13 +10,9 @@ class AñadirVehiculoC extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = `
       <style>
-        button {
-          padding: 10px;
-          font-size: 16px;
-          cursor: pointer;
-        }
+        /* Estilos del formulario */
         #form-container {
-          display: none;
+          display: none; /* El formulario inicialmente está oculto */
           position: fixed;
           top: 50%;
           left: 50%;
@@ -27,6 +23,7 @@ class AñadirVehiculoC extends HTMLElement {
           width: 350px;
           max-height: 90vh;
           overflow-y: auto;
+          z-index: 1000;
         }
         input, select {
           display: block;
@@ -34,21 +31,16 @@ class AñadirVehiculoC extends HTMLElement {
           margin: 5px 0;
           padding: 8px;
         }
+        button {
+          padding: 10px;
+          font-size: 16px;
+          cursor: pointer;
+        }
         .error {
           color: red;
           font-size: 12px;
         }
-        .section {
-          margin-top: 10px;
-          padding: 10px;
-          border: 1px solid #ddd;
-        }
-        .section h4 {
-          margin: 5px 0;
-        }
       </style>
-
-      <button id="add-button">Añadir Vehículo</button>
 
       <div id="form-container">
         <h3>Nuevo Vehículo</h3>
@@ -59,15 +51,13 @@ class AñadirVehiculoC extends HTMLElement {
         <input type="number" id="aceleracion" placeholder="Aceleración 0-100 (s)" required>
         <input type="url" id="img" placeholder="Imagen URL" required>
         <label>Piloto 1:</label>
-          <select  class="nombrePiloto" id="pilot1" name="pilot1">
+        <select id="pilot1" name="pilot1">
           <option value="">Seleccionar Piloto</option>
-          </select>
-          
-          <label>Piloto 2:</label>
-          <select   class="nombrePiloto" id="pilot2" name="pilot2">
+        </select>
+        <label>Piloto 2:</label>
+        <select id="pilot2" name="pilot2">
           <option value="">Seleccionar Piloto</option>
-          </select>
-
+        </select>
         <div class="section">
           <h4>Rendimiento - Conducción Normal</h4>
           <input type="number" id="cn-velocidad" placeholder="Velocidad Promedio (km/h)">
@@ -111,61 +101,49 @@ class AñadirVehiculoC extends HTMLElement {
     this.loadPilots();
   }
 
-  async addEventListeners() {
-    const addButton = this.shadowRoot.getElementById("add-button");
+  addEventListeners() {
+    const formContainer = this.shadowRoot.getElementById("form-container");
+    const addButton = document.getElementById("add-button"); // Accedemos al botón fuera del componente
     const saveButton = this.shadowRoot.getElementById("save-button");
     const cancelButton = this.shadowRoot.getElementById("cancel-button");
-    const formContainer = this.shadowRoot.getElementById("form-container");
     const errorMsg = this.shadowRoot.getElementById("error-msg");
 
-    
-
+    // Abrir el formulario cuando se haga clic en el botón
     addButton.addEventListener("click", () => {
       formContainer.style.display = "block";
     });
 
+    // Cerrar el formulario cuando se haga clic en "Cancelar"
     cancelButton.addEventListener("click", () => {
       formContainer.style.display = "none";
       errorMsg.textContent = "";
     });
 
+    // Lógica para guardar el vehículo
     saveButton.addEventListener("click", async () => {
-      const equipo = this.shadowRoot.getElementById("equipo").value.trim();
-      const modelo = this.shadowRoot.getElementById("modelo").value.trim();
-      const motor = this.shadowRoot.getElementById("motor").value.trim();
-      const velocidad = parseFloat(this.shadowRoot.getElementById("velocidad").value);
-      const aceleracion = parseFloat(this.shadowRoot.getElementById("aceleracion").value);
-      const img = this.shadowRoot.getElementById("img").value.trim();
+      const equipo = this.shadowRoot.getElementById("equipo").value;
+      const modelo = this.shadowRoot.getElementById("modelo").value;
+      const motor = this.shadowRoot.getElementById("motor").value;
+      const velocidad = this.shadowRoot.getElementById("velocidad").value;
+      const aceleracion = this.shadowRoot.getElementById("aceleracion").value;
+      const img = this.shadowRoot.getElementById("img").value;
       const pilot1 = this.shadowRoot.getElementById("pilot1").value;
       const pilot2 = this.shadowRoot.getElementById("pilot2").value;
-      const errorMsg = this.shadowRoot.getElementById("error-msg");
 
-      // Validaciones
-      if (!equipo || !modelo || !motor || isNaN(velocidad) || isNaN(aceleracion) || !img || !pilot1 || !pilot2) {
+      // Verificar que todos los campos requeridos están completos
+      if (!equipo || !modelo || !motor || !velocidad || !aceleracion || !img || !pilot1 || !pilot2) {
         errorMsg.textContent = "Por favor, complete todos los campos.";
         return;
       }
-
-      if (pilot1 === pilot2) {
-        errorMsg.textContent = "Los pilotos deben ser diferentes.";
-        return;
-      }
-
-      const vehicles = await getVehicles();
-      if (vehicles.some(v => v.modelo.toLowerCase() === modelo.toLowerCase())) {
-        errorMsg.textContent = "Este modelo ya existe.";
-        return;
-      }
-
 
       const newVehicle = {
         equipo,
         modelo,
         motor,
-        velocidad_maxima_kmh: velocidad,
-        aceleracion_0_100: aceleracion,
-        pilots: [pilot1, pilot2],
+        velocidad_maxima_kmh: parseFloat(velocidad),
+        aceleracion_0_100: parseFloat(aceleracion),
         img,
+        pilots: [pilot1, pilot2],
         rendimiento: {
           conduccion_normal: {
             velocidad_promedio_kmh: parseFloat(this.shadowRoot.getElementById("cn-velocidad").value),
@@ -208,53 +186,47 @@ class AñadirVehiculoC extends HTMLElement {
           }
         }
       };
-      
 
-      
-
-      await addVehicle(newVehicle);
-      formContainer.style.display = "none";
-      this.clearForm();
+      try {
+        await addVehicle(newVehicle);
+        formContainer.style.display = "none";
+        errorMsg.textContent = "";
+        alert("Vehículo agregado con éxito!");
+      } catch (error) {
+        console.error("Error al agregar vehículo:", error);
+        errorMsg.textContent = "Hubo un error al guardar el vehículo.";
+      }
     });
   }
-  
 
   async loadPilots() {
     try {
       const response = await fetch("http://localhost:3000/pilots");
-  
+
       if (!response.ok) {
         throw new Error(`Error al cargar pilotos: ${response.status}`);
       }
-  
+
       const pilots = await response.json();
       const pilotSelect1 = this.shadowRoot.getElementById("pilot1");
       const pilotSelect2 = this.shadowRoot.getElementById("pilot2");
-  
-      if (!pilotSelect1 || !pilotSelect2) {
-        console.error("No se encontraron los select de pilotos en el shadow DOM.");
-        return;
-      }
-  
-  
-      // Agregar pilotos a los select
+
       pilots.forEach(pilot => {
         const option1 = document.createElement("option");
-        option1.value = pilot.id; // Usamos el id del piloto
+        option1.value = pilot.id;
         option1.textContent = pilot.nombre;
         pilotSelect1.appendChild(option1);
-  
+
         const option2 = document.createElement("option");
         option2.value = pilot.id;
         option2.textContent = pilot.nombre;
         pilotSelect2.appendChild(option2);
       });
-  
+
     } catch (error) {
       console.error("Error al cargar los pilotos:", error);
     }
   }
-  
 }
 
 customElements.define("añadir-vehiculo", AñadirVehiculoC);

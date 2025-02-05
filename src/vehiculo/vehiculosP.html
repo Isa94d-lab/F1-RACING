@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="vehiculo.css">
+</head>
+<body>
+    <!-- navbar -->
+    <div class="navbar">
+        <div class="logo">
+        <img src="/public/f1logo.png" alt="logof1">
+        </div>
+        <div class="links">
+        <a href="" class="opciones">Circuitos</a>
+        <a href="" class="opciones">Pilotos</a>
+        <a href="" class="opciones">vehiculos</a>
+        </div>
+    </div>
+
+
+
+    <div class="conteiner1">
+            <div class="input-container">
+                <input type="text" id="search-bar" name="text" class="input" placeholder="buscar piloto">
+                <span class="icon"> 
+                <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </span>
+            </div>
+                <!--  Esto mostrara los pilotos disponibles -->
+                <div class="results"></div>
+            </div>
+    </div>
+
+
+
+    <div class="wrapper">
+        <input type="checkbox" />
+        <div class="btn"></div>
+        <div class="tooltip">
+            <button id="add-button">Añadir Vehículo</button>
+        </div>
+    </div>
+    <añadir-vehiculo></añadir-vehiculo>
+    <editar-vehiculo-c></editar-vehiculo-c>
+    <script type="module" src="añadir_vehiculo.js"></script>
+    <script type="module" src="/src/frontend/views/admin_view/vehiculos/editar _vehiculos.js"></script>
+
+
+</body>
+</html>

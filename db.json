@@ -1,53 +1,157 @@
 {
-  "pistas": [
+  "pistas": [],
+  "vehiculos": [
     {
-      "id": "d6b8",
-      "nombre": "1",
-      "descripcion": "2",
-      "img": "3",
-      "pais": "4",
-      "primerGP": "5",
-      "numeroVueltas": "6",
-      "longitud": "7",
-      "distancia": "8"
+      "id": "d73b",
+      "equipo": "dszfsdf",
+      "modelo": "sdfdsf",
+      "motor": "sdafsdf",
+      "velocidad_maxima_kmh": 2,
+      "aceleracion_0_100": 2,
+      "pilots": [
+        "1738674744430",
+        "1738672441888"
+      ],
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s",
+      "rendimiento": {
+        "conduccion_normal": {
+          "velocidad_promedio_kmh": 21,
+          "consumo_combustible": {
+            "seco": 121,
+            "lluvioso": 121,
+            "extremo": 2121
+          },
+          "desgaste_neumaticos": {
+            "seco": 2121,
+            "lluvioso": 1212,
+            "extremo": 56
+          }
+        },
+        "conduccion_agresiva": {
+          "velocidad_promedio_kmh": 45,
+          "consumo_combustible": {
+            "seco": 485,
+            "lluvioso": 61,
+            "extremo": 843
+          },
+          "desgaste_neumaticos": {
+            "seco": 81,
+            "lluvioso": 83,
+            "extremo": 8
+          }
+        },
+        "ahorro_combustible": {
+          "velocidad_promedio_kmh": 14,
+          "consumo_combustible": {
+            "seco": 38,
+            "lluvioso": 475,
+            "extremo": 843
+          },
+          "desgaste_neumaticos": {
+            "seco": 84,
+            "lluvioso": 38,
+            "extremo": 4
+          }
+        }
+      }
+    },
+    {
+      "id": "47a3",
+      "equipo": "dszfsdf",
+      "modelo": "1212",
+      "motor": "12",
+      "velocidad_maxima_kmh": 12,
+      "aceleracion_0_100": 1,
+      "img": "21",
+      "pilots": [
+        "1738672441888",
+        "1738674744430"
+      ],
+      "rendimiento": {
+        "conduccion_normal": {
+          "velocidad_promedio_kmh": 545,
+          "consumo_combustible": {
+            "seco": 1212,
+            "lluvioso": 12,
+            "extremo": 121
+          },
+          "desgaste_neumaticos": {
+            "seco": 21,
+            "lluvioso": 2,
+            "extremo": 12
+          }
+        },
+        "conduccion_agresiva": {
+          "velocidad_promedio_kmh": 121,
+          "consumo_combustible": {
+            "seco": 2,
+            "lluvioso": 12,
+            "extremo": 12
+          },
+          "desgaste_neumaticos": {
+            "seco": 1,
+            "lluvioso": 21,
+            "extremo": 2
+          }
+        },
+        "ahorro_combustible": {
+          "velocidad_promedio_kmh": 12,
+          "consumo_combustible": {
+            "seco": 12,
+            "lluvioso": 1,
+            "extremo": 21
+          },
+          "desgaste_neumaticos": {
+            "seco": 21,
+            "lluvioso": 2,
+            "extremo": 12
+          }
+        }
+      }
     }
   ],
-    "pilots": [
+  "pilots": [
     {
-      "id": "1738671089943",
-      "nombre": "SAntiaog",
-      "equipo": "REd bull",
-      "experiencia": "ninguna",
-      "img": "dgdggd"
-    },
-    {
-      "id": "1738672441888",
-      "nombre": "SAntiaog",
+      "nombre": "SAntiaogAAAAAAAAAAAAAAAAAA",
       "equipo": "esgseg",
       "experiencia": "segse",
-      "img": "gergdrgdrrdg"
-    },
-    {
-      "nombre": "Daniel",
-      "equipo": "Monster8",
-      "experiencia": "escudero",
       "img": "gergdrgdrrdg",
-      "id": "1738672976633"
+      "id": "1738672441888"
     },
     {
-      "nombre": "Andres",
-      "equipo": "REd bullaaaaooooooooooooo",
-      "experiencia": "ninguna",
-      "img": "gergdrgdrrdg",
-      "id": "1738674744430"
+      "nombre": "Isabella",
+      "equipo": "Monster",
+      "experiencia": "escudera",
+      "img": "awdwdawdawd",
+      "id": "1738709621226"
     },
     {
-      "id": "1738675775261",
-      "nombre": "SAntiaoga",
-      "equipo": "dggdgd",
-      "experiencia": "segse",
-      "img": "gergdrgdrrdg"
-
+      "id": "1738758878342",
+      "nombre": "ttrreree",
+      "equipo": "trttrtyt",
+      "experiencia": ", iouio",
+      "img": "yrtrytr"
+    },
+    {
+      "id": 1738792586829,
+      "nombre": "sad",
+      "equipo": "sada",
+      "experiencia": "sadas",
+      "img": "asdas"
+    },
+    {
+      "id": 1738792807291,
+      "nombre": "sdas",
+      "equipo": "asdas",
+      "experiencia": "asdas",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s"
+    },
+    {
+      "id": 1738795377217,
+      "nombre": "DSADAS",
+      "equipo": "ASDAS",
+      "experiencia": "ASDAS",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s"
     }
   ]
 }

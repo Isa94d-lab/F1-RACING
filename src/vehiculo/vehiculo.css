@@ -506,8 +506,6 @@ div.links{
         grid-template-columns: repeat(4, 1fr);
         gap: 25px; /* Ajusta el espacio entre las cards según sea necesario */
         padding: 50px;
-        z-index: -1;
     }
-
 
 
