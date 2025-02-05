@@ -299,7 +299,7 @@ function displayPilots(pilots) {
         const pilotElement = document.createElement("div");
         pilotElement.classList.add("pilot-card");
         pilotElement.innerHTML = `
-            <div class="conteiner_pilot">
+            <div class="conteiner_pilot" id="conteiner_pilot">
                 <div class="cuadrado">
                     <h4>${pilot.nombre}</h4>
                     <p>Equipo: ${pilot.equipo}</p>
@@ -382,7 +382,7 @@ function displaySearchResults(pilots) {
                 const pilotElement = document.createElement("div");
                 pilotElement.classList.add("pilot-card");
                 pilotElement.innerHTML = `
-                    <div class="conteiner_pilot">
+                    <div class="conteiner_pilot" id="conteiner_pilot">
                         <div class="cuadrado">
                             <h4>${pilot.nombre}</h4>
                             <p>Equipo: ${pilot.equipo}</p>
@@ -431,10 +431,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         const pilotCard = document.createElement("div");
         pilotCard.classList.add("pilot-card");
         pilotCard.innerHTML = `
-            <h3>${pilot.nombre}</h3>
-            <p>Equipo: ${pilot.equipo}</p>
-            <p>Experiencia: ${pilot.experiencia}</p>
-            <img src="${pilot.imagen}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
+            <div class="conteiner_pilot" id="conteiner_pilot">
+                <div class="cuadrado">
+                    <h3>${pilot.nombre}</h3>
+                    <p>Equipo: ${pilot.equipo}</p>
+                    <p>Experiencia: ${pilot.experiencia}</p>
+                    <img src="${pilot.imagen}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
+                </div>
+            </div>
         `;
         pilotCard.addEventListener("click", () => {
             pilotoPopup.open(pilot); // Llamar al método open del popup con la info del piloto
