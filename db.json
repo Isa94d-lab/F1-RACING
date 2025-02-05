@@ -40,6 +40,13 @@
       "equipo": "McLaren",
       "experiencia": "piloto titular",
       "img": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png"
+    },
+    {
+      "id": 1738756091861,
+      "nombre": "",
+      "equipo": "",
+      "experiencia": "",
+      "img": ""
     }
   ]
 }
