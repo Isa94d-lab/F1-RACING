@@ -20,4 +20,6 @@ export async function deletePiloto(id, BASE_URL) {
         console.error('Error al eliminar el piloto:', error);
         alert('Error al eliminar el piloto');
     }
+
+    
 }

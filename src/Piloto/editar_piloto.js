@@ -107,6 +107,9 @@ class EditarPilotoPopup extends HTMLElement {
             deletePiloto(pilotId, this.BASE_URL);  // Asegúrate de que 'this.BASE_URL' esté correctamente definido
         });
         
+        const pilotId = this.querySelector('#select_piloto').value;
+        console.log('ID del piloto seleccionado:', pilotId);  // Verifica el ID
+
     }
 
     async loadPilots() {
@@ -199,6 +202,8 @@ class EditarPilotoPopup extends HTMLElement {
         this.querySelector('#edit_imgPiloto').value = '';
         this.querySelector('#edit_banderaPiloto').value = '';
     }
+
+    
 
     
     
