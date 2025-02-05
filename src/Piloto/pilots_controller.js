@@ -100,6 +100,7 @@ async function addPilotInfo() {
     const equipoPilot = document.getElementById("new_equipoPiloto").value.trim();
     const experiencePilot = document.getElementById("new_experiencePiloto").value.trim();
     const imgPilot = document.getElementById("new_imgPiloto").value.trim();
+    const banderaPilot = document.getElementById("new_banderaPiloto").value.trim();
     const generateCodeElement = document.getElementById("generateCode");
     const generatedCode = generateCodeElement ? generateCodeElement.getGeneratedCode() : null;
 
@@ -109,6 +110,7 @@ async function addPilotInfo() {
         equipo: equipoPilot,
         experiencia: experiencePilot,
         img: imgPilot,
+        bandera: banderaPilot,
     };
 
     try {
@@ -129,6 +131,7 @@ async function addPilotInfo() {
         document.getElementById("new_equipoPiloto").value = "";
         document.getElementById("new_experiencePiloto").value = "";
         document.getElementById("new_imgPiloto").value = "";
+        document.getElementById("new_banderaPiloto").value = "";
 
         loadPilots();
     } catch (error) {
@@ -164,14 +167,14 @@ async function loadPilots() {
             const pilotElement = document.createElement("div");
             pilotElement.classList.add("pilot-card");
             pilotElement.innerHTML = `
-                <div class="conteiner_pilot">
-                    <div class="cuadrado">
-                        <h4>${pilot.nombre}</h4>
-                        <p>Equipo: ${pilot.equipo}</p>
-                        <p>Experiencia: ${pilot.experiencia}</p>
-                        <p><img src="${pilot.img}" alt="${pilot.nombre}" width="100px"></p>
-                    </div>
+            <div class="conteiner_pilot" id="conteiner_pilot">
+                <div class="cuadrado">
+                    <div class= "title"><h3>${pilot.nombre}</h3> <img src="${pilot.bandera}" alt="Bandera de ${pilot.nombre}"></div>
+                    <p>Equipo: ${pilot.equipo}</p>
+                    <p>Experiencia: ${pilot.experiencia}</p>
+                    <img src="${pilot.img}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
                 </div>
+            </div>
             `;
 
             // Agregar evento de clic para abrir el popup con la información del piloto
@@ -215,8 +218,9 @@ async function updatePilotInfo() {
     const equipoPilot = document.getElementById("edit_equipoPiloto").value.trim();
     const experiencePilot = document.getElementById("edit_experiencePiloto").value.trim();
     const imgPilot = document.getElementById("edit_imgPiloto").value.trim();
+    const banderaPilot = document.getElementById("edit_banderaPiloto").value.trim();
 
-    if (!nombrePilot || !equipoPilot || !experiencePilot || !imgPilot) {
+    if (!nombrePilot || !equipoPilot || !experiencePilot || !imgPilot || !banderaPilot) {
         alert("Todos los campos son obligatorios.");
         return;
     }
@@ -225,7 +229,8 @@ async function updatePilotInfo() {
         nombre: nombrePilot,
         equipo: equipoPilot,
         experiencia: experiencePilot,
-        img: imgPilot  // Cambié de 'Imagen' a 'img'
+        img: imgPilot,  // Cambié de 'Imagen' a 'img'
+        bandera: banderaPilot,
     };
 
     try {
@@ -262,6 +267,7 @@ async function loadPilotoDetails() {
             document.getElementById("edit_equipoPiloto").value = selectedPilot.equipo;
             document.getElementById("edit_experiencePiloto").value = selectedPilot.experiencia;
             document.getElementById("edit_imgPiloto").value = selectedPilot.img;  // Cambié de 'Imagen' a 'img'
+            document.getElementById("edit_banderaPiloto").value = selectedPilot.bandera;
         }
     } catch (error) {
         console.error("Error al cargar los detalles del piloto:", error);
@@ -299,14 +305,14 @@ function displayPilots(pilots) {
         const pilotElement = document.createElement("div");
         pilotElement.classList.add("pilot-card");
         pilotElement.innerHTML = `
-            <div class="conteiner_pilot" id="conteiner_pilot">
-                <div class="cuadrado">
-                    <h4>${pilot.nombre}</h4>
-                    <p>Equipo: ${pilot.equipo}</p>
-                    <p>Experiencia: ${pilot.experiencia}</p>
-                    <p>Imagen de piloto: <img src="${pilot.img}" alt="${pilot.nombre}" width="100px" /></p>
-                </div>
+        <div class="conteiner_pilot" id="conteiner_pilot">
+            <div class="cuadrado">
+                <div class= "title"><h3>${pilot.nombre}</h3> <img src="${pilot.bandera}" alt="Bandera de ${pilot.nombre}"></div>
+                <p>Equipo: ${pilot.equipo}</p>
+                <p>Experiencia: ${pilot.experiencia}</p>
+                <img src="${pilot.img}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
             </div>
+        </div>
         `;
 
         // Agregar evento de clic al "cuadrado" para abrir el popup con los datos del piloto
@@ -340,13 +346,12 @@ function displaySearchResults(pilots) {
             pilotElement.classList.add("pilot-card");
             pilotElement.innerHTML = `
             <div class="conteiner_pilot" id="conteiner_pilot">
-                <div class="cuadrado"
-                    <h4>${pilot.nombre}</h4>
+                <div class="cuadrado">
+                    <div class= "title"><h3>${pilot.nombre}</h3> <img src="${pilot.bandera}" alt="Bandera de ${pilot.nombre}"></div>
                     <p>Equipo: ${pilot.equipo}</p>
                     <p>Experiencia: ${pilot.experiencia}</p>
-                    <p>Imagen de piloto: <img src="${pilot.img}" alt="${pilot.nombre}" width="100px" /></p>
-
-                </dv>
+                    <img src="${pilot.img}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
+                </div>
             </div>
             `;
             pilotosCard.appendChild(pilotElement);
@@ -382,16 +387,14 @@ function displaySearchResults(pilots) {
                 const pilotElement = document.createElement("div");
                 pilotElement.classList.add("pilot-card");
                 pilotElement.innerHTML = `
-                    <div class="conteiner_pilot" id="conteiner_pilot">
-                        <div class="cuadrado">
-                            <h4>${pilot.nombre}</h4>
-                            <p>Equipo: ${pilot.equipo}</p>
-                            <p>Experiencia: ${pilot.experiencia}</p>
-                            <p><img src="${pilot.img}" alt="${pilot.nombre}" width="100px"></p>
-      
-
-                        </div>
+                <div class="conteiner_pilot" id="conteiner_pilot">
+                    <div class="cuadrado">
+                        <div class= "title"><h3>${pilot.nombre}</h3> <img src="${pilot.bandera}" alt="Bandera de ${pilot.nombre}"></div>
+                        <p>Equipo: ${pilot.equipo}</p>
+                        <p>Experiencia: ${pilot.experiencia}</p>
+                        <img src="${pilot.img}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
                     </div>
+                </div>
                 `;
     
                 // Agregar evento de clic para abrir el popup con la información del piloto
@@ -431,14 +434,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         const pilotCard = document.createElement("div");
         pilotCard.classList.add("pilot-card");
         pilotCard.innerHTML = `
-            <div class="conteiner_pilot" id="conteiner_pilot">
-                <div class="cuadrado">
-                    <h3>${pilot.nombre}</h3>
-                    <p>Equipo: ${pilot.equipo}</p>
-                    <p>Experiencia: ${pilot.experiencia}</p>
-                    <img src="${pilot.imagen}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
-                </div>
+        <div class="conteiner_pilot" id="conteiner_pilot">
+            <div class="cuadrado">
+                <div class= "title"><h3>${pilot.nombre}</h3> <img src="${pilot.bandera}" alt="Bandera de ${pilot.nombre}"></div>
+                <p>Equipo: ${pilot.equipo}</p>
+                <p>Experiencia: ${pilot.experiencia}</p>
+                <img src="${pilot.img}" alt="Imagen de ${pilot.nombre}" style="width: 100px; height: 100px;">
             </div>
+        </div>
         `;
         pilotCard.addEventListener("click", () => {
             pilotoPopup.open(pilot); // Llamar al método open del popup con la info del piloto
@@ -447,12 +450,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
     loadPilots();
 });
-
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const generateCodeElement = document.getElementById("generateCode");

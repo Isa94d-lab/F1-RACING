@@ -80,6 +80,9 @@ class EditarPilotoPopup extends HTMLElement {
                     <label for="edit_imgPiloto">Imagen:</label>
                     <input type="text" id="edit_imgPiloto" placeholder="URL de imagen del piloto">
 
+                    <label for="edit_banderaPiloto">Bandera:</label>
+                    <input type="text" id="edit_banderaPiloto" placeholder="Ingresa URL de bandera del piloto">
+
                     <button id="btnGuardar2">Guardar Cambios</button>
                     <button id="btnCerrar2">Cerrar</button>
                     <button id="btnEliminar">Eliminar</button>
@@ -139,6 +142,7 @@ class EditarPilotoPopup extends HTMLElement {
             this.querySelector('#edit_equipoPiloto').value = pilot.equipo;
             this.querySelector('#edit_experiencePiloto').value = pilot.experiencia;
             this.querySelector('#edit_imgPiloto').value = pilot.img;
+            this.querySelector('#edit_banderaPiloto').value = pilot.bandera;
         } catch (error) {
             console.error('Error al cargar los detalles del piloto:', error);
         }
@@ -155,7 +159,8 @@ class EditarPilotoPopup extends HTMLElement {
             nombre: this.querySelector('#edit_namePiloto').value,
             equipo: this.querySelector('#edit_equipoPiloto').value,
             experiencia: this.querySelector('#edit_experiencePiloto').value,
-            img: this.querySelector('#edit_imgPiloto').value
+            img: this.querySelector('#edit_imgPiloto').value,
+            bandera: this.querySelector('#edit_banderaPiloto').value,
         };
 
         try {
@@ -192,6 +197,7 @@ class EditarPilotoPopup extends HTMLElement {
         this.querySelector('#edit_equipoPiloto').value = '';
         this.querySelector('#edit_experiencePiloto').value = '';
         this.querySelector('#edit_imgPiloto').value = '';
+        this.querySelector('#edit_banderaPiloto').value = '';
     }
 
     
