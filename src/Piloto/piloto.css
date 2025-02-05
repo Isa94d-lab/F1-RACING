@@ -140,7 +140,7 @@ div.links{
     flex-direction: column;
     align-items: center;
     background-color: transparent;
-    border: white 2px solid;
+    border: #bab6ae 2px solid;
     width: 100%;
     height: 300px;
     backdrop-filter: blur(100px);
