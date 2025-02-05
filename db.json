@@ -1,1 +1,89 @@
-{}
+{
+  "pistas": [],
+  "vehiculos": [
+    {
+      "id": "9a77",
+      "equipo": "isa",
+      "modelo": "2007",
+      "motor": "2",
+      "velocidad_maxima_kmh": 200,
+      "aceleracion_0_100": 5,
+      "pilots": [
+        "1738709621226",
+        "1738672441888"
+      ],
+      "img": "dsadsa",
+      "rendimiento": {
+        "conduccion_normal": {
+          "velocidad_promedio_kmh": 200,
+          "consumo_combustible": {
+            "seco": 3,
+            "lluvioso": 4,
+            "extremo": 5
+          },
+          "desgaste_neumaticos": {
+            "seco": 12,
+            "lluvioso": 10,
+            "extremo": 8
+          }
+        },
+        "conduccion_agresiva": {
+          "velocidad_promedio_kmh": 250,
+          "consumo_combustible": {
+            "seco": 212,
+            "lluvioso": 422,
+            "extremo": 55
+          },
+          "desgaste_neumaticos": {
+            "seco": 656,
+            "lluvioso": 12,
+            "extremo": 99
+          }
+        },
+        "ahorro_combustible": {
+          "velocidad_promedio_kmh": 55,
+          "consumo_combustible": {
+            "seco": 44,
+            "lluvioso": 55,
+            "extremo": 78
+          },
+          "desgaste_neumaticos": {
+            "seco": 99,
+            "lluvioso": 88,
+            "extremo": 77
+          }
+        }
+      }
+    }
+  ],
+  "pilots": [
+    {
+      "id": "1738672441888",
+      "nombre": "SAntiaog",
+      "equipo": "esgseg",
+      "experiencia": "segse",
+      "img": "gergdrgdrrdg"
+    },
+    {
+      "nombre": "Andres",
+      "equipo": "REd bullaaaaooooooooooooo",
+      "experiencia": "ninguna",
+      "img": "gergdrgdrrdg",
+      "id": "1738674744430"
+    },
+    {
+      "id": "1738709621226",
+      "nombre": "Isabella",
+      "equipo": "Monster",
+      "experiencia": "escudera",
+      "img": "awdwdawdawd"
+    },
+    {
+      "id": "1738758878342",
+      "nombre": "ttrreree",
+      "equipo": "trttrtyt",
+      "experiencia": ", iouio",
+      "img": "yrtrytr"
+    }
+  ]
+}

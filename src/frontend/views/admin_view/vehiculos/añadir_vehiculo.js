@@ -59,12 +59,12 @@ class AñadirVehiculoC extends HTMLElement {
         <input type="number" id="aceleracion" placeholder="Aceleración 0-100 (s)" required>
         <input type="url" id="img" placeholder="Imagen URL" required>
         <label>Piloto 1:</label>
-          <select id="pilot1">
+          <select  class="nombrePiloto" id="pilot1" name="pilot1">
           <option value="">Seleccionar Piloto</option>
           </select>
           
           <label>Piloto 2:</label>
-          <select id="pilot2">
+          <select   class="nombrePiloto" id="pilot2" name="pilot2">
           <option value="">Seleccionar Piloto</option>
           </select>
 
@@ -236,20 +236,17 @@ class AñadirVehiculoC extends HTMLElement {
         return;
       }
   
-      // Limpiar opciones anteriores
-      pilotSelect1.innerHTML = "<option value=''>Seleccione un piloto</option>";
-      pilotSelect2.innerHTML = "<option value=''>Seleccione un piloto</option>";
   
       // Agregar pilotos a los select
       pilots.forEach(pilot => {
         const option1 = document.createElement("option");
         option1.value = pilot.id; // Usamos el id del piloto
-        option1.textContent = pilot.name;
+        option1.textContent = pilot.nombre;
         pilotSelect1.appendChild(option1);
   
         const option2 = document.createElement("option");
         option2.value = pilot.id;
-        option2.textContent = pilot.name;
+        option2.textContent = pilot.nombre;
         pilotSelect2.appendChild(option2);
       });
   
