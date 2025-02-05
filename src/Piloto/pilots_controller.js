@@ -156,12 +156,20 @@ async function loadPilots() {
             const pilotElement = document.createElement("div");
             pilotElement.classList.add("pilot-card");
             pilotElement.innerHTML = `
-                <h4>${pilot.nombre}</h4>
-                <p>Equipo: ${pilot.equipo}</p>
-                <p>Experiencia: ${pilot.experiencia}</p>
-                <p>Imagen de piloto: ${pilot.img}</p>
+                <div class="conteiner_pilot" id="conteiner_pilot">
+                    <h4>${pilot.nombre}</h4>
+                    <p>Equipo: ${pilot.equipo}</p>
+                    <p>Experiencia: ${pilot.experiencia}</p>
+                    <p>Imagen de piloto: ${pilot.img}</p>
+                </div>
             `;
+
+            // Agregar evento de clic al contenedor del piloto
+            const pilotContainer = pilotElement.querySelector(".conteiner_pilot");
+            pilotContainer.addEventListener("click", () => openPilotPopup(pilot));
+            
             pilotosCard.appendChild(pilotElement);
+            
         });
     } catch (error) {
         console.error("Error al cargar los pilotos:", error);
@@ -278,16 +286,69 @@ function displaySearchResults(pilots) {
             const pilotElement = document.createElement("div");
             pilotElement.classList.add("pilot-card");
             pilotElement.innerHTML = `
+            <div class="conteiner_pilot" id="conteiner_pilot">
                 <h4>${pilot.nombre}</h4>
                 <p>Equipo: ${pilot.equipo}</p>
                 <p>Experiencia: ${pilot.experiencia}</p>
                 <p>Imagen de piloto: <img src="${pilot.img}" alt="${pilot.nombre}" width="100px" /></p>
+            </div>
             `;
             pilotosCard.appendChild(pilotElement);
         });
     } else {
         pilotosCard.innerHTML = "<p>No se encontraron pilotos que coincidan con la búsqueda.</p>";
     }
+
+
+
+
+    async function loadPilots() {
+        try {
+            const pilots = await getPilots();
+            console.log(pilots);  // Para depuración
+            const pilotosCard = document.getElementById("pilotosCard");
+    
+            if (!pilotosCard) {
+                console.error("Error: No se encontró el elemento con id 'pilotosCard'.");
+                return;
+            }
+    
+            // Limpiar la lista antes de actualizar
+            pilotosCard.innerHTML = "";
+    
+            // Crear una instancia del popup solo una vez
+            const popup = document.createElement('agregar-piloto-popup');
+            document.body.appendChild(popup);
+    
+            // Recorrer los pilotos para crear los elementos visuales
+            pilots.forEach((pilot) => {
+                const pilotElement = document.createElement("div");
+                pilotElement.classList.add("pilot-card");
+                pilotElement.innerHTML = `
+                    <div class="conteiner_pilot" id="conteiner_pilot">
+                        <h4>${pilot.nombre}</h4>
+                        <p>Equipo: ${pilot.equipo}</p>
+                        <p>Experiencia: ${pilot.experiencia}</p>
+                        <p>Imagen de piloto: ${pilot.img}</p>
+                    </div>
+                `;
+    
+                // Agregar evento de clic al contenedor del piloto
+                const pilotContainer = pilotElement.querySelector(".conteiner_pilot");
+                pilotContainer.addEventListener("click", () => {
+                    // Mostrar el popup y pasar la información del piloto
+                    popup.render(pilot);  // Pasamos los datos del piloto al popup
+                    popup.open();  // Abrimos el popup
+                });
+                
+                // Añadir el piloto a la lista
+                pilotosCard.appendChild(pilotElement);
+            });
+        } catch (error) {
+            console.error("Error al cargar los pilotos:", error);
+        }
+    }
+    
 }
 
 
@@ -308,3 +369,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error('El componente generateCode no se encuentra en el DOM.');
     }
 });
+
+
+
