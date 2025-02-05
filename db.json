@@ -162,6 +162,60 @@
           }
         }
       }
+    },
+    {
+      "id": "e86e",
+      "equipo": "1",
+      "modelo": "2",
+      "motor": "3",
+      "velocidad_maxima_kmh": 321,
+      "aceleracion_0_100": 21321,
+      "pilots": [
+        "1738672441888",
+        "1738674744430"
+      ],
+      "img": "23",
+      "rendimiento": {
+        "conduccion_normal": {
+          "velocidad_promedio_kmh": 3123,
+          "consumo_combustible": {
+            "seco": 213,
+            "lluvioso": 123123,
+            "extremo": 67
+          },
+          "desgaste_neumaticos": {
+            "seco": 343,
+            "lluvioso": 4,
+            "extremo": 43
+          }
+        },
+        "conduccion_agresiva": {
+          "velocidad_promedio_kmh": 343,
+          "consumo_combustible": {
+            "seco": 989,
+            "lluvioso": 87866,
+            "extremo": 76
+          },
+          "desgaste_neumaticos": {
+            "seco": 76,
+            "lluvioso": 76,
+            "extremo": 76
+          }
+        },
+        "ahorro_combustible": {
+          "velocidad_promedio_kmh": 7,
+          "consumo_combustible": {
+            "seco": 8,
+            "lluvioso": 9,
+            "extremo": 898
+          },
+          "desgaste_neumaticos": {
+            "seco": 898,
+            "lluvioso": 889,
+            "extremo": 8998
+          }
+        }
+      }
     }
   ],
   "pilots": [

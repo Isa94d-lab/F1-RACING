@@ -125,7 +125,8 @@ class AñadirVehiculoC extends HTMLElement {
     });
 
     cancelButton.addEventListener("click", () => {
-      this.hideForm();
+      formContainer.style.display = "none";
+      this.clearForm();
     });
     
 
