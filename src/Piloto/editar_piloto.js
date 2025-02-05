@@ -1,3 +1,7 @@
+console.log('Antes de la importación');
+import { deletePiloto } from './eliminar_piloto.js';
+console.log('Después de la importación');
+
 class EditarPilotoPopup extends HTMLElement {
     constructor() {
         super();
@@ -78,6 +82,7 @@ class EditarPilotoPopup extends HTMLElement {
 
                     <button id="btnGuardar2">Guardar Cambios</button>
                     <button id="btnCerrar2">Cerrar</button>
+                    <button id="btnEliminar">Eliminar</button>
                 </div>
             </div>
         `;
@@ -86,6 +91,16 @@ class EditarPilotoPopup extends HTMLElement {
         this.querySelector('#select_piloto').addEventListener('change', () => this.loadPilotDetails());
         this.querySelector('#btnGuardar2').addEventListener('click', () => this.updatePilot());
         this.querySelector('#btnCerrar2').addEventListener('click', () => this.close());
+        this.querySelector('#btnEliminar').addEventListener('click', () => {
+            const pilotId = this.querySelector('#select_piloto').value;  // Obtener el ID del piloto seleccionado
+            if (!pilotId) {
+                alert('Por favor, seleccione un piloto para eliminar');
+                return;  // Si no hay piloto seleccionado, no hacer nada
+            }
+            
+            // Llamar a la función deletePiloto pasando el ID y la URL base
+            deletePiloto(pilotId, this.BASE_URL);  // Asegúrate de que 'this.BASE_URL' esté correctamente definido
+        });
     }
 
     async loadPilots() {

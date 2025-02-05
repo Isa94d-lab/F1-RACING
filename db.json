@@ -1,40 +1,33 @@
 {
-    "pistas": [],
-    "pilots": [
-      {
-        "id": "1738671089943",
-        "nombre": "SAntiaog",
-        "equipo": "REd bull",
-        "experiencia": "ninguna",
-        "img": "dgdggd"
-      },
-      {
-        "id": "1738672441888",
-        "nombre": "SAntiaog",
-        "equipo": "esgseg",
-        "experiencia": "segse",
-        "img": "gergdrgdrrdg"
-      },
-      {
-        "nombre": "Daniel",
-        "equipo": "Monster8",
-        "experiencia": "escudero",
-        "img": "gergdrgdrrdg",
-        "id": "1738672976633"
-      },
-      {
-        "nombre": "Andres",
-        "equipo": "REd bullaaaaooooooooooooo",
-        "experiencia": "ninguna",
-        "img": "gergdrgdrrdg",
-        "id": "1738674744430"
-      },
-      {
-        "id": "1738675775261",
-        "nombre": "SAntiaoga",
-        "equipo": "dggdgd",
-        "experiencia": "segse",
-        "img": "gergdrgdrrdg"
-      }
-    ]
-  }
+  "pistas": [],
+  "pilots": [
+    {
+      "nombre": "SAntiaog",
+      "equipo": "esgseg",
+      "experiencia": "segse",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/255px-Flag_of_Colombia.svg.png",
+      "id": "1738672441888"
+    },
+    {
+      "nombre": "Andres",
+      "equipo": "REd bullaaaaooooooooooooo",
+      "experiencia": "ninguna",
+      "img": "gergdrgdrrdg",
+      "id": "1738674744430"
+    },
+    {
+      "id": "1738675775261",
+      "nombre": "SAntiaoga",
+      "equipo": "dggdgd",
+      "experiencia": "segse",
+      "img": "gergdrgdrrdg"
+    },
+    {
+      "id": 1738714051283,
+      "nombre": "Oscar Piastri",
+      "equipo": "McLaren",
+      "experiencia": "piloto titular",
+      "img": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png"
+    }
+  ]
+}

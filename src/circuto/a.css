@@ -696,22 +696,6 @@ font-size: 70px;
   }
 }
 
-.socials {
-  position: fixed;
-  display: block;
-  left: 90%;
-  bottom: 20px;
-}
-.socials > a {
-  display: block;
-  width: 30px;
-  opacity: 0.2;
-  transform: scale(var(--scale, 0.8));
-  transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
-}
-.socials > a:hover {
-  --scale: 1;
-}
 
 
 
