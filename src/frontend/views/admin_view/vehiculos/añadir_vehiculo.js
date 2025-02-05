@@ -125,9 +125,9 @@ class AñadirVehiculoC extends HTMLElement {
     });
 
     cancelButton.addEventListener("click", () => {
-      formContainer.style.display = "none";
-      errorMsg.textContent = "";
+      this.hideForm();
     });
+    
 
     saveButton.addEventListener("click", async () => {
       const equipo = this.shadowRoot.getElementById("equipo").value.trim();
@@ -214,7 +214,8 @@ class AñadirVehiculoC extends HTMLElement {
 
       await addVehicle(newVehicle);
       formContainer.style.display = "none";
-      this.clearForm();
+      this.showConfirmation(); // Mostrar alerta de éxito
+      this.hideForm();
     });
   }
   
@@ -254,6 +255,37 @@ class AñadirVehiculoC extends HTMLElement {
       console.error("Error al cargar los pilotos:", error);
     }
   }
+  clearForm() {
+    this.shadowRoot.getElementById("equipo").value = "";
+    this.shadowRoot.getElementById("modelo").value = "";
+    this.shadowRoot.getElementById("motor").value = "";
+    this.shadowRoot.getElementById("velocidad").value = "";
+    this.shadowRoot.getElementById("aceleracion").value = "";
+    this.shadowRoot.getElementById("img").value = "";
+    this.shadowRoot.getElementById("pilot1").value = "";
+    this.shadowRoot.getElementById("pilot2").value = "";
+  
+    // Limpiar rendimiento
+    const rendimientoFields = [
+      "cn-velocidad", "cn-seco", "cn-lluvioso", "cn-extremo",
+      "cn-d-seco", "cn-d-lluvioso", "cn-d-extremo",
+      "ca-velocidad", "ca-seco", "ca-lluvioso", "ca-extremo",
+      "ca-d-seco", "ca-d-lluvioso", "ca-d-extremo",
+      "ac-velocidad", "ac-seco", "ac-lluvioso", "ac-extremo",
+      "ac-d-seco", "ac-d-lluvioso", "ac-d-extremo"
+    ];
+  
+    rendimientoFields.forEach(id => {
+      this.shadowRoot.getElementById(id).value = "";
+    });
+  
+    // Limpiar mensaje de error
+    this.shadowRoot.getElementById("error-msg").textContent = "";
+  }
+  showConfirmation() {
+    alert("Vehículo guardado exitosamente.");
+  }
+  
   
 }
 

@@ -54,6 +54,114 @@
           }
         }
       }
+    },
+    {
+      "id": "6c83",
+      "equipo": "dsad",
+      "modelo": "sdadas",
+      "motor": "sadasd",
+      "velocidad_maxima_kmh": 222,
+      "aceleracion_0_100": 3233,
+      "pilots": [
+        "1738674744430",
+        "1738758878342"
+      ],
+      "img": "dsdascsaca",
+      "rendimiento": {
+        "conduccion_normal": {
+          "velocidad_promedio_kmh": 123,
+          "consumo_combustible": {
+            "seco": 3223,
+            "lluvioso": 1221,
+            "extremo": 213
+          },
+          "desgaste_neumaticos": {
+            "seco": 123,
+            "lluvioso": 123,
+            "extremo": 321
+          }
+        },
+        "conduccion_agresiva": {
+          "velocidad_promedio_kmh": 132,
+          "consumo_combustible": {
+            "seco": 312,
+            "lluvioso": 312,
+            "extremo": 213
+          },
+          "desgaste_neumaticos": {
+            "seco": 213,
+            "lluvioso": 213,
+            "extremo": 2213
+          }
+        },
+        "ahorro_combustible": {
+          "velocidad_promedio_kmh": 3123,
+          "consumo_combustible": {
+            "seco": 123,
+            "lluvioso": 1313,
+            "extremo": 132
+          },
+          "desgaste_neumaticos": {
+            "seco": 123,
+            "lluvioso": 312,
+            "extremo": 123
+          }
+        }
+      }
+    },
+    {
+      "id": "7718",
+      "equipo": "sa",
+      "modelo": "sadsad",
+      "motor": "sdaad",
+      "velocidad_maxima_kmh": 321321,
+      "aceleracion_0_100": 321323,
+      "pilots": [
+        "1738674744430",
+        "1738709621226"
+      ],
+      "img": "12323213213",
+      "rendimiento": {
+        "conduccion_normal": {
+          "velocidad_promedio_kmh": 321321,
+          "consumo_combustible": {
+            "seco": 312321,
+            "lluvioso": 321,
+            "extremo": 21321
+          },
+          "desgaste_neumaticos": {
+            "seco": 3213213,
+            "lluvioso": 21321,
+            "extremo": 1221
+          }
+        },
+        "conduccion_agresiva": {
+          "velocidad_promedio_kmh": 3213213,
+          "consumo_combustible": {
+            "seco": 21321321,
+            "lluvioso": 3213,
+            "extremo": 3213213
+          },
+          "desgaste_neumaticos": {
+            "seco": 1232132,
+            "lluvioso": 32323,
+            "extremo": 32132
+          }
+        },
+        "ahorro_combustible": {
+          "velocidad_promedio_kmh": 3123,
+          "consumo_combustible": {
+            "seco": 2131232,
+            "lluvioso": 321,
+            "extremo": 3213
+          },
+          "desgaste_neumaticos": {
+            "seco": 213213,
+            "lluvioso": 321321,
+            "extremo": 3123
+          }
+        }
+      }
     }
   ],
   "pilots": [
