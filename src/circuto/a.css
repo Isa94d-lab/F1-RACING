@@ -1,14 +1,20 @@
-* Estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 html {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: rgb(20, 20, 20);
-    font-family: "Inter", serif;
+    background: -webkit-linear-gradient(90deg, #560000,#333333,#000000);
+    background: linear-gradient(90deg, #560000,#333333,#000000);
+    font-family: "exo 2", serif;
     font-optical-sizing: auto;
+    color: white;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
   }
+  
   /*navbar*/
 
   .navbar{
@@ -64,285 +70,160 @@ div.links{
 {
   color: white;
   box-shadow: inset 0 0 150px 0 #c7080c;
+  transform: scale(1.1);
+
 }
 .opciones:active{
   transform: scale(0.9);
 }
+.opciones:nth-child(1){
+  box-shadow: inset 0 0 150px 0 #c7080c;
+}
 
-  
-/* ---------------------- TITULO ---------------------- */
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    margin-bottom: 3px;
-  }
-  
-   /* Esta zona representa la barra de interfaz */ 
-  nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    background-color: rgb(37, 37, 37);
-    color: rgb(255, 255, 255);
-    position: relative;
-    list-style: none;
-    margin: 0.5rem 1rem;
-    padding: 0.4rem;
-    text-decoration: none;
-    padding: 10px;
-  }
 
-  .button-title {
-    position: relative;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-    padding-block: 0.5rem;
-    padding-inline: 1.25rem;
-    background-color: #db1c1c;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffff;
-    gap: 10px;
-    font-weight: bold;
-    border: 3px solid #0000004d;
-    outline: none;
-    overflow: hidden;
-    font-size: 50px;
-    cursor: pointer;
-
-    border-radius: 20px;
-  }
-
-  
-  .button-title:hover {
-    transform: scale(1.05);
-    border-color: rgba(0, 0, 0, 0.6);
-    transform: scale(1.05);
-    border-color: rgba(0, 0, 0, 0.6);
-  }
-  
-  .button-title:hover .icon {
-    transform: translate(4px);
-  }
-  
-  .button-title:hover::before {
-    animation: shine 2.0s ease-out;
-  }
-  
-  .button-title::before {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100%;
-    background-image: linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0) 30%,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0) 70%
-    );
+    /* Estilos del popup */
+#popup,  #popup2 {
+    display: none;
+    position: fixed;
     top: 0;
-    left: -100px;
-    opacity: 0.6;
-  }
-  
-  @keyframes shine {
-    0% {
-      left: -100px;
-    }
-  
-    60% {
-      left: 100%;
-    }
-  
-    to {
-      left: 100%;
-    }
-  }
-  
-          /* Estilos generales */
-            body {
-                font-family: Arial, sans-serif;
-                background-color: rgb(37, 37, 37);
-            }
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popupBox {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    text-align: center;
+    line-height: 1.5; /* 1.5 veces el tamaño de la fuente */
+}
+.popupBox input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.popupBox button {
+    padding: 10px 15px;
+    background-color: #a10b0b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.popupBox button:hover {
+    background-color: #990a0a;
+}
+.popupBox button.close {
+    background-color: #f44336;
+}
+.popupBox button.close:hover {
+    background-color: #d32f2f;
+}
 
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
-            }
-
-            th, td {
-                padding: 10px;
-                text-align: center;
-            }
-
-            .th1 {
-                color: white;
-            }
-
-
-
-            /* Estilos del popup */
-        #popup,  #popup2 {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .popupBox {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 500px;
-            text-align: center;
-            line-height: 1.5; /* 1.5 veces el tamaño de la fuente */
-        }
-
-        .popupBox input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .popupBox button {
-            padding: 10px 15px;
-            background-color: #a10b0b;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .popupBox button:hover {
-            background-color: #990a0a;
-        }
-
-        .popupBox button.close {
-            background-color: #f44336;
-        }
-
-        .popupBox button.close:hover {
-            background-color: #d32f2f;
-        }
+/* ------------------------ tabla izquierda (infoTable) ------------------------ */
+.left-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.left-table th, .left-table td {
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(196, 18, 18);
+    max-width: 300px;
+    min-width: 200px;
+    word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+    vertical-align: middle; /* Alinea el contenido verticalmente */
+    color: white ;
+}
+.left-table td:hover {
+    background-color: rgb(161, 15, 15);
+}
 
 
-            /* ------------------------ tabla izquierda (infoTable) ------------------------ */
-            .left-table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
-            }
-
-            .left-table th, .left-table td {
-                padding: 10px;
-                text-align: center;
-                background-color: rgb(196, 18, 18);
-                max-width: 300px;
-                min-width: 200px;
-                word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
-                vertical-align: middle; /* Alinea el contenido verticalmente */
-                color: white ;
-            }
-
-            .left-table td:hover {
-                background-color: rgb(161, 15, 15);
-            }
-
-            /* ------------------------ tabla derecha (right-table) ------------------------ */
-
-
-            /* ------------------------ conteiner ------------------------ */
-            .conteiner1 {
-                display: flex;
-                flex-direction: row;
-                padding-bottom: 20px;
-                justify-content: space-between;
-            }
-
-            .left-panel {
-                flex: 1;
-                box-sizing: border-box;
-                background-color: #525252;
-
-                height: 100vh;
-                max-width: 100vw;
-                min-width: 200px;
-                overflow: hidden; /* Asegura que el contenido no se desborde */
-                display: flex;
-                flex-direction: column;
-            }
-
-            .right-panel {
-                box-sizing: border-box;
-                padding-left: 10px;
-                padding-top: 5px;
-                background-color: #525252;
-                height: 100vh;
-                width: 100vw;
-                overflow: auto; /* Permite desplazamiento si el contenido es más grande */
-                display: flex;
-                flex-direction: column;
-            }
+/* ------------------------ conteiner ------------------------ */
+.conteiner1 {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    justify-content: space-between;
+}
+.left-panel {
+    flex: 1;
+    box-sizing: border;
+    height: 100vh;
+    max-width: 100vw;
+    min-width: 200px;
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+    display: flex;
+    flex-direction: column;
+}
+.right-panel {
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto; /* Permite desplazamiento si el contenido es más grande */
+    display: flex;
+    flex-direction: column;
+}
 
 .right-container{
-              display: flex;
-              flex-direction: column;
-            }
-                                    
-
+  display: flex;
+  flex-direction: column;
+}
 .renglon1{
 display: flex;
 flex-direction: row;
 justify-content: space-around;
 width: 100%;
-
 }
-
 .info1{
   width: 40%;
   height: 100px;
+  padding: 7px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   justify-content: space-between;
+  border-bottom: #979899fd 3px solid;
+  border-right: #979899fd 3px solid;
+  border-top: transparent 10px solid;
+  border-left: transparent 10px solid;
+  border-radius: 20px;
 }
-
 .bandera{
   width: 100px;
   height: 70px;
   border-radius: 5%;
 }
-
 .nombrepista{
   font-size: 20px;
   font-weight: bold;
 }
-
 .info2{
   width: 40%;
-  height: 100%;
+  min-height: 70%;
   max-height: 180px;
   display: flex;
   gap: 3px;
+  padding: 7px;
   overflow: auto;
+  border-bottom: #979899fd 3px solid;
+  border-right: #979899fd 3px solid;
+  border-top: transparent 10px solid;
+  border-left: transparent 10px solid;
+  border-radius: 20px;
 }
-
 .renglon2{
 display: flex;
 flex-direction: row;
@@ -356,17 +237,24 @@ padding-top: 10px;
   display: grid;
   gap: 1.25rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  width: 500px;
+  width: 30%;
   font-size: 20px;
 }
-
-.info-item-{
-padding-bottom: .625rem;
-padding-right: .625rem;
-max-height: 100%;
-font-size: 70px;
+.info-item {
+  padding-bottom: .625rem;
+  padding-right: .625rem;
+  max-height: 100%;
+  padding: 20px;
+  border-bottom: 3px solid #979899fd;
+  border-right: 3px solid #979899fd;
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent; 
+  border-radius: 12px;
 }
 
+
+
+/*boton eliminar pista*/
 .removePista {
   width: 50px;
   height: 50px;
@@ -383,18 +271,13 @@ font-size: 70px;
   overflow: hidden;
   position: relative;
 }
-
-
-
 .svgIcon {
   width: 12px;
   transition-duration: .3s;
 }
-
 .svgIcon path {
   fill: white;
 }
-
 .removePista:hover {
   width: 140px;
   border-radius: 50px;
@@ -402,13 +285,11 @@ font-size: 70px;
   background-color: #c7080c;
   align-items: center;
 }
-
 .removePista:hover .svgIcon {
   width: 50px;
   transition-duration: .3s;
   transform: translateY(60%);
 }
-
 .removePista::before {
   position: absolute;
   top: -25px;
@@ -426,11 +307,11 @@ font-size: 70px;
 }
 
 
-
+/*wrapper*/
 
 .wrapper {
   --background: #c7080c;
-  --icon-color: #414856;
+  --icon-color: #979899fd;
   --shape-color-01: #b8cbee;
   --shape-color-02: #7691e8;
   --shape-color-03: #fdd053;
@@ -556,7 +437,7 @@ font-size: 70px;
 .wrapper input:checked ~ .tooltip {
   width: fit-content;
   padding: 30px;
-  top: -220px;
+  top: -45vh;
   opacity: 1;
 }
 
@@ -695,8 +576,6 @@ font-size: 70px;
     transform: scale(1, 1);
   }
 }
-
-
 
 
         /* Botón para abrir el popup */

@@ -74,7 +74,83 @@ div.links{
 .opciones:active{
   transform: scale(0.9);
 }
+.opciones:nth-child(2){
+    box-shadow: inset 0 0 150px 0 #c7080c;
+  }
 
+  /*searchbox*/
+
+  .conteiner1{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+.input-container {
+    width: 520px;
+    position: relative;
+  }
+  
+  .icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% + 5px);
+    transform: translateY(calc(-50% - 5px));
+  }
+  
+  .input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    transition: .2s linear;
+    border: 2.5px solid black;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+  }
+
+  
+  .input-container:hover > .icon {
+    animation: anim 1s linear infinite;
+  }
+  
+  @keyframes anim {
+    0%,
+    100% {
+      transform: translateY(calc(-50% - 5px)) scale(1);
+    }
+  
+    50% {
+      transform: translateY(calc(-50% - 5px)) scale(1.1);
+    }
+  }
+
+    /*pilotos*/
+  .conteiner{
+    display: flex;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.pilot-card{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    border: white 2px solid;
+    width: 100%;
+    height: 300px;
+    backdrop-filter: blur(100px);
+}
+.pilot-card img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
 
 /*popups*/
 #popup, #popup2 {
@@ -121,32 +197,36 @@ div.links{
     }
 
 
-     /* Estilos del popup */
+         /* Botón para abrir el popup */
+        .add {
+          padding: 10px 15px;
+          background-color: #c7080c;
+          color: white;
+          border: none;
+          cursor: pointer;
+          margin-bottom: 0px;
+          font-weight: 600;
+          border-radius: 100%;
+          align-items: center;
+      }
 
-
-    /* Botón para abrir el popup */
-    .addPiloto {
+      .add:hover {
+          background-color: #910808;
+      }
+      .edit {
         padding: 10px 15px;
-        background-color: #d80202;
+        background-color: #c7080c;
         color: white;
         border: none;
         cursor: pointer;
-        margin-bottom: 0px;
         font-weight: 600;
+        border-radius: 50%;
     }
 
-    .addPiloto:hover {
+    .edit:hover {
         background-color: #910808;
     }
-    
-.conteiner1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-bottom: 2%;
-    margin: 0;
-}
+
 
 /* WRAPER BOTONES AGG-EDIT*/
 
@@ -278,7 +358,7 @@ div.links{
   .wrapper input:checked ~ .tooltip {
     width: fit-content;
     padding: 30px;
-    top: -35vh;
+    top: -45vh;
     opacity: 1;
   }
   
@@ -419,35 +499,6 @@ div.links{
   }
   
 
-         /* Botón para abrir el popup */
-        .add {
-          padding: 10px 15px;
-          background-color: #c7080c;
-          color: white;
-          border: none;
-          cursor: pointer;
-          margin-bottom: 0px;
-          font-weight: 600;
-          border-radius: 100%;
-          align-items: center;
-      }
-
-      .add:hover {
-          background-color: #910808;
-      }
-      .edit {
-        padding: 10px 15px;
-        background-color: #c7080c;
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
-        border-radius: 50%;
-    }
-
-    .edit:hover {
-        background-color: #910808;
-    }
 
     /*pilotos card*/
     #pilotosCard {
@@ -458,73 +509,4 @@ div.links{
     }
 
 
-.conteiner3{
-    display: flex;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
 
-}
-
-.pilot-card{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent;
-    border: white 2px solid;
-    width: 100%;
-    height: 300px;
-    backdrop-filter: blur(100px);
-}
-.pilot-card img{
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    margin-top: 20px;
-}
-
-
-/*searchbox*/
-
-/* From Uiverse.io by boryanakrasteva */ 
-.input-container {
-    width: 520px;
-    position: relative;
-  }
-  
-  .icon {
-    position: absolute;
-    right: 10px;
-    top: calc(50% + 5px);
-    transform: translateY(calc(-50% - 5px));
-  }
-  
-  .input {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    transition: .2s linear;
-    border: 2.5px solid black;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-radius: 5px;
-  }
-
-  
-  .input-container:hover > .icon {
-    animation: anim 1s linear infinite;
-  }
-  
-  @keyframes anim {
-    0%,
-    100% {
-      transform: translateY(calc(-50% - 5px)) scale(1);
-    }
-  
-    50% {
-      transform: translateY(calc(-50% - 5px)) scale(1.1);
-    }
-  }
