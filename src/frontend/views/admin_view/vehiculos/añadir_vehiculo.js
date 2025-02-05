@@ -59,10 +59,14 @@ class AñadirVehiculoC extends HTMLElement {
         <input type="number" id="aceleracion" placeholder="Aceleración 0-100 (s)" required>
         <input type="url" id="img" placeholder="Imagen URL" required>
         <label>Piloto 1:</label>
-          <select id="pilot1"></select>
+          <select id="pilot1">
+          <option value="">Seleccionar Piloto</option>
+          </select>
           
           <label>Piloto 2:</label>
-          <select id="pilot2"></select>
+          <select id="pilot2">
+          <option value="">Seleccionar Piloto</option>
+          </select>
 
         <div class="section">
           <h4>Rendimiento - Conducción Normal</h4>
@@ -216,10 +220,44 @@ class AñadirVehiculoC extends HTMLElement {
   
 
   async loadPilots() {
-    const response = await fetch("http://localhost:3000/pilots");
-    const pilots = await response.json();
-    this.shadowRoot.getElementById("pilot").innerHTML = pilots.map(p => `<option>${p.name}</option>`).join("");
+    try {
+      const response = await fetch("http://localhost:3000/pilots");
+  
+      if (!response.ok) {
+        throw new Error(`Error al cargar pilotos: ${response.status}`);
+      }
+  
+      const pilots = await response.json();
+      const pilotSelect1 = this.shadowRoot.getElementById("pilot1");
+      const pilotSelect2 = this.shadowRoot.getElementById("pilot2");
+  
+      if (!pilotSelect1 || !pilotSelect2) {
+        console.error("No se encontraron los select de pilotos en el shadow DOM.");
+        return;
+      }
+  
+      // Limpiar opciones anteriores
+      pilotSelect1.innerHTML = "<option value=''>Seleccione un piloto</option>";
+      pilotSelect2.innerHTML = "<option value=''>Seleccione un piloto</option>";
+  
+      // Agregar pilotos a los select
+      pilots.forEach(pilot => {
+        const option1 = document.createElement("option");
+        option1.value = pilot.id; // Usamos el id del piloto
+        option1.textContent = pilot.name;
+        pilotSelect1.appendChild(option1);
+  
+        const option2 = document.createElement("option");
+        option2.value = pilot.id;
+        option2.textContent = pilot.name;
+        pilotSelect2.appendChild(option2);
+      });
+  
+    } catch (error) {
+      console.error("Error al cargar los pilotos:", error);
+    }
   }
+  
 }
 
 customElements.define("añadir-vehiculo", AñadirVehiculoC);
