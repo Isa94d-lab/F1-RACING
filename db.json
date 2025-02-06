@@ -66,60 +66,6 @@
         }
       },
       "id": "d73b"
-    },
-    {
-      "equipo": "asd",
-      "modelo": "sadas",
-      "motor": "dfs",
-      "velocidad_maxima_kmh": 2313,
-      "aceleracion_0_100": 12312,
-      "img": "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/alpine.png",
-      "pilots": [
-        "1738709621226",
-        "1738792586829"
-      ],
-      "rendimiento": {
-        "conduccion_normal": {
-          "velocidad_promedio_kmh": 213,
-          "consumo_combustible": {
-            "seco": 123123,
-            "lluvioso": 123,
-            "extremo": 123
-          },
-          "desgaste_neumaticos": {
-            "seco": 123,
-            "lluvioso": 213,
-            "extremo": 213
-          }
-        },
-        "conduccion_agresiva": {
-          "velocidad_promedio_kmh": 123,
-          "consumo_combustible": {
-            "seco": 123,
-            "lluvioso": 123123,
-            "extremo": 12312
-          },
-          "desgaste_neumaticos": {
-            "seco": 123123,
-            "lluvioso": 123123,
-            "extremo": 123321
-          }
-        },
-        "ahorro_combustible": {
-          "velocidad_promedio_kmh": 213213,
-          "consumo_combustible": {
-            "seco": 123123,
-            "lluvioso": 123123,
-            "extremo": 123123
-          },
-          "desgaste_neumaticos": {
-            "seco": 123123,
-            "lluvioso": 12312,
-            "extremo": 123321
-          }
-        }
-      },
-      "id": "95e7"
     }
   ],
   "pilots": [
@@ -132,49 +78,21 @@
       "id": "1738709621226"
     },
     {
-      "nombre": "PPPPPPPPPP PPPPPPPPPPPP",
-      "equipo": "trttrtyt",
-      "experiencia": ", iouio",
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s",
-      "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s",
-      "id": "1738758878342"
-    },
-    {
-      "id": "1738792586829",
-      "nombre": "sad",
-      "equipo": "sada",
-      "experiencia": "sadas",
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s"
-    },
-    {
-      "id": "1738792807291",
-      "nombre": "sdas",
-      "equipo": "asdas",
+      "id": 1738839356688,
+      "nombre": "adsa",
+      "equipo": "asdasd",
       "experiencia": "asdas",
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s"
-    },
-    {
-      "id": null,
-      "nombre": "sdfsdf",
-      "equipo": "",
-      "experiencia": "dsfsdds",
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM7DNYo6lNyNF5dLDaeuVbMqVNVBxKGaFSZA&s",
-      "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM7DNYo6lNyNF5dLDaeuVbMqVNVBxKGaFSZA&s"
-    },
-    {
-      "id": null,
-      "nombre": "sdfsdf",
-      "equipo": "Monster",
-      "experiencia": "dsfsdds",
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM7DNYo6lNyNF5dLDaeuVbMqVNVBxKGaFSZA&s",
-      "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM7DNYo6lNyNF5dLDaeuVbMqVNVBxKGaFSZA&s"
+      "img": "sada",
+      "bandera": "asdasd"
     }
   ],
   "equipos": [
     {
       "id": "0001",
       "nombre": "Monster",
-      "pilotos": [],
+      "pilotos": [
+        "Lando Norris"
+      ],
       "img": ""
     },
     {
