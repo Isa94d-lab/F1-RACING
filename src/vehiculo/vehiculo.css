@@ -203,12 +203,17 @@ div.links{
         cursor: pointer;
         font-weight: 600;
         border-radius: 50%;
+        text-decoration: none;
     }
 
     .edit:hover {
         background-color: #910808;
     }
 
+    .edit img{
+      height: 24px;
+      width: 24px;
+    }
 
 /* WRAPER BOTONES AGG-EDIT*/
 
