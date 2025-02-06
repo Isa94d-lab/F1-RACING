@@ -74,7 +74,7 @@ div.links{
 .opciones:active{
   transform: scale(0.9);
 }
-.opciones:nth-child(2){
+.opciones:nth-child(3){
     box-shadow: inset 0 0 150px 0 #c7080c;
   }
 
@@ -125,7 +125,6 @@ div.links{
     }
   }
 
-    /*pilotos*/
   .conteiner{
     display: flex;
     display: flex;
@@ -134,23 +133,6 @@ div.links{
     height: 100vh;
 }
 
-.pilot-card{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent;
-    border: #bab6ae 2px solid;
-    width: 100%;
-    height: 300px;
-    backdrop-filter: blur(100px);
-}
-.pilot-card img{
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    margin-top: 20px;
-}
 
 /*popups*/
 #popup, #popup2 {
@@ -500,12 +482,47 @@ div.links{
   
 
 
-    /*pilotos card*/
-    #pilotosCard {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 25px; /* Ajusta el espacio entre las cards según sea necesario */
-        padding: 50px;
-    }
-
-
+  .card-vehicle {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+  }
+  .card-vehicle:hover{
+    transform: scale(1.01);
+    transition: 0.5s;
+  }
+  .card-vehicle img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .card-vehicle h3 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  .card-vehicle p {
+    font-size: 14px;
+  }
+  .card-vehicle .details {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .card-vehicle .details span {
+    display: block;
+  }
+  .vehicles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px; /* Ajusta el espacio entre las cards según sea necesario */
+      padding: 50px;
+      width: 50px;
+      z-index: 20;
+  }

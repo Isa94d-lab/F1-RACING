@@ -108,6 +108,60 @@
           }
         }
       }
+    },
+    {
+      "id": "95e7",
+      "equipo": "asd",
+      "modelo": "sadas",
+      "motor": "dfs",
+      "velocidad_maxima_kmh": 2313,
+      "aceleracion_0_100": 12312,
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM7DNYo6lNyNF5dLDaeuVbMqVNVBxKGaFSZA&s",
+      "pilots": [
+        "1738709621226",
+        "1738792586829"
+      ],
+      "rendimiento": {
+        "conduccion_normal": {
+          "velocidad_promedio_kmh": 213,
+          "consumo_combustible": {
+            "seco": 123123,
+            "lluvioso": 123,
+            "extremo": 123
+          },
+          "desgaste_neumaticos": {
+            "seco": 123,
+            "lluvioso": 213,
+            "extremo": 213
+          }
+        },
+        "conduccion_agresiva": {
+          "velocidad_promedio_kmh": 123,
+          "consumo_combustible": {
+            "seco": 123,
+            "lluvioso": 123123,
+            "extremo": 12312
+          },
+          "desgaste_neumaticos": {
+            "seco": 123123,
+            "lluvioso": 123123,
+            "extremo": 123321
+          }
+        },
+        "ahorro_combustible": {
+          "velocidad_promedio_kmh": 213213,
+          "consumo_combustible": {
+            "seco": 123123,
+            "lluvioso": 123123,
+            "extremo": 123123
+          },
+          "desgaste_neumaticos": {
+            "seco": 123123,
+            "lluvioso": 12312,
+            "extremo": 123321
+          }
+        }
+      }
     }
   ],
   "pilots": [
