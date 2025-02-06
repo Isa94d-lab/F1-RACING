@@ -85,30 +85,37 @@ function createVehicleCards(vehicles) {
 
 // Función para abrir el popup con los detalles del vehículo
 function openModal(vehicle) {
-const modal = document.getElementById('vehicle-modal');
-const modalTitle = document.getElementById('modal-title');
-const modalDescription = document.getElementById('modal-description');
+  const modal = document.getElementById('vehicle-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalImage = document.getElementById('modal-image');
+  const modalDescription = document.getElementById('modal-description');
 
-// Verificar si los elementos existen antes de manipularlos
-if (modalTitle && modalDescription) {
-  // Actualizamos el título y la descripción del modal con la información del vehículo
-  modalTitle.innerHTML = `${vehicle.modelo} - ${vehicle.equipo}`;
-  modalDescription.innerHTML = `
-    <strong>Motor:</strong> ${vehicle.motor}<br>
-    <strong>Velocidad Máxima:</strong> ${vehicle.velocidad_maxima_kmh} km/h<br>
-    <strong>Aceleración (0-100):</strong> ${vehicle.aceleracion_0_100} segundos<br><br>
-    <strong>Rendimiento Normal:</strong><br>
-    Velocidad Promedio: ${vehicle.rendimiento.conduccion_normal.velocidad_promedio_kmh} km/h<br>
-    Consumo Combustible (seco): ${vehicle.rendimiento.conduccion_normal.consumo_combustible.seco}<br>
-    Desgaste Neumáticos (seco): ${vehicle.rendimiento.conduccion_normal.desgaste_neumaticos.seco}
-  `;
-  
-  modal.style.display = 'flex'; // Mostrar el modal
-} else {
-  console.error("Los elementos del modal no están disponibles.");
-}
+  // Verificar si los elementos existen antes de manipularlos
+  if (modalTitle && modalImage && modalDescription) {
+    // Actualizamos el título del modal con el modelo del vehículo
+    modalTitle.innerHTML = `${vehicle.modelo} - ${vehicle.equipo}`;
+
+    // Colocar la imagen del vehículo en el modal
+    modalImage.innerHTML = `<img src="${vehicle.img}" alt="Imagen del vehículo">`;
+
+    // Detalles del vehículo
+    modalDescription.innerHTML = `
+      <strong>Motor:</strong> ${vehicle.motor}<br>
+      <strong>Velocidad Máxima:</strong> ${vehicle.velocidad_maxima_kmh} km/h<br>
+      <strong>Aceleración (0-100):</strong> ${vehicle.aceleracion_0_100} segundos<br><br>
+      <strong>Rendimiento Normal:</strong><br>
+      Velocidad Promedio: ${vehicle.rendimiento.conduccion_normal.velocidad_promedio_kmh} km/h<br>
+      Consumo Combustible (seco): ${vehicle.rendimiento.conduccion_normal.consumo_combustible.seco}<br>
+      Desgaste Neumáticos (seco): ${vehicle.rendimiento.conduccion_normal.desgaste_neumaticos.seco}
+    `;
+    
+    modal.style.display = 'flex'; // Mostrar el modal
+  } else {
+    console.error("Los elementos del modal no están disponibles.");
+  }
 }
 
+// Función para cerrar el modal
 function closeModal() {
   const modal = document.getElementById('vehicle-modal');
   modal.style.display = 'none'; // Ocultar el modal

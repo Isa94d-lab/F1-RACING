@@ -2,17 +2,16 @@
   "pistas": [],
   "vehiculos": [
     {
-      "id": "d73b",
       "equipo": "dszfsdf",
       "modelo": "sdfdsf",
       "motor": "sdafsdf",
       "velocidad_maxima_kmh": 2,
       "aceleracion_0_100": 2,
+      "img": "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/alpine.png",
       "pilots": [
-        "1738674744430",
-        "1738672441888"
+        "1738709621226",
+        "null"
       ],
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s",
       "rendimiento": {
         "conduccion_normal": {
           "velocidad_promedio_kmh": 21,
@@ -53,16 +52,16 @@
             "extremo": 4
           }
         }
-      }
+      },
+      "id": "d73b"
     },
     {
-      "id": "95e7",
       "equipo": "asd",
       "modelo": "sadas",
       "motor": "dfs",
       "velocidad_maxima_kmh": 2313,
       "aceleracion_0_100": 12312,
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM7DNYo6lNyNF5dLDaeuVbMqVNVBxKGaFSZA&s",
+      "img": "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2025/alpine.png",
       "pilots": [
         "1738709621226",
         "1738792586829"
@@ -107,7 +106,8 @@
             "extremo": 123321
           }
         }
-      }
+      },
+      "id": "95e7"
     }
   ],
   "pilots": [
