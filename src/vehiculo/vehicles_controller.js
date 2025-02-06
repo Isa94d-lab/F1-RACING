@@ -39,8 +39,7 @@ async function deleteVehicle(id) {
 
 export { getVehicles, getVehicleById, addVehicle, updateVehicle, deleteVehicle };
 
-// URL del JSON Server donde se encuentran los datos
-const apiUrl = 'http://localhost:3000/vehiculos';  // Cambia esto con la URL correcta de tu servidor
+const apiUrl = 'http://localhost:3000/vehiculos'; // URL del JSON Server
 
 // Función para obtener los datos desde JSON Server
 async function fetchVehiclesData() {
@@ -50,7 +49,7 @@ async function fetchVehiclesData() {
       throw new Error('No se pudieron obtener los datos.');
     }
     const vehicles = await response.json();
-    createVehicleCards(vehicles);  // Llamar a la función para crear las tarjetas
+    createVehicleCards(vehicles); // Crear las tarjetas
   } catch (error) {
     console.error('Error al obtener los datos:', error);
   }
@@ -61,25 +60,64 @@ function createVehicleCards(vehicles) {
   const container = document.getElementById('vehicles-container');
   container.innerHTML = '';  // Limpiar el contenedor antes de agregar nuevas tarjetas
 
-vehicles.forEach(vehicle => {
+  vehicles.forEach(vehicle => {
     const card = document.createElement('div');
     card.classList.add('card-vehicle');
+    card.setAttribute('data-id', vehicle.id); // Establecer un atributo para identificar la tarjeta
 
     card.innerHTML = `
-        <img src="${vehicle.img}" alt="Imagen del vehículo">
-        <h3>${vehicle.modelo}</h3>
-        <p><strong>Equipo:</strong> ${vehicle.equipo}</p>
-        <p><strong>Motor:</strong> ${vehicle.motor}</p>
-        <p><strong>Velocidad Máxima:</strong> ${vehicle.velocidad_maxima_kmh} km/h</p>
-        <p><strong>Aceleración (0-100):</strong> ${vehicle.aceleracion_0_100} segundos</p>
-        <div class="details">
-        <span><strong>Rendimiento Normal:</strong> Velocidad Promedio: ${vehicle.rendimiento.conduccion_normal.velocidad_promedio_kmh} km/h</span>
-        <span>Consumo Combustible (seco): ${vehicle.rendimiento.conduccion_normal.consumo_combustible.seco}</span>
-        </div>
+      <img src="${vehicle.img}" alt="Imagen del vehículo">
+      <h3>${vehicle.modelo}</h3>
+      <p><strong>Equipo:</strong> ${vehicle.equipo}</p>
+      <p><strong>Motor:</strong> ${vehicle.motor}</p>
+      <p><strong>Velocidad Máxima:</strong> ${vehicle.velocidad_maxima_kmh} km/h</p>
+      <p><strong>Aceleración (0-100):</strong> ${vehicle.aceleracion_0_100} segundos</p>
     `;
 
-    container.appendChild(card);
+  // Añadir evento de clic para abrir el popup
+  card.addEventListener('click', function() {
+    openModal(vehicle); // Pasar el objeto completo al modal
+  });
+
+  container.appendChild(card);
 });
+}
+
+// Función para abrir el popup con los detalles del vehículo
+function openModal(vehicle) {
+const modal = document.getElementById('vehicle-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalDescription = document.getElementById('modal-description');
+
+// Verificar si los elementos existen antes de manipularlos
+if (modalTitle && modalDescription) {
+  // Actualizamos el título y la descripción del modal con la información del vehículo
+  modalTitle.innerHTML = `${vehicle.modelo} - ${vehicle.equipo}`;
+  modalDescription.innerHTML = `
+    <strong>Motor:</strong> ${vehicle.motor}<br>
+    <strong>Velocidad Máxima:</strong> ${vehicle.velocidad_maxima_kmh} km/h<br>
+    <strong>Aceleración (0-100):</strong> ${vehicle.aceleracion_0_100} segundos<br><br>
+    <strong>Rendimiento Normal:</strong><br>
+    Velocidad Promedio: ${vehicle.rendimiento.conduccion_normal.velocidad_promedio_kmh} km/h<br>
+    Consumo Combustible (seco): ${vehicle.rendimiento.conduccion_normal.consumo_combustible.seco}<br>
+    Desgaste Neumáticos (seco): ${vehicle.rendimiento.conduccion_normal.desgaste_neumaticos.seco}
+  `;
+  
+  modal.style.display = 'flex'; // Mostrar el modal
+} else {
+  console.error("Los elementos del modal no están disponibles.");
+}
+}
+
+function closeModal() {
+  const modal = document.getElementById('vehicle-modal');
+  modal.style.display = 'none'; // Ocultar el modal
+}
+
+// Asignar el evento de cierre al botón de cerrar
+const closeButton = document.getElementById('close-btn');
+if (closeButton) {
+  closeButton.addEventListener('click', closeModal);
 }
 
 // Llamar a la función para obtener los datos cuando se cargue la página
