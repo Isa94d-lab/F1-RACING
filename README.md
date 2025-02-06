@@ -77,6 +77,13 @@ Este es un proyecto web que simula una página de la Fórmula 1, ofreciendo func
 - Implementación de autenticación de usuarios para permitir diferentes roles (admin y usuario).
 - Mejora en la experiencia del usuario con gráficos o estadísticas en tiempo real.
 
+## Colaboradores
+
+Agradecemos la valiosa contribución de los siguientes colaboradores:
+
+- [Andres Araque](https://github.com/amdresw)
+- [Santiago Mendieta](https://github.com/santiagomtello)
+
 ## Contribuciones
 
 Si deseas contribuir al proyecto, por favor abre un **pull request**. Asegúrate de seguir las mejores prácticas de codificación y de documentar las funciones nuevas.
