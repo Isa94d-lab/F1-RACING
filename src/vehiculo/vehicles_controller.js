@@ -133,6 +133,4 @@ window.onload = fetchVehiclesData;
 
 if (localStorage.getItem("isLoggedIn") === "true") {
   document.querySelector(".wrapper").style.display = "flex";
-} else {
-  window.location.href = "index.html"; // Si no está logueado, lo regresa
 }

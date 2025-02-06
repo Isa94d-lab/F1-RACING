@@ -140,8 +140,6 @@ this.API_URL = "http://localhost:3000/pistas";
                 // ✅ Revisar si el usuario inició sesión
                 if (localStorage.getItem("isLoggedIn") === "true") {
             document.querySelector(".wrapper").style.display = "flex";
-        } else {
-            window.location.href = "/index.html"; // Si no está logueado, lo regresa
         }
         window.onload = function () {
             loadLeftTable();

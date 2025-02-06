@@ -6,7 +6,7 @@ class LoginForm extends HTMLElement {
         // Crear el formulario con estilos
         shadow.innerHTML = `
             <style>
-            @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+                @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
 
                 * {
                     margin: 0;
@@ -22,7 +22,7 @@ class LoginForm extends HTMLElement {
                     min-height: 100vh;
                     background: linear-gradient(to right, #cb232c, #ce1d61);
                 }
-                
+
                 .video-background {
                     position: fixed;
                     top: 0;
@@ -36,10 +36,9 @@ class LoginForm extends HTMLElement {
                 .video-background video {
                     width: 100%;
                     height: 100%;
-                    object-fit: cover; /* Escala el video sin deformarlo */
+                    object-fit: cover;
                 }                   
 
-                /* Estilos del formulario */
                 form {
                     display: flex;
                     flex-direction: column;
@@ -54,7 +53,6 @@ class LoginForm extends HTMLElement {
                     position: absolute;
                 }
 
-                /* Título */
                 form .title {
                     color: #252525;
                     font-size: 35px;
@@ -62,7 +60,6 @@ class LoginForm extends HTMLElement {
                     margin-bottom: 20px;
                 }
 
-                /* Contenedor del input con el icono */
                 form label {
                     display: flex;
                     align-items: center;
@@ -72,13 +69,11 @@ class LoginForm extends HTMLElement {
                     margin-bottom: 20px;
                 }
 
-                /* Iconos */
                 form label .fa-solid {
                     font-size: 20px;
                     color: #cb232c;
                 }
 
-                /* Campos de entrada */
                 form label input {
                     flex: 1;
                     outline: none;
@@ -93,7 +88,6 @@ class LoginForm extends HTMLElement {
                     color: rgba(37, 37, 37, 0.5);
                 }
 
-                /* Enlace "Forgot password?" */
                 form .link {
                     color: #252525;
                     margin-bottom: 15px;
@@ -106,7 +100,6 @@ class LoginForm extends HTMLElement {
                     text-decoration: underline;
                 }
 
-                /* Botón */
                 form button {
                     color: #fff;
                     border: none;
@@ -121,16 +114,15 @@ class LoginForm extends HTMLElement {
                 form button:hover {
                     background: linear-gradient(to right, #b71c1c, #b71550);
                 }
-
             </style>
 
             <form>
-            <div class="video-background">
-    <video autoplay loop muted playsinline>
-    <source src="/public/videofondo.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-    </video>
-    </div>
+                <div class="video-background">
+                    <video autoplay loop muted playsinline>
+                        <source src="/public/videofondo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
                 <h1 class="title">Login</h1>
                 <label>
                     <i class="fa-solid fa-user"></i>
@@ -151,34 +143,43 @@ class LoginForm extends HTMLElement {
             e.preventDefault();
 
             // Obtener valores de los campos correctamente
-            const username = shadow.querySelector("#username").value;
-            const password = shadow.querySelector("#password").value;
+            const username = shadow.querySelector("#username").value.trim();
+            const password = shadow.querySelector("#password").value.trim();
 
             if (!username || !password) {
                 alert("Por favor, completa todos los campos.");
                 return;
             }
 
-            // Usuarios válidos
+            // Definir usuarios
             const users = [
                 { username: "Isa", password: "1234" },
                 { username: "Andres", password: "5678" }
             ];
 
-            // Verificar credenciales
+            const guestusers = [
+                { username: "jholver", password: "1234" },
+                { username: "santiago", password: "5678" }
+            ];
+
+            // Verificar credenciales de usuarios administradores
             const isValidUser = users.some(user => user.username === username && user.password === password);
             if (isValidUser) {
-                // ✅ Guardar en localStorage que el usuario inició sesión
                 localStorage.setItem("isLoggedIn", "true");
-
-                // ✅ Cambiar el display de la clase .wrapper en admin.html
                 window.location.href = "./src/main/main.html"; // Redirigir a admin.html
-
-            } else {
-                alert("Datos incorrectos");
+                return; // Evita que continúe la ejecución innecesaria
             }
 
-            form.reset(); // Limpiar el formulario
+            // Verificar credenciales de usuarios invitados
+            const isValidGuestUser = guestusers.some(guest => guest.username === username && guest.password === password);
+            if (isValidGuestUser) {
+                localStorage.setItem("isLoggedIn", "guest");
+                window.location.href = "./src/main/main.html"; // Redirigir a admin.html
+                return;
+            }
+
+            // Si ninguna credencial es válida
+            alert("Datos incorrectos");
         });
     }
 }
