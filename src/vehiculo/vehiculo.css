@@ -225,7 +225,7 @@ div.links{
     height: var(--height);
     position: fixed;
     border-radius: var(--border-radius);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     left:92%;

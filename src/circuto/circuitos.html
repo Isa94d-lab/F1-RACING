@@ -136,6 +136,13 @@ this.API_URL = "http://localhost:3000/pistas";
             </div>
             `;
         }
+        
+                // ✅ Revisar si el usuario inició sesión
+                if (localStorage.getItem("isLoggedIn") === "true") {
+            document.querySelector(".wrapper").style.display = "flex";
+        } else {
+            window.location.href = "/index.html"; // Si no está logueado, lo regresa
+        }
         window.onload = function () {
             loadLeftTable();
         };
@@ -148,8 +155,8 @@ this.API_URL = "http://localhost:3000/pistas";
                     loadLeftTable(); // Recargar la tabla izquierda
                     document.querySelector('.right-table').innerHTML = ''; // Limpiar detalles
         }}
+
     </script>
-    
     <track-form-popup></track-form-popup>
     <track-edit-popup></track-edit-popup>
  
