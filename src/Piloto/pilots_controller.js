@@ -474,4 +474,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadPilots();
 });
-

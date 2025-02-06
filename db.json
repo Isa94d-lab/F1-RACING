@@ -66,24 +66,86 @@
         }
       },
       "id": "d73b"
+    },
+    {
+      "id": "4607",
+      "equipo": "dsadas",
+      "modelo": "asdas",
+      "motor": "asdasd",
+      "velocidad_maxima_kmh": 12114,
+      "aceleracion_0_100": 456456,
+      "pilots": [
+        "1738845765457",
+        "1738845765458"
+      ],
+      "img": "456456",
+      "rendimiento": {
+        "conduccion_normal": {
+          "velocidad_promedio_kmh": 45645,
+          "consumo_combustible": {
+            "seco": 456456,
+            "lluvioso": 45645,
+            "extremo": 45645
+          },
+          "desgaste_neumaticos": {
+            "seco": 45664,
+            "lluvioso": 45645,
+            "extremo": 45645
+          }
+        },
+        "conduccion_agresiva": {
+          "velocidad_promedio_kmh": 4564,
+          "consumo_combustible": {
+            "seco": 45645,
+            "lluvioso": 45645,
+            "extremo": 45645
+          },
+          "desgaste_neumaticos": {
+            "seco": 456456,
+            "lluvioso": 456456,
+            "extremo": 456456
+          }
+        },
+        "ahorro_combustible": {
+          "velocidad_promedio_kmh": 45645,
+          "consumo_combustible": {
+            "seco": 45645,
+            "lluvioso": 456456,
+            "extremo": 456456
+          },
+          "desgaste_neumaticos": {
+            "seco": 456456,
+            "lluvioso": 456456,
+            "extremo": 456456
+          }
+        }
+      }
     }
   ],
   "pilots": [
     {
-      "nombre": "Oscar Piastri",
-      "equipo": "Monster",
-      "experiencia": "Piloto Principal",
-      "img": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png",
-      "bandera": "https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/flags/Australia.jpg",
-      "id": "1738709621226"
+      "id": "1738845765457",
+      "nombre": "asdsa",
+      "equipo": "asdas",
+      "experiencia": "sdasda",
+      "img": "asdasd",
+      "bandera": "asdas"
     },
     {
-      "id": 1738839356688,
-      "nombre": "adsa",
-      "equipo": "asdasd",
-      "experiencia": "asdas",
-      "img": "sada",
+      "id": "1738845765458",
+      "nombre": "asdasd",
+      "equipo": "asdas",
+      "experiencia": "adad",
+      "img": "asdasd",
       "bandera": "asdasd"
+    },
+    {
+      "id": "1738845482123",
+      "nombre": "",
+      "equipo": "",
+      "experiencia": "",
+      "img": "",
+      "bandera": ""
     }
   ],
   "equipos": [
