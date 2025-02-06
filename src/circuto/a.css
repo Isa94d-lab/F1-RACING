@@ -201,6 +201,10 @@ width: 100%;
   border-left: transparent 10px solid;
   border-radius: 20px;
 }
+.info1:hover{
+  transform: scale(1.01);
+  transition: 0.5s;
+}
 .bandera{
   width: 100px;
   height: 70px;
@@ -224,6 +228,12 @@ width: 100%;
   border-left: transparent 10px solid;
   border-radius: 20px;
 }
+
+.info2:hover{
+  transform: scale(1.01);
+  transition: 0.5s;
+}
+
 .renglon2{
 display: flex;
 flex-direction: row;
@@ -250,6 +260,11 @@ padding-top: 10px;
   border-top: 10px solid transparent;
   border-left: 10px solid transparent; 
   border-radius: 12px;
+}
+
+.info-item:hover{
+  transform: scale(1.03);
+  transition: 0.5s;
 }
 
 

@@ -107,7 +107,7 @@ class LoginForm extends HTMLElement {
                 }
 
                 /* Botón */
-                form button {
+                form .button {
                     color: #fff;
                     border: none;
                     background: linear-gradient(to right, #cb232c, #ce1d61);
@@ -118,7 +118,7 @@ class LoginForm extends HTMLElement {
                     transition: background 0.3s ease-in-out;
                 }
 
-                form button:hover {
+                form .button:hover {
                     background: linear-gradient(to right, #b71c1c, #b71550);
                 }
 
@@ -141,7 +141,7 @@ class LoginForm extends HTMLElement {
                     <input placeholder="Password" type="password" id="password">
                 </label>
                 <a href="#" class="link">Forgot your password?</a>
-                <button type="submit">Login</button>
+                <a class="button" href="./src/main/main.html"  type="submit">Login</a>
             </form>
         `;
 
