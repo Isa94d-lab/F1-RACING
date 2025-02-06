@@ -56,60 +56,6 @@
       }
     },
     {
-      "id": "47a3",
-      "equipo": "dszfsdf",
-      "modelo": "1212",
-      "motor": "12",
-      "velocidad_maxima_kmh": 12,
-      "aceleracion_0_100": 1,
-      "img": "21",
-      "pilots": [
-        "1738672441888",
-        "1738674744430"
-      ],
-      "rendimiento": {
-        "conduccion_normal": {
-          "velocidad_promedio_kmh": 545,
-          "consumo_combustible": {
-            "seco": 1212,
-            "lluvioso": 12,
-            "extremo": 121
-          },
-          "desgaste_neumaticos": {
-            "seco": 21,
-            "lluvioso": 2,
-            "extremo": 12
-          }
-        },
-        "conduccion_agresiva": {
-          "velocidad_promedio_kmh": 121,
-          "consumo_combustible": {
-            "seco": 2,
-            "lluvioso": 12,
-            "extremo": 12
-          },
-          "desgaste_neumaticos": {
-            "seco": 1,
-            "lluvioso": 21,
-            "extremo": 2
-          }
-        },
-        "ahorro_combustible": {
-          "velocidad_promedio_kmh": 12,
-          "consumo_combustible": {
-            "seco": 12,
-            "lluvioso": 1,
-            "extremo": 21
-          },
-          "desgaste_neumaticos": {
-            "seco": 21,
-            "lluvioso": 2,
-            "extremo": 12
-          }
-        }
-      }
-    },
-    {
       "id": "95e7",
       "equipo": "asd",
       "modelo": "sadas",
