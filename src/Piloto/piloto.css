@@ -25,7 +25,7 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 500;
   }
 
   div.logo{
@@ -84,6 +84,8 @@ div.links{
     display: flex;
     justify-content: center;
     width: 100%;
+    height: 100%;
+    z-index: 10;
   }
 .input-container {
     width: 520px;
@@ -128,29 +130,10 @@ div.links{
     /*pilotos*/
   .conteiner{
     display: flex;
-    display: flex;
-    justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
-.pilot-card{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent;
-    border: #bab6ae 2px solid;
-    width: 100%;
-    height: 300px;
-    backdrop-filter: blur(100px);
-}
-.pilot-card img{
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    margin-top: 20px;
-}
 
 /*popups*/
 #popup, #popup2 {
@@ -169,32 +152,6 @@ div.links{
         display: flex; /* Asegúrate de que el popup se vea cuando la clase 'show' esté aplicada */
     }
 
-    .cuadrado {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        width: 500px;
-        text-align: center;
-    }
-    .cuadrado input {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    .cuadrado button {
-        padding: 10px 15px;
-        background-color: #a10b0b;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-top: 10px;
-    }
-    .cuadrado button:hover {
-        background-color: #990a0a;
-    }
 
 
          /* Botón para abrir el popup */
@@ -248,6 +205,7 @@ div.links{
     align-items: center;
     left:92%;
     top: 85%;
+    z-index: 1000;
   }
   .wrapper .btn {
     background: var(--background);
@@ -506,8 +464,94 @@ div.links{
         grid-template-columns: repeat(4, 1fr);
         gap: 25px; /* Ajusta el espacio entre las cards según sea necesario */
         padding: 50px;
-        z-index: -1;
+        width: 50px;
+        z-index: 20;
     }
 
+  .cards{
+    width: 200px;
+  }
 
 
+.cuadrado-edit {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  height: 70%;
+  text-align: center;
+  
+}
+.cuadrado-edit input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.cuadrado-edit button {
+  padding: 10px 15px;
+  background-color: #a10b0b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.cuadrado-edit button:hover {
+  background-color: #990a0a;}
+
+
+  .cuadrado {
+    background: transparent;
+    width: 250px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infocard{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.nombre{
+  width: 50%;
+  height: 80px;
+  overflow: hidden;
+  gap: 30px;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  margin: 0 auto;
+}
+img.bandera{
+height:80px;
+border-radius: 10px;
+}
+
+.conteiner_pilot{
+  width: 100%;
+  height: 100%;
+}
+.foto{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.pilot-card{
+  display: flex;
+  background-color: transparent;
+  border: #bab6ae 2px solid;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(100px);
+  z-index: 900;
+  border-radius: 10px;
+
+}

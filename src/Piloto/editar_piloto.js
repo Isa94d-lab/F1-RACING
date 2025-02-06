@@ -1,3 +1,5 @@
+// editar_piloto.js
+
 console.log('Antes de la importación');
 import { deletePiloto } from './eliminar_piloto.js';  // Asegúrate de importar la función
 console.log('Después de la importación');
@@ -15,7 +17,7 @@ class EditarPilotoPopup extends HTMLElement {
                 /* Estilos */
             </style>
             <div id="popup2">
-                <div class="cuadrado">
+                <div class="cuadrado-edit">
                     <h3>Editar Piloto</h3>
 
                     <label for="select_piloto">Seleccionar Piloto:</label>
@@ -121,7 +123,7 @@ class EditarPilotoPopup extends HTMLElement {
             alert('Por favor, seleccione un piloto para editar');
             return;
         }
-    
+
         const updatedPilot = {
             nombre: this.querySelector('#edit_namePiloto').value,
             equipo: this.querySelector('#edit_equipoPiloto').value,
@@ -129,7 +131,7 @@ class EditarPilotoPopup extends HTMLElement {
             img: this.querySelector('#edit_imgPiloto').value,
             bandera: this.querySelector('#edit_banderaPiloto').value,
         };
-    
+
         try {
             const response = await fetch(`${this.BASE_URL}/${pilotId}`, {
                 method: 'PUT',
@@ -138,22 +140,17 @@ class EditarPilotoPopup extends HTMLElement {
                 },
                 body: JSON.stringify(updatedPilot)
             });
-    
+
             if (!response.ok) throw new Error('Error al actualizar el piloto');
-    
+
             alert('Piloto actualizado exitosamente');
             this.close();
             window.dispatchEvent(new CustomEvent('pilotUpdated'));
-    
-            // Aquí agregamos la llamada para actualizar la lista de pilotos después de la edición
-            this.loadPilots();  // Recargar la lista de pilotos después de la actualización
-    
         } catch (error) {
             console.error('Error al actualizar el piloto:', error);
             alert('Error al actualizar el piloto');
         }
     }
-    
 
     open() {
         this.querySelector('#popup2').style.display = 'flex';

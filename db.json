@@ -112,45 +112,33 @@
   ],
   "pilots": [
     {
-      "nombre": "SAntiaogAAAAAAAAAAAAAAAAAA",
-      "equipo": "esgseg",
-      "experiencia": "segse",
-      "img": "gergdrgdrrdg",
-      "id": "1738672441888"
-    },
-    {
-      "nombre": "Isabella",
+      "nombre": "Oscar Piastri",
       "equipo": "Monster",
-      "experiencia": "escudera",
-      "img": "awdwdawdawd",
+      "experiencia": "Piloto Principal",
+      "img": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png",
+      "bandera": "https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/flags/Australia.jpg",
       "id": "1738709621226"
     },
     {
-      "id": "1738758878342",
-      "nombre": "ttrreree",
+      "nombre": "PPPPPPPPPP PPPPPPPPPPPP",
       "equipo": "trttrtyt",
       "experiencia": ", iouio",
-      "img": "yrtrytr"
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s",
+      "bandera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s",
+      "id": "1738758878342"
     },
     {
-      "id": 1738792586829,
+      "id": "1738792586829",
       "nombre": "sad",
       "equipo": "sada",
       "experiencia": "sadas",
-      "img": "asdas"
-    },
-    {
-      "id": 1738792807291,
-      "nombre": "sdas",
-      "equipo": "asdas",
-      "experiencia": "asdas",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s"
     },
     {
-      "id": 1738795377217,
-      "nombre": "DSADAS",
-      "equipo": "ASDAS",
-      "experiencia": "ASDAS",
+      "id": "1738792807291",
+      "nombre": "sdas",
+      "equipo": "asdas",
+      "experiencia": "asdas",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJF9aUwnC6JHSCMi9JRqLqmM1yn_qQjlBy8w&s"
     }
   ]

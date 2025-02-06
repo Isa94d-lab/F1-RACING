@@ -21,26 +21,27 @@ class Popup_piloto extends HTMLElement {
                     background: rgba(0, 0, 0, 0.5);
                     justify-content: center;
                     align-items: center;
+                    z-index: 1000;
+                    color: black;
                 }
 
                 #conteiner_pilot.show {
                     display: flex;
                 }
 
-                .cuadrado {
+                .cuadrado-popup {
                     background: white;
-                    padding: 20px;
                     border-radius: 10px;
                     width: 500px;
-                    text-align: center;
+                    height: 500px;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;  
+                    z-index: 1000;
                 }
 
-                .cuadrado img {
-                    max-width: 100px;
-                    border-radius: 10px;
-                }
-
-                .cuadrado button {
+                .cuadrado-popup button {
                     padding: 10px 15px;
                     background-color: #a10b0b;
                     color: white;
@@ -50,16 +51,47 @@ class Popup_piloto extends HTMLElement {
                     margin-top: 10px;
                 }
 
-                .cuadrado button:hover {
+                .cuadrado-popup button:hover {
                     background-color: #990a0a;
                 }
+            
+                .infocard{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 70%;
+                }
+
+                #pilotImg{
+                    width: 250px;
+                    height: 250px;
+
+                    }
+                img.bandera{
+                    height:80px;
+                    border-radius: 10px;
+                }
+                .info{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 70%;
+                }
+
             </style>
             <div id="conteiner_pilot">
-                <div class="cuadrado">
-                    <h4 id="pilotName"></h4>
-                    <p id="pilotTeam"></p>
+                <div class="cuadrado-popup">
+                <div class=infocard>
+                    <h2 id="pilotName"></h2>
+                    <img id="pilotFlag" alt="Bandera del piloto">
+                </div>
+                <img id="pilotImg" alt="Imagen de piloto">
+                <div class=info>
                     <p id="pilotExperience"></p>
-                    <p>Imagen de piloto: <img id="pilotImg" alt="Imagen de piloto"></p>
+                    <p id="pilotTeam"></p>
+                </div>
+
                     <button id="btnCerrar">Cerrar</button>
                 </div>
             </div>
@@ -85,9 +117,10 @@ class Popup_piloto extends HTMLElement {
         // Asignar los valores del piloto al popup
         pilotNameElement.textContent = pilot.nombre;
         this.shadowRoot.querySelector("#pilotTeam").textContent = `Equipo: ${pilot.equipo}`;
-        this.shadowRoot.querySelector("#pilotExperience").textContent = `Experiencia: ${pilot.experiencia}`;
+        this.shadowRoot.querySelector("#pilotExperience").textContent = `Rol: ${pilot.experiencia}`;
         this.shadowRoot.querySelector("#pilotImg").src = pilot.img;
-        
+        this.shadowRoot.querySelector("#pilotFlag").src = pilot.bandera;  // Aquí asignas la bandera
+
         // Mostrar el popup
         this.shadowRoot.querySelector("#conteiner_pilot").classList.add("show");
     }
