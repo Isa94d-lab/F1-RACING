@@ -35,7 +35,7 @@ export class generateCode extends HTMLElement {
         const label = document.createElement('label');
         label.setAttribute('for', 'factura_Usuario');
         label.setAttribute('class', 'form-label');
-        label.textContent = 'ID del Piloto: ';
+        label.setAttribute = 'ID del Piloto: ';
 
         // Crear el input
         this.input = document.createElement('input');
@@ -47,7 +47,7 @@ export class generateCode extends HTMLElement {
         this.input.setAttribute('readonly', true);  // Solo lectura
 
         // Generar un número único y establecerlo en el input
-        this.number = Date.now() + Math.floor(Math.random() * 1000000);
+        this.number = (Date.now() + Math.floor(Math.random() * 1000000)).toString();
         this.input.value = this.number;  // Establece el valor generado en el input
 
         // Agregar el bloque de estilos al Shadow DOM

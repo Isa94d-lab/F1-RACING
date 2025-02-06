@@ -105,19 +105,32 @@ class AgregarPilotoPopup extends HTMLElement {
         const experience = this.shadowRoot.querySelector('#new_experiencePiloto').value;
         const img = this.shadowRoot.querySelector('#new_imgPiloto').value;
         const bandera = this.shadowRoot.querySelector('#new_banderaPiloto').value;
-
-        // Lógica para guardar el piloto (aquí se puede integrar con un servidor o almacenamiento local)
-        console.log('Piloto guardado:', { name, equipo, experience, img, bandera });
-
+    
+        // Obtener el ID generado
+        const pilotoId = this.shadowRoot.querySelector('generate-code').getGeneratedCode();
+    
+        const pilotoData = {
+            id: pilotoId, // Asegúrate de que el ID esté en formato string
+            name,
+            equipo,
+            experience,
+            img,
+            bandera
+        };
+    
+        // Lógica para guardar el piloto (aquí puedes integrarlo con el servidor o almacenamiento local)
+        console.log('Piloto guardado:', pilotoData);
+    
         // Limpiar los campos después de guardar
         this.shadowRoot.querySelector('#new_namePiloto').value = '';
         this.shadowRoot.querySelector('#new_equipoPiloto').value = '';
         this.shadowRoot.querySelector('#new_experiencePiloto').value = '';
         this.shadowRoot.querySelector('#new_imgPiloto').value = '';
         this.shadowRoot.querySelector('#new_banderaPiloto').value = '';
-
+    
         this.close();
     }
+    
 }
 
 // Definir el componente personalizado
